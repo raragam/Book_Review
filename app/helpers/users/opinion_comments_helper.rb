@@ -1,0 +1,2 @@
+module Users::OpinionCommentsHelper
+end

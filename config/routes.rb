@@ -1,17 +1,24 @@
 Rails.application.routes.draw do
 
   namespace :users do
+    get 'relationships/followings'
+    get 'relationships/followers'
+  end
+  namespace :users do
     # resources :opinions, only:[:index, create, :show, :edit, :update, destroy]
     get 'opinions/index'
     get 'opinions/show'
     get 'opinions/edit'
+    # resources :reviews, only:[:index, :new, :create, :show, :edit, :update, destroy]
+    get 'reviews/new'
+    get 'reviews/index'
+    get 'reviews/show'
+    get 'reviews/edit'
     # resources :users, only:[:index, create, :show, :edit, :update]
     get 'users/index'
     get 'users/show'
     get 'users/edit'
   end
-  # devise_for :admins
-  # devise_for :users
 
      devise_for :admins, controllers: {
      sessions:      'admins/sessions',
