@@ -1,2 +1,57 @@
-<h1>Users::Opinions#edit</h1>
-<p>Find me in app/views/users/opinions/edit.html.erb</p>
+
+
+      <div class="container">
+
+      <div class="row">
+
+        <diV class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+        <% if @opinion.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= @opinion.errors.count %> errors prohibited this opinion from being saved:</h2>
+        <ul>
+        <% @opinion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+        </ul>
+        </div>
+        <% end %>
+
+          <h1>Editing Book</h1>
+
+  <%= form_with model: @opinion, url: opinion_path(@opinion.id), method: :patch do |f| %>
+
+    <div class="form-group">
+      <div>
+        <label>Title</label>
+      </div>
+      <div>
+        <%= f.text_field :title, class: 'form-control book_title' %>
+     </div>
+    </div>
+
+    <div class="form-group">
+      <div>
+        <label>Body</label>
+      </div>
+      <div>
+        <%= f.text_area :body, class: 'form-control book_body' %>
+     </div>
+    </div>
+
+  <div class="form-group">
+
+    <%= f.submit 'Update Book', class: 'btn btn-success' %>
+
+  </div>
+
+  <% end %>
+
+  <%= link_to "Show", opinion_path(@opinion.id) %>
+   |
+  <a class="back" href=/opinions>Back</a>
+
+
+        </diV>
+
+      </div>

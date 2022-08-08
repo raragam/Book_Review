@@ -1,2 +1,63 @@
-<h1>Users::Users#edit</h1>
-<p>Find me in app/views/users/users/edit.html.erb</p>
+
+
+      <div class="container">
+
+      <div class="row">
+
+        <diV class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+          <h2>User info</h2>
+
+          <% if @user.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= @user.errors.count %> errors prohibited this obj from being saved:</h2>
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+        </ul>
+        </div>
+        <% end %>
+
+    <%= form_with model: @user, url: user_path(@user.id), method: :patch do |f| %>
+
+    <div class="form-group">
+      <div>
+        <label for="user_name">Name</label>
+      </div>
+      <div>
+      <%= f.text_field :name, autofocus: true, id:"name", class: 'form-control name' %>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <div>
+      <label for="user_image">Image</label>
+    </div>
+    <div>
+      <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: 'form-control-file user_image' %>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <div>
+        <label for="user_introduction">Introduction</label>
+      </div>
+      <div>
+        <%= f.text_area :introduction, autofocus: true, id:"introduction", class: 'form-control introduction' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+
+    <%= f.submit 'Update User', class: 'btn btn-secondary' %>
+
+  </div>
+
+    <% end %>
+
+      </diV>
+
+      </div>
+
+      </div>
