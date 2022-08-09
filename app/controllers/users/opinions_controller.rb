@@ -10,7 +10,7 @@ class Users::OpinionsController < ApplicationController
     @opinion.user_id = current_user.id
     if @opinion.save
     flash[:notice] = "You have created opinion successfully."
-    redirect_to opinion_path(@opinion.id)
+    redirect_to users_opinions_path(@opinion.id)
     else
     @opinions = Opinion.all
     @user = current_user
@@ -27,14 +27,14 @@ class Users::OpinionsController < ApplicationController
 
   def edit
     @opinion = Opinion.find(params[:id])
-    redirect_to opinions_path unless current_user.id == @opinion.user_id
+    redirect_to users_opinion_path unless current_user.id == @opinion.user_id
   end
 
   def update
     @opinion = Opinion.find(params[:id])
     if @opinion.update(opinion_params)
       flash[:notice] = "You have updated opinion successfully."
-      redirect_to opinion_path(@opinion.id)
+      redirect_to users_opinion_path(@opinion.id)
     else
       @opinions = Opinion.all
       render :edit

@@ -10,7 +10,7 @@ class Users::UsersController < ApplicationController
     @opinion = Opinion.new(opinion_params)
     @opinion.user_id = current_user.id
     @opinion.save
-    redirect_to opinion_path(@opinion.id)
+    redirect_to users_opinion_path(@opinion.id)
   end
 
   def show
@@ -22,14 +22,14 @@ class Users::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    redirect_to user_path(current_user.id) unless @user == current_user
+    redirect_to users_user_path(current_user.id) unless @user == current_user
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "You have updated user successfully."
-      redirect_to user_path(@user.id)
+      redirect_to users_user_path(@user.id)
     else
       render :edit
     end
