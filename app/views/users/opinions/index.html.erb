@@ -51,22 +51,22 @@
 
 <h2 class="mt-3">New book</h2>
 
-  <%= form_with model: @opinion do |f| %>
+  <%= form_with model: @opinion, url: '/users/opinions', method: :post do |f| %>
   <div class="form-group">
     <div>
-      <label for="book_title">Title</label>
+      <label for="opinion_title">Title</label>
     </div>
     <div>
-      <%= f.text_field :title, class: 'form-control book_title' %>
+      <%= f.text_field :opinion_title, class: 'form-control opinion_title' %>
     </div>
     </div>
 
   <div class="form-group">
     <div>
-      <label for="book_title">Opinion</label>
+      <label for="opinion_title">Opinion</label>
     </div>
     <div>
-      <%= f.text_area :body, class: 'form-control book_body' %>
+      <%= f.text_area :opinion_body, class: 'form-control opinion_body' %>
     </div>
   </div>
 
@@ -100,16 +100,16 @@
       <tbody>
         <tr>
       <td>
-        <%= link_to user_path(opinion.user.id) do %>
+        <%= link_to user_path(@opinion.user.id) do %>
           <%= image_tag opinion.user.get_profile_image %>
         <% end %>
       <td>
-        <%= link_to opinion_path(opinion.id) do %>
-        <%= opinion.title %>
+        <%= link_to opinion_path(@opinion.id) do %>
+        <%= opinion.opinion_title %>
         <% end %>
       </td>
       <td>
-        <%= opinion.body %>
+        <%= opinion.opinion_body %>
       </td>
         </tr>
       </tbody>

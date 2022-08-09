@@ -1,2 +1,27 @@
-<h1>Users::Reviews#index</h1>
-<p>Find me in app/views/users/reviews/index.html.erb</p>
+<h1>投稿一覧</h1>
+
+<% @reviews.each do |review| %>
+
+  <p>タイトル</p>
+  <!--<span>-->
+    <%#= review.review_title %>
+  <!--</span>-->
+  <!--<span>-->
+    <%#= review.review_body %>
+  <!--</span>-->
+
+  <!--<span>-->
+    <%#= link_to review.review_title, "/reviews/#{review.id}" %>
+  <!--</span>-->
+  <!--<span>-->
+    <%#= link_to review.review_body, "/reviews/#{review.id}" %>
+  <!--</span>-->
+
+  <span>
+    <%= link_to review.review_title, user_review_path(@review.id) %>
+  </span>
+  <span>
+    <%= link_to review.review_body, user_review_path(@review.id) %>
+  </span>
+
+  <% end %>
