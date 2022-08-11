@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
 
-  belongs_to :user
+  #belongs_to :user
 
   has_many :review_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -10,7 +10,7 @@ class Review < ApplicationRecord
   validates :review_title, presence: true
   validates :review_body, presence: true
   validates :review_body, length: { minimum: 1, maximum: 200 }
-  validates :book_name, presence: true
+  #validates :book_name, presence: true
 
   def get_profile_image
     unless profile_image.attached?

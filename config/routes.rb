@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     # get 'users/edit'
   end
 
+  namespace :admins do
+    resources :users
+  end
+
      devise_for :admins, controllers: {
      sessions:      'admins/sessions',
      passwords:     'admins/passwords',

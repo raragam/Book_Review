@@ -7,7 +7,8 @@ class Users::ReviewsController < ApplicationController
     # １.&2. データを受け取り新規登録するためのインスタンス作成
     @review = Review.new(review_params)
     # 3. データをデータベースに保存するためのsaveメソッド実行
-    @review.save
+    @review.save!
+
     # 詳細画面へリダイレクト
     redirect_to users_review_path(@review.id)
 

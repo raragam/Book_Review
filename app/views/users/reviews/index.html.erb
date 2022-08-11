@@ -18,10 +18,10 @@
   <!--</span>-->
 
   <span>
-    <%= link_to review.review_title, user_review_path(@review.id) %>
+    <%= link_to review.review_title, users_review_path(review.id) %>
   </span>
   <span>
-    <%= link_to review.review_body, user_review_path(@review.id) %>
+    <%= link_to review.review_body, users_review_path(review.id) %>
   </span>
 
   <% end %>

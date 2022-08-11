@@ -31,7 +31,7 @@
 
    <div class="row">
 
-       <%= link_to edit_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
+       <%= link_to edit_users_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
        <i class="fas fa-user-cog"></i>
 
      <% end %>
@@ -104,19 +104,19 @@
     <tbody>
         <tr>
       <td>
-        <%= link_to user_path(@user.id) do %>
+        <%= link_to users_user_path(@user.id) do %>
         <div>
           <%= image_tag @user.get_profile_image %>
         </div>
         <% end %>
       </td>
       <td>
-        <%= link_to opinion_path(opinion.id) do %>
-        <span><%= opinion.title %></span>
+        <%= link_to users_opinion_path(@opinions.ids) do %>
+        <span><%#= @opinion.opinion_title %></span>
         <% end %>
       </td>
       <td>
-        <span><%= opinion.body %></span>
+        <span><%#= @opinion.opinion_body %></span>
       </td>
         </tr>
       </tbody>
