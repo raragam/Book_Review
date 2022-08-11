@@ -1,5 +1,5 @@
 
-      <% if flash[:notice] %>
+    <% if flash[:notice] %>
     <div class="flash">
       <%= flash[:notice] %>
     </div>
@@ -62,20 +62,20 @@
 
   <div class="form-group">
     <div>
-      <label for="opinion_title">Title</label>
+      <label>Title</label>
     </div>
     <div>
-      <%= f.text_field :opinion_title, class: 'form-control opinion_title' %>
+      <%= f.text_field :opinion_title, class: 'form-control' %>
     </div>
   </div>
 
 
   <div class="form-group">
     <div>
-      <label for="opinion_title">Opinion</label>
+      <label>Opinion</label>
     </div>
     <div>
-      <%= f.text_area :opinion_body, class: 'form-control opinion_body' %>
+      <%= f.text_area :opinion_body, class: 'form-control' %>
     </div>
   </div>
 

@@ -15,7 +15,7 @@ class Users::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user_my = current_user
+    #@user_my = current_user
     @opinion_new = Opinion.new
     @opinions = @user.opinions
   end

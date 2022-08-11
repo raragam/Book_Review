@@ -18,6 +18,7 @@ class Users::ReviewsController < ApplicationController
   end
 
   def index
+    #@user = User.find(params[:id])
     @reviews = Review.all
   end
 
