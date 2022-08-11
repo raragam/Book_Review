@@ -26,6 +26,11 @@
    </tbody>
  </table>
 
+        <%= link_to users_unsubscribe_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
+       <i class="fas fa-user-cog">退会ボタン</i>
+
+     <% end %>
+
 
    <% if @user == current_user %>
 
@@ -35,6 +40,7 @@
        <i class="fas fa-user-cog"></i>
 
      <% end %>
+
    </div>
 
    <% else %>
@@ -122,6 +128,45 @@
       </tbody>
 
       <% end %>
+
+      </table>
+
+      <h2>記事一覧</h2>
+
+      <table class="table table-hover table-inverse">
+
+      <thead>
+      <tr>
+        <th></th>
+        <th>原作画像</th>
+        <th>記事のタイトル</th>
+        <th>原作名</th>
+      </tr>
+    </thead>
+
+    <%# @opinions.each do |book| %>
+
+    <tbody>
+        <tr>
+      <td>
+        <%#= link_to users_user_path(@user.id) do %>
+        <div>
+          <%#= image_tag @user.get_profile_image %>
+        </div>
+        <%# end %>
+      </td>
+      <td>
+        <%#= link_to users_opinion_path(@opinions.ids) do %>
+        <span><%#= @opinion.opinion_title %></span>
+        <%# end %>
+      </td>
+      <td>
+        <span><%#= @opinion.opinion_body %></span>
+      </td>
+        </tr>
+      </tbody>
+
+      <%# end %>
 
       </table>
 

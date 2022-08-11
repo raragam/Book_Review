@@ -1,27 +1,39 @@
-<h1>投稿一覧</h1>
+<div class="col-md-8 offset-md-1">
 
-<% @reviews.each do |review| %>
+<h1>記事一覧</h1>
 
-  <p>タイトル</p>
-  <!--<span>-->
-    <%#= review.review_title %>
-  <!--</span>-->
-  <!--<span>-->
-    <%#= review.review_body %>
-  <!--</span>-->
+  <table class="table">
 
-  <!--<span>-->
-    <%#= link_to review.review_title, "/reviews/#{review.id}" %>
-  <!--</span>-->
-  <!--<span>-->
-    <%#= link_to review.review_body, "/reviews/#{review.id}" %>
-  <!--</span>-->
+    <thead>
+      <tr>
+        <th>原作画像</th>
+        <th>記事のタイトル</th>
+        <th>原作名</th>
+      </tr>
+    </thead>
 
-  <span>
-    <%= link_to review.review_title, users_review_path(review.id) %>
-  </span>
-  <span>
-    <%= link_to review.review_body, users_review_path(review.id) %>
-  </span>
+  <% @reviews.each do |review| %>
+
+        <tbody>
+        <tr>
+      <td>
+        <% if review.image.attached? %>
+        <%= image_tag review.image, size: "200x200" %>
+        <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to review.review_title, users_review_path(review.id) %>
+      </td>
+      <td>
+        <%= link_to review.review_body, users_review_path(review.id) %>
+      </td>
+        </tr>
+      </tbody>
 
   <% end %>
+
+  </table>
+
+  </div>

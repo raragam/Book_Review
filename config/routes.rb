@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: {
+     sessions:      'users/sessions',
+     passwords:     'users/passwords',
+     registrations: 'users/registrations'
+   }
+
   namespace :users do
     # get 'relationships/followings'
     # get 'relationships/followers'
@@ -13,25 +19,22 @@ Rails.application.routes.draw do
     # get 'reviews/show'
     # get 'reviews/edit'
     resources :users
+    get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
     # get 'users/index'
     # get 'users/show'
     # get 'users/edit'
   end
 
-  namespace :admins do
-    resources :users
-  end
-
-     devise_for :admins, controllers: {
+  devise_for :admins, controllers: {
      sessions:      'admins/sessions',
      passwords:     'admins/passwords',
      registrations: 'admins/registrations'
    }
-     devise_for :users, controllers: {
-     sessions:      'users/sessions',
-     passwords:     'users/passwords',
-     registrations: 'users/registrations'
-   }
+
+  namespace :admins do
+  resources :users
+  end
 
   root to: "homes#top"
 
