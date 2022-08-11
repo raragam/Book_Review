@@ -10,20 +10,14 @@ Rails.application.routes.draw do
     # get 'relationships/followings'
     # get 'relationships/followers'
     resources :opinions
-    # get 'opinions/index'
-    # get 'opinions/show'
-    # get 'opinions/edit'
+
     resources :reviews
-    # get 'reviews/new'
-    # get 'reviews/index'
-    # get 'reviews/show'
-    # get 'reviews/edit'
+
     resources :users
-    get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
-    patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
-    # get 'users/index'
-    # get 'users/show'
-    # get 'users/edit'
+    get 'unsubscribe/:id' => 'users#unsubscribe', as: 'confirm_unsubscribe'
+    patch ':id/withdraw' => 'users#withdraw', as: 'withdraw_user'
+    put 'withdraw' => 'users#withdraw'
+
   end
 
   devise_for :admins, controllers: {

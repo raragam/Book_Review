@@ -35,8 +35,12 @@ class Users::UsersController < ApplicationController
     end
   end
 
-  def withdrawal
-    @user = User.find(params[:id])
+  def unsubscribe
+    @user = current_user
+  end
+
+  def withdraw
+    @user = current_user
     @user.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"

@@ -95,21 +95,21 @@
       </tr>
     </thead>
 
-    <% @opinions.each do |book| %>
+    <% @opinions.each do |opinion| %>
 
       <tbody>
         <tr>
       <td>
-        <%= link_to users_user_path(@opinion.user.id) do %>
-          <%#= image_tag opinion.user.get_profile_image %>
+        <%= link_to users_user_path(opinion.user.id) do %>
+          <%= image_tag opinion.user.get_profile_image %>
         <% end %>
       <td>
-        <%#= link_to users_opinion_path(@opinion.id) do %>
-        <%#= opinion.opinion_title %>
-        <%# end %>
+        <%= link_to users_opinion_path(opinion.id) do %>
+        <%= opinion.opinion_title %>
+        <% end %>
       </td>
       <td>
-        <%#= opinion.opinion_body %>
+        <%= opinion.opinion_body %>
       </td>
         </tr>
       </tbody>

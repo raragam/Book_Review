@@ -44,7 +44,7 @@ class Users::OpinionsController < ApplicationController
   def destroy
     @opinion = Opinion.find(params[:id])
     @opinion.destroy
-    redirect_to '/opinions'
+    redirect_to '/users/opinions'
   end
 
   private

@@ -19,14 +19,14 @@
 
           <h1>Editing Book</h1>
 
-  <%= form_with model: @opinion, url: opinion_path(@opinion.id), method: :patch do |f| %>
+  <%= form_with model: @opinion, url: users_opinion_path(@opinion.id), method: :patch do |f| %>
 
     <div class="form-group">
       <div>
         <label>Title</label>
       </div>
       <div>
-        <%= f.text_field :title, class: 'form-control book_title' %>
+        <%= f.text_field :opinion_title, class: 'form-control opinion_title' %>
      </div>
     </div>
 
@@ -35,7 +35,7 @@
         <label>Body</label>
       </div>
       <div>
-        <%= f.text_area :body, class: 'form-control book_body' %>
+        <%= f.text_area :opinion_body, class: 'form-control opinion_body' %>
      </div>
     </div>
 
@@ -47,9 +47,9 @@
 
   <% end %>
 
-  <%= link_to "Show", opinion_path(@opinion.id) %>
+  <%= link_to "Show", users_opinion_path(@opinion.id) %>
    |
-  <a class="back" href=/opinions>Back</a>
+  <a class="back" href=/users/opinions>Back</a>
 
 
         </diV>

@@ -26,7 +26,7 @@
    </tbody>
  </table>
 
-        <%= link_to users_unsubscribe_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
+        <%= link_to users_confirm_unsubscribe_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
        <i class="fas fa-user-cog">退会ボタン</i>
 
      <% end %>
@@ -62,20 +62,20 @@
 
   <div class="form-group">
     <div>
-      <label for="book_title">Title</label>
+      <label for="opinion_title">Title</label>
     </div>
     <div>
-      <%= f.text_field :title, class: 'form-control book_title' %>
+      <%= f.text_field :opinion_title, class: 'form-control opinion_title' %>
     </div>
   </div>
 
 
   <div class="form-group">
     <div>
-      <label for="book_title">Opinion</label>
+      <label for="opinion_title">Opinion</label>
     </div>
     <div>
-      <%= f.text_area :body, class: 'form-control book_body' %>
+      <%= f.text_area :opinion_body, class: 'form-control opinion_body' %>
     </div>
   </div>
 
@@ -105,7 +105,7 @@
       </tr>
     </thead>
 
-    <% @opinions.each do |book| %>
+    <% @opinions.each do |opinion| %>
 
     <tbody>
         <tr>
@@ -118,11 +118,11 @@
       </td>
       <td>
         <%= link_to users_opinion_path(@opinions.ids) do %>
-        <span><%= @opinion.opinion_title %></span>
+        <span><%= opinion.opinion_title %></span>
         <% end %>
       </td>
       <td>
-        <span><%= @opinion.opinion_body %></span>
+        <span><%= opinion.opinion_body %></span>
       </td>
         </tr>
       </tbody>

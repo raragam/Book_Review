@@ -77,19 +77,23 @@
 
     <% @users.each do |user| %>
 
-      <tbody>
-        <tr>
-      <td>
-        <%= image_tag user.get_profile_image %>
-      </td>
-      <td>
-        <%= user.name %>
-      </td>
-      <td>
-        <%= link_to "Show", users_user_path(user.id) %>
-      </td>
-        </tr>
-      </tbody>
+      <%# if user.is_deleted == false %>
+
+        <tbody>
+          <tr>
+        <td>
+          <%= image_tag user.get_profile_image %>
+        </td>
+        <td>
+          <%= user.name %>
+        </td>
+        <td>
+          <%= link_to "Show", users_user_path(user.id) %>
+        </td>
+          </tr>
+        </tbody>
+
+      <%# end %>
 
     <% end %>
 
