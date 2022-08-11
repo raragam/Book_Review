@@ -9,6 +9,7 @@
         <th>原作画像</th>
         <th>記事のタイトル</th>
         <th>原作名</th>
+        <th>投稿日</th>
       </tr>
     </thead>
 
@@ -17,17 +18,21 @@
         <tbody>
         <tr>
       <td>
-        <% if review.image.attached? %>
-        <%= image_tag review.image, size: "200x200" %>
-        <% else %>
-        <%= image_tag 'no_image', size: "200x200" %>
-        <% end %>
+        <%# if review.image.attached? %>
+        <%#= image_tag review.image, size: "200x200" %>
+        <%# else %>
+        <%#= image_tag 'no_image', size: "200x200" %>
+        <%# end %>
+      <%= image_tag review.get_image, size: "100x100" %>
       </td>
       <td>
         <%= link_to review.review_title, users_review_path(review.id) %>
       </td>
       <td>
         <%= link_to review.review_body, users_review_path(review.id) %>
+      </td>
+      <td>
+        <%= review.created_at.strftime('%Y/%m/%d') %>
       </td>
         </tr>
       </tbody>

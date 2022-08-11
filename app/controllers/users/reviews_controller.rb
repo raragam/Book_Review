@@ -6,6 +6,7 @@ class Users::ReviewsController < ApplicationController
   def create
     # １.&2. データを受け取り新規登録するためのインスタンス作成
     review = Review.new(review_params)
+    review.user_id = current_user.id
     # 3. データをデータベースに保存するためのsaveメソッド実行
     review.save
 

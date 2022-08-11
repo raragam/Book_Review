@@ -58,14 +58,14 @@
 
 
 <h2 class="mt-3">New book</h2>
-  <%#= form_with model: @opinion_new do |f| %>
+  <%= form_with model: @opinion_new, url: '/users/opinions', method: :post do |f| %>
 
   <div class="form-group">
     <div>
       <label for="book_title">Title</label>
     </div>
     <div>
-      <%#= f.text_field :title, class: 'form-control book_title' %>
+      <%= f.text_field :title, class: 'form-control book_title' %>
     </div>
   </div>
 
@@ -75,18 +75,18 @@
       <label for="book_title">Opinion</label>
     </div>
     <div>
-      <%#= f.text_area :body, class: 'form-control book_body' %>
+      <%= f.text_area :body, class: 'form-control book_body' %>
     </div>
   </div>
 
 
   <div class="form-group">
 
-       <%#= f.submit 'Create Book', class: 'btn btn-success' %>
+       <%= f.submit 'Create Book', class: 'btn btn-success' %>
 
     </div>
 
-  <%# end %>
+  <% end %>
 
    </div>
 
@@ -118,11 +118,11 @@
       </td>
       <td>
         <%= link_to users_opinion_path(@opinions.ids) do %>
-        <span><%#= @opinion.opinion_title %></span>
+        <span><%= @opinion.opinion_title %></span>
         <% end %>
       </td>
       <td>
-        <span><%#= @opinion.opinion_body %></span>
+        <span><%= @opinion.opinion_body %></span>
       </td>
         </tr>
       </tbody>
