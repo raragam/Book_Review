@@ -18,7 +18,6 @@ class Users::ReviewsController < ApplicationController
   end
 
   def index
-    #@user = User.find(params[:id])
     @reviews = Review.all
   end
 
@@ -45,7 +44,7 @@ class Users::ReviewsController < ApplicationController
   private
   # ストロングパラメータ
   def review_params
-    params.require(:review).permit(:review_title, :review_body, :image)
+    params.require(:review).permit(:review_title, :review_body, :book_name, :image)
   end
 
 end
