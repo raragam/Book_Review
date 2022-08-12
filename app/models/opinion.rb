@@ -13,4 +13,18 @@ class Opinion < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  #検索機能
+
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Opinion.where(opinion_title: content)
+    elsif method == 'forward'
+      Opinion.where('opinion_title LIKE ?', content+'%')
+    elsif method == 'backward'
+      Opinion.where('opinion_title LIKE ?', '%'+content)
+    else
+      Opinion.where('opinion_title LIKE ?', '%'+content+'%')
+    end
+  end
+
 end

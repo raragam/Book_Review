@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get 'unsubscribe/:id' => 'users#unsubscribe', as: 'confirm_unsubscribe'
       patch ':id/withdraw' => 'users#withdraw', as: 'withdraw_user'
       put 'withdraw' => 'users#withdraw'
+      get "search" => "searches#search"
 
   end
 
