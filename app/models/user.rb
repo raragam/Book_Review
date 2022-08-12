@@ -20,6 +20,8 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  #プロフィール画像
+
   def get_profile_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -28,12 +30,7 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [100, 100]).processed
   end
 
-  # 退会済ユーザーが同じアカウントでログインできないようにする
-  #def active_for_authentication?
-    #super && (is_deleted == false)
-  #end
-
-
+  #フォロー機能
 
   def follow(user_id)
     relationships.create(followed_id: user_id)
@@ -47,8 +44,8 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-  validates :name, uniqueness: true
-  validates :name, length: { minimum: 2, maximum: 20 }
-  validates :introduction, length: { maximum: 50 }
+  #validates :name, uniqueness: true
+  #validates :name, length: { minimum: 2, maximum: 20 }
+  #validates :introduction, length: { maximum: 50 }
 
 end

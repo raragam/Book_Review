@@ -18,6 +18,14 @@
     <th>introduction</th>
     <th><%= @user.introduction %></th>
     </tr>
+    <tr>
+    <th>follows</th>
+    <th><%= link_to @user.followings.count, users_followings_path(@user) %></th>
+  </tr>
+  <tr>
+    <th>followers</th>
+    <th><%= link_to @user.followers.count, users_followings_path(@user) %></th>
+  </tr>
    </tbody>
  </table>
 
@@ -87,6 +95,9 @@
         <td>
           <%= user.name %>
         </td>
+        <td><%= render "users/relationships/btn", user: user %></td>
+        <td>フォロー数: <%= user.followings.count %></td>
+        <td>フォロワー数: <%= user.followers.count %></td>
         <td>
           <%= link_to "Show", users_user_path(user.id) %>
         </td>

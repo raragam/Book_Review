@@ -12,7 +12,10 @@
 
   <body>
     <header>
-      <% if user_signed_in? %>
+      <% if admin_signed_in? %>
+      <li><%= link_to "会員一覧", admins_users_path %></li>
+      <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+      <% elsif user_signed_in? %>
       <li><%= link_to 'マイページ', users_user_path(current_user.id) %></li>
       <li><%= link_to '会員一覧', users_users_path %></li>
       <li><%= link_to '意見一覧', users_opinions_path %></li>

@@ -9,14 +9,20 @@ Rails.application.routes.draw do
   namespace :users do
     # get 'relationships/followings'
     # get 'relationships/followers'
-    resources :opinions
+    resources :opinions do
+      resource :favorites, only: [:create, :destroy]
+      resources :opinion_comments, only: [:create, :destroy]
+    end
 
     resources :reviews
 
     resources :users
-    get 'unsubscribe/:id' => 'users#unsubscribe', as: 'confirm_unsubscribe'
-    patch ':id/withdraw' => 'users#withdraw', as: 'withdraw_user'
-    put 'withdraw' => 'users#withdraw'
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+      get 'unsubscribe/:id' => 'users#unsubscribe', as: 'confirm_unsubscribe'
+      patch ':id/withdraw' => 'users#withdraw', as: 'withdraw_user'
+      put 'withdraw' => 'users#withdraw'
 
   end
 

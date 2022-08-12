@@ -6,9 +6,8 @@
 
     <thead>
       <tr>
-        <th>原作画像</th>
+        <th>題材作品</th>
         <th>記事のタイトル</th>
-        <th>原作名</th>
         <th>投稿者名</th>
         <th>投稿日</th>
       </tr>
@@ -19,13 +18,11 @@
         <tbody>
         <tr>
       <td>
-      <%= image_tag review.get_image, size: "100x100" %>
+      <%= image_tag review.get_image, size: "100x100" %><br>
+      <%= review.book_name %>
       </td>
       <td>
         <%= link_to review.review_title, users_review_path(review.id) %>
-      </td>
-      <td>
-        <%= review.book_name %>
       </td>
       <td>
         <%= review.user.name %>

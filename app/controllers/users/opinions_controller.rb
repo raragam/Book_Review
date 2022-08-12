@@ -23,6 +23,7 @@ class Users::OpinionsController < ApplicationController
     @user = @opinion.user
     @opinion_new = Opinion.new
     @opinions = Opinion.all
+    @opinion_comment = OpinionComment.new
   end
 
   def edit
