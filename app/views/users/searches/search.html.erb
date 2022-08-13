@@ -1,7 +1,10 @@
 <% if @model == 'user' %>
 	<h3>Users search for "<%= @content %>"</h3>
   <%= render 'users/users/index', users: @records %>
-<% elsif @model == 'book' %>
+<% elsif @model == 'opinion' %>
 	<h3>Opinions search for "<%= @content %>"</h3>
   <%= render 'users/opinions/index', opinions: @records %>
+<% elsif @model == 'review' %>
+	<h3>Reviews search for "<%= @content %>"</h3>
+<%= render 'users/reviews/index', reviews: @records %>
 <% end %>

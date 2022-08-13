@@ -8,8 +8,10 @@ class Users::SearchesController < ApplicationController
 		@method = params[:method]
 		if @model == 'user'
 			@records = User.search_for(@content, @method)
-		else
+		elsif
 			@records = Opinion.search_for(@content, @method)
+		elsif
+			@records = Review.search_for(@content, @method)
 		end
 	end
 

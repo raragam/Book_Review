@@ -18,6 +18,7 @@ class Users::UsersController < ApplicationController
     #@user_my = current_user
     @opinion_new = Opinion.new
     @opinions = @user.opinions
+    @reviews = @user.reviews
   end
 
   def edit

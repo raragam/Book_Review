@@ -32,4 +32,16 @@ class Review < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Review.where(review_title: content)
+    elsif method == 'forward'
+      Review.where('review_title LIKE ?', content+'%')
+    elsif method == 'backward'
+      Review.where('review_title LIKE ?', '%'+content)
+    else
+      Review.where('review_title LIKE ?', '%'+content+'%')
+    end
+  end
+
 end
