@@ -15,9 +15,10 @@ Rails.application.routes.draw do
 
     end
 
-    resources :reviews
+    resources :reviews do
       resource :review_favorites, only: [:create, :destroy]
-      resources :opinion_comments, only: [:create, :destroy]
+      resources :review_comments, only: [:create, :destroy]
+    end
 
     resources :users do
       resource :relationships, only: [:create, :destroy]
