@@ -12,9 +12,12 @@ Rails.application.routes.draw do
     resources :opinions do
       resource :opinion_favorites, only: [:create, :destroy]
       resources :opinion_comments, only: [:create, :destroy]
+
     end
 
     resources :reviews
+      resource :review_favorites, only: [:create, :destroy]
+      resources :opinion_comments, only: [:create, :destroy]
 
     resources :users do
       resource :relationships, only: [:create, :destroy]

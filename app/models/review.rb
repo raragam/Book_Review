@@ -3,6 +3,7 @@ class Review < ApplicationRecord
   belongs_to :user
 
   has_many :review_comments, dependent: :destroy
+  has_many :review_favorites, dependent: :destroy
 
   has_one_attached :image
 
@@ -10,6 +11,12 @@ class Review < ApplicationRecord
   validates :review_body, presence: true
   validates :review_body, length: { minimum: 1, maximum: 200 }
   #validates :book_name, presence: true
+
+  #ブックマーク機能
+
+  def favorited_by?(user)
+    review_favorites.exists?(user_id: user.id)
+  end
 
   # def get_profile_image
   #   unless profile_image.attached?
@@ -25,10 +32,6 @@ class Review < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image
-  end
-
-  def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
   end
 
   def self.search_for(content, method)

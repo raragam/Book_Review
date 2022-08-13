@@ -9,6 +9,8 @@ class Opinion < ApplicationRecord
   validates :opinion_body, presence: true
   validates :opinion_body, length: { minimum: 1, maximum: 200 }
 
+  #ブックマーク機能
+
   def favorited_by?(user)
     opinion_favorites.exists?(user_id: user.id)
   end

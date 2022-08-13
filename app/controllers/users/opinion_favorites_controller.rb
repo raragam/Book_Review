@@ -4,7 +4,6 @@ class Users::OpinionFavoritesController < ApplicationController
     opinion = Opinion.find(params[:opinion_id])
     opinion_favorite = current_user.opinion_favorites.new(opinion_id: opinion.id)
     opinion_favorite.save
-
     redirect_to users_opinion_path(opinion)
   end
 
