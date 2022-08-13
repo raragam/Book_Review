@@ -9,7 +9,7 @@ class Users::OpinionCommentsController < ApplicationController
   end
 
   def destroy
-    OpinionComment.find_by(id: params[:id], opinion_id: params[:opinion_id]).destroy
+    OpinionComment.find_by(opinion_id: params[:id], id: params[:opinion_id]).destroy
     redirect_to request.referer
   end
 

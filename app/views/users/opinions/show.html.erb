@@ -119,21 +119,21 @@
 
   <% if @opinion.favorited_by?(current_user) %>
     <p>
-      <%= link_to users_opinion_favorites_path(@opinion), method: :delete do %>
-        ♥<%= @opinion.favorites.count %> いいね
+      <%= link_to users_opinion_opinion_favorites_path(@opinion), method: :delete do %>
+        ♥<%= @opinion.opinion_favorites.count %> いいね
       <% end %>
     </p>
     <% else %>
     <p>
-      <%= link_to users_opinion_favorites_path(@opinion), method: :post do %>
-        ♡<%= @opinion.favorites.count %> いいね
+      <%= link_to users_opinion_opinion_favorites_path(@opinion), method: :post do %>
+        ♡<%= @opinion.opinion_favorites.count %> いいね
       <% end %>
     </p>
   <% end %>
 
       <div>コメントは現在<%= @opinion.opinion_comments.count %>です</div>
 
-      <%= form_with(model:[@opinion, @opinion_comment], url: '/users/opinions/:opinion_id/opinion_comments', method: :post) do |f| %>
+      <%= form_with(model:[@opinion, @opinion_comment], url: '/users/opinions/'+"#{@opinion.id}"+'/opinion_comments', method: :post) do |f| %>
       <%= f.text_area :opinion_comment, size: "40x5" %>
       <%= f.submit '送信', class: "btn-sm btn-primary" %>
       <% end %>
@@ -150,10 +150,10 @@
   <tbody>
     <% @opinion.opinion_comments.each do |opinion_comment| %>
       <tr>
-        <td><%= image_tag opinion_comment.user.get_profile_image(100,100) %></td>
+        <td><%= image_tag @user.get_profile_image %></td>
         <td><%= opinion_comment.user.name %></td>
         <td><%= opinion_comment.opinion_comment %></td>
-        <td><%#= link_to "削除", users_opinion_opinion_comment(opinion.id), method: :delete %></td>
+        <td><%= link_to "削除", users_opinion_opinion_comment_path(opinion_comment.id), method: :delete %></td>
       </tr>
     <% end %>
   </tbody>

@@ -3,14 +3,14 @@ class Opinion < ApplicationRecord
   belongs_to :user
 
   has_many :opinion_comments, dependent: :destroy
-  has_many :favorites, dependent: :destroy
+  has_many :opinion_favorites, dependent: :destroy
 
   validates :opinion_title, presence: true
   validates :opinion_body, presence: true
   validates :opinion_body, length: { minimum: 1, maximum: 200 }
 
   def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
+    opinion_favorites.exists?(user_id: user.id)
   end
 
   #検索機能

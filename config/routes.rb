@@ -10,13 +10,13 @@ Rails.application.routes.draw do
     # get 'relationships/followings'
     # get 'relationships/followers'
     resources :opinions do
-      resource :favorites, only: [:create, :destroy]
+      resource :opinion_favorites, only: [:create, :destroy]
       resources :opinion_comments, only: [:create, :destroy]
     end
 
     resources :reviews
 
-    resources :users
+    resources :users do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       patch ':id/withdraw' => 'users#withdraw', as: 'withdraw_user'
       put 'withdraw' => 'users#withdraw'
       get "search" => "searches#search"
+    end
 
   end
 
