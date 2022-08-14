@@ -14,7 +14,6 @@
 
  <table class="table">
    <tbody>
-    <tr></tr>
     <tr>
     <th>name</th>
     <th><%= @user.name %></th>
@@ -22,6 +21,18 @@
     <tr>
     <th>introduction</th>
     <th><%= @user.introduction %></th>
+    </tr>
+    <tr>
+    <th>follows</th>
+    <th><%= link_to @user.followings.count, users_user_followings_path(@user) %></th>
+    </tr>
+    <tr>
+    <th>followers</th>
+    <th><%= link_to @user.followers.count, users_user_followings_path(@user) %></th>
+    </tr>
+    <tr>
+    <th>ブックマークした記事</th>
+    <th><%=link_to"お気に入り記事", favorites_users_user_path(@user) %></th>
     </tr>
    </tbody>
  </table>

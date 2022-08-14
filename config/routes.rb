@@ -7,12 +7,9 @@ Rails.application.routes.draw do
    }
 
   namespace :users do
-    # get 'relationships/followings'
-    # get 'relationships/followers'
     resources :opinions do
       resource :opinion_favorites, only: [:create, :destroy]
       resources :opinion_comments, only: [:create, :destroy]
-
     end
 
     resources :reviews do
@@ -21,6 +18,9 @@ Rails.application.routes.draw do
     end
 
     resources :users do
+       member do
+          get :favorites
+        end
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
