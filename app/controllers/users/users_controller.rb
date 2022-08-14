@@ -39,6 +39,7 @@ class Users::UsersController < ApplicationController
     @user = User.find(params[:id])
     favorites = OpinionFavorite.where(user_id: @user.id).pluck(:opinion_id)
     @favorite_opinions = Opinion.find(favorites)
+    @opinions = OpinionFavorite.all
   end
 
   def unsubscribe
