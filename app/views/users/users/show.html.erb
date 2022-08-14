@@ -41,20 +41,17 @@
    </tbody>
  </table>
 
-        <%= link_to users_user_confirm_unsubscribe_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-       <i class="fas fa-user-cog">退会ボタン</i>
-
-     <% end %>
-
-
    <% if @user == current_user %>
 
    <div class="row">
 
        <%= link_to edit_users_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-       <i class="fas fa-user-cog"></i>
+       <i class="fas fa-user-cog">編集ボタン</i>
+       <% end %>
 
-     <% end %>
+       <%= link_to users_user_confirm_unsubscribe_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
+       <i class="fas fa-user-cog">退会ボタン</i>
+       <% end %>
 
    </div>
 
