@@ -10,6 +10,8 @@
         <th>記事のタイトル</th>
         <th>投稿者名</th>
         <th>投稿日</th>
+        <th>コメント数</th>
+        <th>ブックマーク数</th>
       </tr>
     </thead>
 
@@ -30,6 +32,8 @@
       <td>
         <%= review.created_at.strftime('%Y/%m/%d') %>
       </td>
+      <td><%= review.review_comments.count %></td>
+      <td></td>
         </tr>
       </tbody>
 

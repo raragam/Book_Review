@@ -39,7 +39,17 @@ Rails.application.routes.draw do
    }
 
   namespace :admins do
-  resources :users
+    resources :opinions do
+      resource :opinion_favorites, only: [:create, :destroy]
+      resources :opinion_comments, only: [:create, :destroy]
+    end
+
+    resources :reviews do
+      #resource :review_favorites, only: [:create, :destroy]
+      resources :review_comments, only: [:create, :destroy]
+    end
+
+    resources :users
   end
 
   root to: "homes#top"

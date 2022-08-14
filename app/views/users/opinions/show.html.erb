@@ -150,7 +150,7 @@
   <tbody>
     <% @opinion.opinion_comments.each do |opinion_comment| %>
       <tr>
-        <td><%= image_tag @user.get_profile_image %></td>
+        <td><%= image_tag opinion_comment.user.get_profile_image %></td>
         <td><%= opinion_comment.user.name %></td>
         <td><%= opinion_comment.opinion_comment %></td>
         <td><%= link_to "削除", users_opinion_opinion_comment_path(opinion_comment.id), method: :delete %></td>

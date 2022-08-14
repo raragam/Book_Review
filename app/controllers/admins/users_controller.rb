@@ -6,6 +6,8 @@ class Admins::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @opinions = @user.opinions
+    @reviews = @user.reviews
   end
 
   def edit
@@ -28,7 +30,7 @@ class Admins::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :introduction, :profile_image, :email, :password, :password_confirmation, :is_deleted)
   end
 
 end
