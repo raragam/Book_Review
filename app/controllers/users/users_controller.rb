@@ -35,11 +35,18 @@ class Users::UsersController < ApplicationController
     end
   end
 
-  def favorites
+  def opinion_favorites
     @user = User.find(params[:id])
-    favorites = OpinionFavorite.where(user_id: @user.id).pluck(:opinion_id)
-    @favorite_opinions = Opinion.find(favorites)
+    opinion_favorites = OpinionFavorite.where(user_id: @user.id).pluck(:opinion_id)
+    @favorite_opinions = Opinion.find(opinion_favorites)
     @opinions = OpinionFavorite.all
+  end
+
+  def review_favorites
+    @user = User.find(params[:id])
+    review_favorites = ReviewFavorite.where(user_id: @user.id).pluck(:review_id)
+    @favorite_reviews = Review.find(review_favorites)
+    @reviews = ReviewFavorite.all
   end
 
   def unsubscribe

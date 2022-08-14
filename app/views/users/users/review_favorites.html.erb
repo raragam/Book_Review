@@ -1,0 +1,6 @@
+<h2>ブックマークした記事</h2>
+<% if @reviews.exists? %>
+  <%= render '/users/reviews/index', reviews: @favorite_reviews %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

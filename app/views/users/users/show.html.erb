@@ -31,8 +31,12 @@
     <th><%= link_to @user.followers.count, users_user_followings_path(@user) %></th>
     </tr>
     <tr>
+    <th>ブックマークしたつぶやき</th>
+    <th><%=link_to"お気に入りのつぶやき", opinion_favorites_users_user_path(@user) %></th>
+    </tr>
+    <tr>
     <th>ブックマークした記事</th>
-    <th><%=link_to"お気に入り記事", favorites_users_user_path(@user) %></th>
+    <th><%=link_to"お気に入り記事", review_favorites_users_user_path(@user) %></th>
     </tr>
    </tbody>
  </table>
