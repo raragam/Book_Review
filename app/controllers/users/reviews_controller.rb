@@ -9,12 +9,8 @@ class Users::ReviewsController < ApplicationController
     review.user_id = current_user.id
     # 3. データをデータベースに保存するためのsaveメソッド実行
     review.save
-
     # 詳細画面へリダイレクト
     redirect_to users_review_path(review.id)
-
-    #render :new
-
   end
 
   def index

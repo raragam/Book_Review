@@ -92,6 +92,7 @@
         <th>Title</th>
         <th>Opinion</th>
         <th>コメント数</th>
+        <th>ブックマーク数</th>
       </tr>
     </thead>
 
@@ -116,7 +117,19 @@
         <%= opinion.opinion_comments.count %>
       </td>
       <td>
-
+        <% if opinion.favorited_by?(current_user) %>
+        <p>
+          <%= link_to users_opinion_opinion_favorites_path(opinion, params: { opinion: { down: 1} }), method: :delete do %>
+          ♥<%= opinion.opinion_favorites.count %> いいね
+          <% end %>
+        </p>
+        <% else %>
+        <p>
+          <%= link_to users_opinion_opinion_favorites_path(opinion, params: { opinion: { up: 1} }), method: :post do %>
+          ♡<%= opinion.opinion_favorites.count %> いいね
+          <% end %>
+       </p>
+       <% end %>
       </td>
         </tr>
       </tbody>

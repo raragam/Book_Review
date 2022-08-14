@@ -33,7 +33,21 @@
         <%= review.created_at.strftime('%Y/%m/%d') %>
       </td>
       <td><%= review.review_comments.count %></td>
-      <td></td>
+      <td>
+        <% if review.favorited_by?(current_user) %>
+        <p>
+          <%= link_to users_review_review_favorites_path(review, params: { review: { down: 1} }), method: :delete do %>
+          ♥<%= review.review_favorites.count %> いいね
+          <% end %>
+        </p>
+        <% else %>
+        <p>
+          <%= link_to users_review_review_favorites_path(review, params: { review: { up: 1} }), method: :post do %>
+          ♡<%= review.review_favorites.count %> いいね
+          <% end %>
+       </p>
+       <% end %>
+      </td>
         </tr>
       </tbody>
 

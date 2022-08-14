@@ -32,7 +32,7 @@
   <tbody>
     <% @review.review_comments.each do |review_comment| %>
       <tr>
-        <td><%= image_tag @user.get_profile_image %></td>
+        <td><%= image_tag review_comment.get_profile_image %></td>
         <td><%= review_comment.user.name %></td>
         <td><%= review_comment.review_comment %></td>
         <td><%= link_to "削除", users_review_review_comment_path(review_comment.id), method: :delete %></td>
