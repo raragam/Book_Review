@@ -1,6 +1,6 @@
 <h2>Follower Users</h2>
 <% if @users.exists? %>
-  <%= render '/users/users/index', users: @users %>
+  <%= render '/users/users/index_follow', users: @users %>
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>
