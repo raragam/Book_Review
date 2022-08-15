@@ -33,71 +33,25 @@
       <% end %>
     </div>
 
-      <h1>つぶやき一覧</h1>
+    <div class="row">
 
-  <table class="table table-hover table-inverse">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Title</th>
-        <th>Opinion</th>
-        <th>コメント数</th>
-        <th>ブックマーク数</th>
-      </tr>
-    </thead>
+      <%= link_to admins_opinions_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
+        <i class="fas fa-user-cog">つぶやき一覧</i>
+      <% end %>
+    </div>
 
-  <% @opinions.each do |opinion| %>
+    <div class="row">
 
-    <tbody>
-      <tr>
-        <td>
-          <%= link_to users_user_path(opinion.user.id) do %>
-            <%= image_tag opinion.user.get_profile_image %>
-          <% end %>
-       </td>
-        <td>
-          <%= link_to users_opinion_path(opinion.id) do %>
-            <%= opinion.opinion_title %>
-          <% end %>
-       </td>
-        <td><%= opinion.opinion_body %></td>
-        <td><%= opinion.opinion_comments.count %></td>
-        <td><%= opinion.opinion_favorites.count %></td>
-      </tr>
-    </tbody>
+      <%= link_to user_opinion_index_admins_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
+        <i class="fas fa-user-cog">ユーザーごとのつぶやき一覧</i>
+      <% end %>
+    </div>
 
-  <% end %>
+    <div class="row">
 
-      <h1>記事一覧</h1>
+      <%= link_to admins_reviews_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
+        <i class="fas fa-user-cog">記事一覧</i>
+      <% end %>
+    </div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>題材作品</th>
-        <th>記事のタイトル</th>
-        <th>投稿者名</th>
-        <th>投稿日</th>
-        <th>コメント数</th>
-        <th>ブックマーク数</th>
-      </tr>
-    </thead>
 
-  <% @reviews.each do |review| %>
-
-    <tbody>
-      <tr>
-        <td>
-          <%= image_tag review.get_image, size: "100x100" %><br>
-          <%= review.book_name %>
-       </td>
-        <td><%= link_to review.review_title, users_review_path(review.id) %></td>
-        <td><%= review.user.name %></td>
-        <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= review.review_comments.count %></td>
-        <td><%= review.review_favorites.count %></td>
-      </tr>
-    </tbody>
-
-  <% end %>
-
-  </table>

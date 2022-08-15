@@ -1,5 +1,9 @@
 class Admins::OpinionsController < ApplicationController
 
+  def index
+    @opinions = Opinion.all
+  end
+
   def show
     @opinion = Opinion.find(params[:id])
     @user = @opinion.user

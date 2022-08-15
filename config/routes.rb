@@ -52,7 +52,11 @@ Rails.application.routes.draw do
       resources :review_comments, only: [:create, :destroy]
     end
 
-    resources :users
+    resources :users do
+       member do
+       get :user_opinion_index
+      end
+    end
   end
 
   root to: "homes#top"

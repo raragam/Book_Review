@@ -1,4 +1,5 @@
 class Users::UsersController < ApplicationController
+
   def index
     @opinion = Opinion.new
     @user = User.new

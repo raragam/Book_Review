@@ -1,6 +1,11 @@
 class Users::ReviewsController < ApplicationController
+
   def new
     @review = Review.new
+  end
+
+  def index
+    @reviews = Review.all
   end
 
   def create
@@ -14,10 +19,6 @@ class Users::ReviewsController < ApplicationController
     else
     render :new
     end
-  end
-
-  def index
-    @reviews = Review.all
   end
 
   def show
