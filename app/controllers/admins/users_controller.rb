@@ -8,6 +8,10 @@ class Admins::UsersController < ApplicationController
     @opinions = Opinion.where(user_id: params[:id])
   end
 
+  def user_review_index
+    @reviews = Review.where(user_id: params[:id])
+  end
+
   def show
     @user = User.find(params[:id])
     @opinions = @user.opinions

@@ -53,8 +53,11 @@ Rails.application.routes.draw do
     end
 
     resources :users do
-       member do
-       get :user_opinion_index
+      member do
+        get :user_opinion_index
+      end
+      member do
+        get :user_review_index
       end
     end
   end
