@@ -36,47 +36,9 @@
 
    <div class="col-md-8 offset-md-1">
 
-     <h2>投稿した意見一覧</h2>
+     <%#= render '/users/users/show', opinions: @opinions %>
 
-      <table class="table table-hover table-inverse">
-
-      <thead>
-      <tr>
-        <th></th>
-        <th>Title</th>
-        <th>Opinion</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <% @opinions.each do |opinion| %>
-
-    <tbody>
-        <tr>
-      <td>
-        <div>
-          <%= image_tag @user.get_profile_image %>
-        </div>
-      </td>
-      <td>
-        <%= link_to admins_opinion_path(opinion.id) do %>
-        <span><%= opinion.opinion_title %></span>
-        <% end %>
-      </td>
-      <td>
-        <span><%= opinion.opinion_body %></span>
-      </td>
-      <td>
-        <%#= link_to "Destroy", admins_opinion_path(@opinion.id), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に消しますか？" %>
-      </td>
-        </tr>
-      </tbody>
-
-      <% end %>
-
-      </table>
-
-      <h2>投稿した記事一覧</h2>
+           <h2>投稿した記事一覧</h2>
 
       <table class="table table-hover table-inverse">
 

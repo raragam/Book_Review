@@ -1,58 +1,5 @@
 <div class="col-md-8 offset-md-1">
 
-<h1>記事一覧</h1>
-
-  <table class="table">
-
-    <thead>
-      <tr>
-        <th>題材作品</th>
-        <th>記事のタイトル</th>
-        <th>投稿者名</th>
-        <th>投稿日</th>
-        <th>コメント数</th>
-        <th>ブックマーク数</th>
-      </tr>
-    </thead>
-
-  <% @reviews.each do |review| %>
-
-        <tbody>
-        <tr>
-      <td>
-      <%= image_tag review.get_image, size: "100x100" %><br>
-      <%= review.book_name %>
-      </td>
-      <td>
-        <%= link_to review.review_title, users_review_path(review.id) %>
-      </td>
-      <td>
-        <%= review.user.name %>
-      </td>
-      <td>
-        <%= review.created_at.strftime('%Y/%m/%d') %>
-      </td>
-      <td><%= review.review_comments.count %></td>
-      <td>
-        <% if review.favorited_by?(current_user) %>
-        <p>
-          <%= link_to users_review_review_favorites_path(review, params: { review: { down: 1} }), method: :delete do %>
-          ♥<%= review.review_favorites.count %> いいね
-          <% end %>
-        </p>
-        <% else %>
-        <p>
-          <%= link_to users_review_review_favorites_path(review, params: { review: { up: 1} }), method: :post do %>
-          ♡<%= review.review_favorites.count %> いいね
-          <% end %>
-       </p>
-       <% end %>
-      </td>
-        </tr>
-      </tbody>
-
-  <% end %>
-
-  </table>
+<%= render '/users/users/show_reviews', reviews: @reviews %>
 
   </div>

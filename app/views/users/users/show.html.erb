@@ -1,75 +1,10 @@
-
-    <% if flash[:notice] %>
-    <div class="flash">
-      <%= flash[:notice] %>
-    </div>
-    <% end %>
-
-    <div class="container px-5 px-sm-0">
+  <div class="container px-5 px-sm-0">
     <div class="row">
       <div class="col-md-3">
 
-    <h2>User info</h2>
-    <%= image_tag @user.get_profile_image %>
+          <%= render '/users/users/info' %>
 
- <table class="table">
-   <tbody>
-    <tr>
-    <th>name</th>
-    <th><%= @user.name %></th>
-    </tr>
-    <tr>
-    <th>introduction</th>
-    <th><%= @user.introduction %></th>
-    </tr>
-    <tr>
-    <th>follows</th>
-    <th><%= link_to @user.followings.count, users_user_followings_path(@user) %></th>
-    </tr>
-    <tr>
-    <th>followers</th>
-    <th><%= link_to @user.followers.count, users_user_followings_path(@user) %></th>
-    </tr>
-    <tr>
-    <th>ブックマークしたつぶやき</th>
-    <th><%=link_to"お気に入りのつぶやき", opinion_favorites_users_user_path(@user) %></th>
-    </tr>
-    <tr>
-    <th>ブックマークした記事</th>
-    <th><%=link_to"お気に入り記事", review_favorites_users_user_path(@user) %></th>
-    </tr>
-   </tbody>
- </table>
-
-   <% if @user == current_user %>
-
-   <div class="row">
-
-       <%= link_to edit_users_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-       <i class="fas fa-user-cog">編集ボタン</i>
-       <% end %>
-
-       <%= link_to users_user_confirm_unsubscribe_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-       <i class="fas fa-user-cog">退会ボタン</i>
-       <% end %>
-
-   </div>
-
-   <% else %>
-
-   <div class="row">
-
-       <%= link_to edit_users_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-       <i class="fas fa-user-cog"></i>
-
-     <% end %>
-
-   </div>
-
-   <% end %>
-
-
-<h2 class="mt-3">New book</h2>
+      <h2 class="mt-3">New book</h2>
   <%= form_with model: @opinion_new, url: '/users/opinions', method: :post do |f| %>
 
   <div class="form-group">
@@ -104,76 +39,9 @@
 
    <div class="col-md-8 offset-md-1">
 
-     <h2>Books</h2>
+     <%= render '/users/users/show_opinions', opinions: @opinions %>
 
-      <table class="table table-hover table-inverse">
-
-      <thead>
-      <tr>
-        <th></th>
-        <th>Title</th>
-        <th>Opinion</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <% @opinions.each do |opinion| %>
-
-    <tbody>
-        <tr>
-      <td>
-        <%= link_to users_user_path(@user.id) do %>
-        <div>
-          <%= image_tag @user.get_profile_image %>
-        </div>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to users_opinion_path(@opinions.ids) do %>
-        <span><%= opinion.opinion_title %></span>
-        <% end %>
-      </td>
-      <td>
-        <span><%= opinion.opinion_body %></span>
-      </td>
-        </tr>
-      </tbody>
-
-      <% end %>
-
-      </table>
-
-      <h2>記事一覧</h2>
-
-      <table class="table table-hover table-inverse">
-
-      <% @reviews.each do |review| %>
-
-      <thead>
-      <tr>
-        <th>作品名:<%= review.book_name %></th>
-        <th>記事のタイトル</th>
-        <th>投稿日</th>
-      </tr>
-    </thead>
-
-    <tbody>
-        <tr>
-      <td>
-      <%= image_tag review.get_image, size: "100x100" %><br>
-      </td>
-      <td>
-      <%= link_to review.review_title, users_review_path(review.id) %>
-      </td>
-      <td>
-      <%= review.created_at.strftime('%Y/%m/%d') %>
-      </td>
-        </tr>
-      </tbody>
-
-      <% end %>
-
-      </table>
+     <%= render '/users/users/show_reviews', reviews: @reviews %>
 
        </div>
 

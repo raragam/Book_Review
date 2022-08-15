@@ -10,7 +10,7 @@ class Review < ApplicationRecord
   validates :review_title, presence: true
   validates :review_body, presence: true
   validates :review_body, length: { minimum: 1, maximum: 200 }
-  #validates :book_name, presence: true
+  validates :book_name, presence: true
 
   #ブックマーク機能
 

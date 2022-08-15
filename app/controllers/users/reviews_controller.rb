@@ -5,12 +5,16 @@ class Users::ReviewsController < ApplicationController
 
   def create
     # １.&2. データを受け取り新規登録するためのインスタンス作成
-    review = Review.new(review_params)
-    review.user_id = current_user.id
+    @review = Review.new(review_params)
+    @review.user_id = current_user.id
     # 3. データをデータベースに保存するためのsaveメソッド実行
-    review.save
+    if @review.save
     # 詳細画面へリダイレクト
-    redirect_to users_review_path(review.id)
+    redirect_to users_review_path(@review.id)
+    else
+    @review = Review.all
+    render :new
+    end
   end
 
   def index
@@ -28,9 +32,13 @@ class Users::ReviewsController < ApplicationController
   end
 
   def update
-    review = Review.find(params[:id])
-    review.update(review_params)
-    redirect_to users_review_path(review.id)
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+    redirect_to users_review_path(@review.id)
+    else
+    @review.all
+    render :edit
+    end
   end
 
   def destroy
