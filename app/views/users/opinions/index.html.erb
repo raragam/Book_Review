@@ -1,4 +1,3 @@
-
 <div class="container px-5 px-sm-0">
 
   <%= render 'layouts/errors', obj: @opinion %>
@@ -6,18 +5,18 @@
     <div class="row">
       <div class="col-md-3">
 
-<%= render '/users/users/info' %>
+          <%= render '/users/users/user_info' %>
 
-<%= render '/users/users/opinion_post' %>
+          <%= render '/users/users/index_opinion_post' %>
 
- </div>
+      </div>
 
-  <div class="col-md-8 offset-md-1">
+      <div class="col-md-8 offset-md-1">
 
-<%= render '/users/users/show_opinions', opinions: @opinions %>
+          <%= render '/users/users/show_opinions_all', users: @users %>
 
-  </div>
+      </div>
 
-  </div>
+    </div>
 
-  </div>
+</div>
