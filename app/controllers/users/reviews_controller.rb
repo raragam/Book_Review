@@ -12,7 +12,6 @@ class Users::ReviewsController < ApplicationController
     # 詳細画面へリダイレクト
     redirect_to users_review_path(@review.id)
     else
-    @review = Review.all
     render :new
     end
   end

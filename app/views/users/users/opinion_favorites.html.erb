@@ -1,6 +1,6 @@
 <h2>ブックマークしたつぶやき投稿</h2>
 <% if @opinions.exists? %>
-  <%= render '/users/opinions/index', opinions: @favorite_opinions %>
+  <%= render '/users/users/show_opinions_all', opinions: @favorite_opinions %>
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>

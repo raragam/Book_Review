@@ -2,7 +2,7 @@
     <div class="row">
       <div class="col-md-3">
 
-    <%= render '/users/users/user_info' %>
+    <%= render '/users/users/user_info', user: @user %>
 
     <%= render '/users/users/show_opinion_post' %>
 
@@ -10,93 +10,76 @@
 
   <div class="col-md-8 offset-md-1">
 
-    <h2>Book detail</h2>
+    <h2><%= @opinion.created_at.strftime('%Y/%m/%d') %>の投稿</h2>
 
       <table class="table table-hover table-inverse">
-
         <tbody>
-        <tr>
-      <td>
-        <%= link_to users_user_path(@user.id) do %>
-        <div>
-          <%= image_tag @user.get_profile_image %>
-        </div>
-        <div>
-          <%= @user.name %>
-        </div>
-        <% end %>
+          <tr>
+            <td>
+              <%= link_to users_user_path(@user.id) do %>
+                <div><%= image_tag @user.get_profile_image %></div>
+                <div><%= @user.name %></div>
+              <% end %>
+           </td>
+            <td>
+              <%= link_to users_opinion_path(@opinion.id) do %>
+               <span><%= @opinion.opinion_title %></span>
+              <% end %>
+           </td>
+            <td><span><%= @opinion.opinion_body %></span></td>
+          <% if @user == current_user %>
+            <td><%= link_to "Edit", edit_users_opinion_path(@opinion.id), class: 'btn btn-sm btn-success' %></td>
+            <td><%= link_to "Destroy", users_opinion_path(@opinion.id), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+          <% else %>
 
-      </td>
-      <td>
-        <%= link_to users_opinion_path(@opinion.id) do %>
-        <span><%= @opinion.opinion_title %></span>
-        <% end %>
-      </td>
-      <td>
-        <span><%= @opinion.opinion_body %></span>
-      </td>
-
-      　<% if @user == current_user %>
-
-      <td>
-        <%= link_to "Edit", edit_users_opinion_path(@opinion.id), class: 'btn btn-sm btn-success' %>
-      </td>
-      <td>
-        <%= link_to "Destroy", users_opinion_path(@opinion.id), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に消しますか？" %>
-      </td>
-      <% else %>
-      <% end %>
-        </tr>
-      </tbody>
-
+          <% end %>
+         </tr>
+        </tbody>
       </table>
 
-  <% if @opinion.favorited_by?(current_user) %>
-    <p>
-      <%= link_to users_opinion_opinion_favorites_path(@opinion, params: { opinion: { down: 2} }), method: :delete do %>
-        ♥<%= @opinion.opinion_favorites.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to users_opinion_opinion_favorites_path(@opinion, params: { opinion: { up: 2} }), method: :post do %>
-        ♡<%= @opinion.opinion_favorites.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
+          <% if @opinion.favorited_by?(current_user) %>
+           <p>
+            <%= link_to users_opinion_opinion_favorites_path(@opinion, params: { opinion: { down: 2} }), method: :delete do %>
+            ♥<%= @opinion.opinion_favorites.count %> いいね
+            <% end %>
+          </p>
+          <% else %>
+           <p>
+            <%= link_to users_opinion_opinion_favorites_path(@opinion, params: { opinion: { up: 2} }), method: :post do %>
+            ♡<%= @opinion.opinion_favorites.count %> いいね
+            <% end %>
+          </p>
+          <% end %>
 
       <div>コメントは現在<%= @opinion.opinion_comments.count %>です</div>
 
-      <%= form_with(model:[@opinion, @opinion_comment], url: '/users/opinions/'+"#{@opinion.id}"+'/opinion_comments', method: :post) do |f| %>
-      <%= f.text_area :opinion_comment, size: "40x5" %>
-      <%= f.submit '送信', class: "btn-sm btn-primary" %>
-      <% end %>
+        <%= form_with(model:[@opinion, @opinion_comment], url: '/users/opinions/'+"#{@opinion.id}"+'/opinion_comments', method: :post) do |f| %>
+          <%= f.text_area :opinion_comment, size: "40x5" %>
+          <%= f.submit '送信', class: "btn-sm btn-primary" %>
+        <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>コメント投稿者</th>
-      <th>コメント内容</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @opinion.opinion_comments.each do |opinion_comment| %>
-      <tr>
-        <td><%= image_tag opinion_comment.user.get_profile_image %></td>
-        <td><%= opinion_comment.user.name %></td>
-        <td><%= opinion_comment.opinion_comment %></td>
-        <td><%= link_to "削除", users_opinion_opinion_comment_path(opinion_comment.id), method: :delete %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-  </div>
+      <table>
+        <thead>
+          <tr>
+           <th></th>
+           <th>コメント投稿者</th>
+           <th>コメント内容</th>
+           <th></th>
+         </tr>
+        </thead>
+       <tbody>
+        <% @opinion.opinion_comments.each do |opinion_comment| %>
+          <tr>
+           <td><%= image_tag opinion_comment.user.get_profile_image %></td>
+           <td><%= opinion_comment.user.name %></td>
+           <td><%= opinion_comment.opinion_comment %></td>
+           <td><%= link_to "削除", users_opinion_opinion_comment_path(opinion_comment.id), method: :delete %></td>
+         </tr>
+        <% end %>
+      </tbody>
+     </table>
 
   </div>
-
+    </div>
   </div>
 

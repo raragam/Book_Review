@@ -27,8 +27,8 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
-      get 'unsubscribe/:id' => 'users#unsubscribe', as: 'confirm_unsubscribe'
-      patch ':id/withdraw' => 'users#withdraw', as: 'withdraw_user'
+      get 'unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'
+      patch 'withdraw' => 'users#withdraw', as: 'withdraw_user'
       put 'withdraw' => 'users#withdraw'
       get "search" => "searches#search"
     end

@@ -1,7 +1,7 @@
-    <h2>User info</h2>
+  <h2>User info</h2>
     <%= image_tag @user.get_profile_image %>
 
- <table class="table">
+  <table class="table">
    <tbody>
     <tr>
     <th>name</th>
@@ -28,19 +28,15 @@
 
     <div class="row">
 
-       <%= link_to edit_admins_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-       <i class="fas fa-user-cog"></i>
+      <%= link_to edit_admins_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+    </div>
 
-     <% end %>
-   </div>
-
-   <div class="col-md-8 offset-md-1">
-
-       <h1>つぶやき一覧</h1>
+      <h1>つぶやき一覧</h1>
 
   <table class="table table-hover table-inverse">
-
-  <thead>
+    <thead>
       <tr>
         <th></th>
         <th>Title</th>
@@ -50,67 +46,58 @@
       </tr>
     </thead>
 
-    <% @opinions.each do |opinion| %>
+  <% @opinions.each do |opinion| %>
 
-      <tbody>
-        <tr>
-      <td>
-        <%= link_to users_user_path(opinion.user.id) do %>
-          <%= image_tag opinion.user.get_profile_image %>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to users_opinion_path(opinion.id) do %>
-        <%= opinion.opinion_title %>
-        <% end %>
-      </td>
-      <td>
-        <%= opinion.opinion_body %>
-      </td>
-      <td>
-        <%= opinion.opinion_comments.count %>
-      </td>
-      <td>
-        <%= opinion.opinion_favorites.count %>
-      </td>
-        </tr>
-      </tbody>
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to users_user_path(opinion.user.id) do %>
+            <%= image_tag opinion.user.get_profile_image %>
+          <% end %>
+       </td>
+        <td>
+          <%= link_to users_opinion_path(opinion.id) do %>
+            <%= opinion.opinion_title %>
+          <% end %>
+       </td>
+        <td><%= opinion.opinion_body %></td>
+        <td><%= opinion.opinion_comments.count %></td>
+        <td><%= opinion.opinion_favorites.count %></td>
+      </tr>
+    </tbody>
 
   <% end %>
 
-   </table>
+      <h1>記事一覧</h1>
 
-
-           <h2>投稿した記事一覧</h2>
-
-      <table class="table table-hover table-inverse">
-
-      <% @reviews.each do |review| %>
-
-      <thead>
+  <table class="table">
+    <thead>
       <tr>
-        <th>作品名:<%= review.book_name %></th>
+        <th>題材作品</th>
         <th>記事のタイトル</th>
+        <th>投稿者名</th>
         <th>投稿日</th>
+        <th>コメント数</th>
+        <th>ブックマーク数</th>
       </tr>
     </thead>
 
+  <% @reviews.each do |review| %>
+
     <tbody>
-        <tr>
-      <td>
-      <%= image_tag review.get_image, size: "100x100" %><br>
-      </td>
-      <td>
-      <%= link_to review.review_title, admins_review_path(review.id) %>
-      </td>
-      <td>
-      <%= review.created_at.strftime('%Y/%m/%d') %>
-      </td>
-        </tr>
-      </tbody>
+      <tr>
+        <td>
+          <%= image_tag review.get_image, size: "100x100" %><br>
+          <%= review.book_name %>
+       </td>
+        <td><%= link_to review.review_title, users_review_path(review.id) %></td>
+        <td><%= review.user.name %></td>
+        <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= review.review_comments.count %></td>
+        <td><%= review.review_favorites.count %></td>
+      </tr>
+    </tbody>
 
-      <% end %>
+  <% end %>
 
-      </table>
-
-       </div>
+  </table>

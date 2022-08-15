@@ -37,7 +37,6 @@ class Users::OpinionsController < ApplicationController
       flash[:notice] = "You have updated opinion successfully."
       redirect_to users_opinion_path(@opinion.id)
     else
-      @opinions = Opinion.all
       render :edit
     end
   end
