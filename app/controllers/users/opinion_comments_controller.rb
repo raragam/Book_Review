@@ -4,8 +4,11 @@ class Users::OpinionCommentsController < ApplicationController
     opinion = Opinion.find(params[:opinion_id])
     opinion_comment = current_user.opinion_comments.new(opinion_comment_params)
     opinion_comment.opinion_id = opinion.id
-    opinion_comment.save
-    redirect_to users_opinion_path(opinion)
+    if opinion_comment.save
+        redirect_to users_opinion_path(opinion)
+    else
+        render 'users/opinions/show'
+    end
   end
 
   def destroy

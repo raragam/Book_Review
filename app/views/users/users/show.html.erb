@@ -9,9 +9,18 @@
       </div>
       <div class="col-md-8 offset-md-1">
 
-          <%= render '/users/users/show_opinions_all', opinions: @opinions %>
+      <div class="row">
 
-          <%= render '/users/users/show_reviews_all', reviews: @reviews %>
+        <%= link_to user_opinion_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
+          <i class="fas fa-user-cog">このユーザーのつぶやき一覧</i>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <%= link_to user_review_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
+          <i class="fas fa-user-cog">このユーザーの記事一覧</i>
+        <% end %>
+      </div>
 
        </div>
     </div>

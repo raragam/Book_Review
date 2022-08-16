@@ -58,6 +58,8 @@
           <%= f.submit '送信', class: "btn-sm btn-primary" %>
         <% end %>
 
+        <%= render 'layouts/errors', obj: @opinion_comment %>
+
       <table>
         <thead>
           <tr>

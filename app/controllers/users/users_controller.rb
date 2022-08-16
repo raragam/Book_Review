@@ -7,6 +7,14 @@ class Users::UsersController < ApplicationController
     @user = current_user
   end
 
+  def user_opinion_index
+    @opinions = Opinion.where(user_id: params[:id])
+  end
+
+  def user_review_index
+    @reviews = Review.where(user_id: params[:id])
+  end
+
   def create
     @opinion = Opinion.new(opinion_params)
     @opinion.user_id = current_user.id
