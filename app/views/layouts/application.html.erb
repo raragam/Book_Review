@@ -15,10 +15,19 @@
       <%= render '/layouts/header' %>
     </header>
       <% if flash[:notice] %>
-    <div class="flash">
       <%= flash[:notice] %>
-    </div>
       <% end %>
     <%= yield %>
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+
+            <p>Book_Review</p>
+
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

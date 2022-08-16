@@ -1,3 +1,5 @@
+  <% if user_signed_in? %>
+
   <h2>User info</h2>
     <%= image_tag user.get_profile_image %>
 
@@ -55,3 +57,7 @@
       </div>
 
     <% end %>
+
+  <% else %>
+
+  <% end %>

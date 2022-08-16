@@ -4,8 +4,14 @@ class Users::ReviewCommentsController < ApplicationController
     review = Review.find(params[:review_id])
     review_comment = current_user.review_comments.new(review_comment_params)
     review_comment.review_id = review.id
-    review_comment.save
-    redirect_to users_review_path(review)
+    if review_comment.save
+         redirect_to users_review_path(review)
+    else
+       @review = review
+       @user = @review.user
+       @review_comment = review_comment
+         render 'users/reviews/show'
+    end
   end
 
   def destroy

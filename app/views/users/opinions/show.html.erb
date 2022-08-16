@@ -2,15 +2,17 @@
     <div class="row">
       <div class="col-md-3">
 
-    <%= render '/users/users/user_info', user: @user %>
+        <%= render '/users/users/user_info', user: @user %>
 
-    <%= render '/users/users/show_opinion_post' %>
+        <%= render '/users/users/show_opinion_post' %>
 
       </div>
 
       <div class="col-md-8 offset-md-1">
 
-        <h2><%= @opinion.created_at.strftime('%Y/%m/%d') %>の投稿</h2>
+        <%= render '/layouts/errors', obj: @opinion_comment %>
+
+      <h2><%= @opinion.created_at.strftime('%Y/%m/%d') %>の投稿</h2>
 
       <table class="table table-hover table-inverse">
         <tbody>
@@ -27,15 +29,17 @@
               <% end %>
            </td>
             <td><span><%= @opinion.opinion_body %></span></td>
-          <% if @user == current_user %>
+         <% if @user == current_user %>
             <td><%= link_to "Edit", edit_users_opinion_path(@opinion.id), class: 'btn btn-sm btn-success' %></td>
             <td><%= link_to "Destroy", users_opinion_path(@opinion.id), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に消しますか？" %></td>
-          <% else %>
+         <% else %>
 
-          <% end %>
+         <% end %>
          </tr>
         </tbody>
       </table>
+
+      <% if user_signed_in? %>
 
           <% if @opinion.favorited_by?(current_user) %>
            <p>
@@ -51,14 +55,18 @@
           </p>
           <% end %>
 
-      <div>コメントは現在<%= @opinion.opinion_comments.count %>です</div>
-
         <%= form_with(model:[@opinion, @opinion_comment], url: '/users/opinions/'+"#{@opinion.id}"+'/opinion_comments', method: :post) do |f| %>
           <%= f.text_area :opinion_comment, size: "40x5" %>
           <%= f.submit '送信', class: "btn-sm btn-primary" %>
         <% end %>
 
-        <%= render 'layouts/errors', obj: @opinion_comment %>
+    <% else %>
+
+    <div>コメントはログイン状態でのみ可能です</div>
+
+    <% end %>
+
+    <div>コメントは現在<%= @opinion.opinion_comments.count %>です</div>
 
       <table>
         <thead>
@@ -75,7 +83,11 @@
            <td><%= image_tag opinion_comment.user.get_profile_image %></td>
            <td><%= opinion_comment.user.name %></td>
            <td><%= opinion_comment.opinion_comment %></td>
-           <td><%= link_to "削除", users_opinion_opinion_comment_path(opinion_comment.id), method: :delete %></td>
+           <td><% if @user == current_user %>
+                 <%= link_to "削除", users_opinion_opinion_comment_path(@opinion.id, opinion_comment.id), method: :delete %>
+               <% else %>
+               <% end %>
+           </td>
          </tr>
         <% end %>
       </tbody>

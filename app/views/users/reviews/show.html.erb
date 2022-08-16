@@ -1,27 +1,32 @@
 <div class="col-md-8 offset-md-1">
 
-  <h2>タイトル</h2>
-    <p><%= @review.review_title %></p>
-    <p>投稿日：<%= @review.created_at.strftime('%Y/%m/%d') %></p>
-    <p>本の名前</p>
+  <%= render 'layouts/errors', obj: @review_comment %>
+
+    <h2>タイトル</h2>
+       <p><%= @review.review_title %></p>
+       <p>投稿日：<%= @review.created_at.strftime('%Y/%m/%d') %></p>
+       <p>本の名前</p>
        <%= @review.book_name %>
-  <h2>画像</h2>
-    <% if @review.image.attached? %>
-       <%= image_tag @review.image, size: "300x300" %>
-    <% else %>
-       <%= image_tag 'no_image', size: "300x300" %>
-    <% end %>
+    <h2>画像</h2>
+       <% if @review.image.attached? %>
+          <%= image_tag @review.image, size: "300x300" %>
+       <% else %>
+          <%= image_tag 'no_image', size: "300x300" %>
+       <% end %>
 
-  <h2>本文</h2>
-    <p><%= @review.review_body %></p>
+    <h2>本文</h2>
+       <p><%= @review.review_body %></p>
 
-       <%= link_to "記事を編集する", edit_users_review_path(@review.id) %>
-       <%= link_to "削除", users_review_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-       <%= link_to "記事一覧に戻る", users_reviews_path %>
+          <%= link_to "記事を編集する", edit_users_review_path(@review.id) %>
+          <%= link_to "削除", users_review_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+          <%= link_to "記事一覧に戻る", users_reviews_path %>
 
-    <% if @review.user == current_user %>
-       <%= link_to "削除", users_review_path(@review.id), method: :delete %>
-    <% end %>
+       <% if @review.user == current_user %>
+          <%= link_to "削除", users_review_path(@review.id), method: :delete %>
+       <% else %>
+       <% end %>
+
+  <% if user_signed_in? %>
 
     <% if @review.favorited_by?(current_user) %>
     <p>
@@ -35,13 +40,27 @@
         ♡<%= @review.review_favorites.count %> いいね
       <% end %>
     </p>
+    <% end %>
+
+  <% else %>
+
+  ♥<%= @review.review_favorites.count %> いいね
+
   <% end %>
 
-  <h2>コメントは現在<%= @review.review_comments.count %>件です</h2>
+    <h2>コメントは現在<%= @review.review_comments.count %>件です</h2>
 
-      <%= form_with(model:[@review, @review_comment], url: '/users/reviews/'+"#{@review.id}"+'/review_comments', method: :post) do |f| %>
-      <%= f.text_area :review_comment, size: "40x5" %>
-      <%= f.submit '送信', class: "btn-sm btn-primary" %>
+      <% if user_signed_in? %>
+
+          <%= form_with(model:[@review, @review_comment], url: '/users/reviews/'+"#{@review.id}"+'/review_comments', method: :post) do |f| %>
+              <%= f.text_area :review_comment, size: "40x5" %>
+              <%= f.submit '送信', class: "btn-sm btn-primary" %>
+          <% end %>
+
+      <% else %>
+
+          <div>コメントはログイン状態でのみ可能です</div>
+
       <% end %>
 
   <table>
@@ -59,7 +78,11 @@
             <%= review_comment.user.name %>
         </td>
         <td><%= review_comment.review_comment %></td>
-        <td><%= link_to "削除", users_review_review_comment_path(review_comment.id), method: :delete %></td>
+        <td><% if @review.user == current_user %>
+               <%= link_to "削除", users_review_review_comment_path(@review.id, review_comment.id), method: :delete %>
+            <% else %>
+            <% end %>
+        </td>
       </tr>
      <% end %>
    </tbody>

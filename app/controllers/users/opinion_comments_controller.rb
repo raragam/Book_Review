@@ -7,6 +7,11 @@ class Users::OpinionCommentsController < ApplicationController
     if opinion_comment.save
         redirect_to users_opinion_path(opinion)
     else
+       @opinion = opinion
+       @user = @opinion.user
+       @opinion_new = Opinion.new
+       @opinions = Opinion.all
+       @opinion_comment = opinion_comment
         render 'users/opinions/show'
     end
   end
