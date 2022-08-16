@@ -1,6 +1,4 @@
-  <div class="col-md-8 offset-md-1">
-
-    <h2>会員一覧</h2>
+  <h2>会員一覧</h2>
 
   <table class="table">
 
@@ -11,29 +9,29 @@
         <th>フォロー数</th>
         <th>フォロワー数</th>
         <th>アカウント作成日時</th>
+        <th>会員ステータス</th>
         <th></th>
       </tr>
     </thead>
 
     <% @users.each do |user| %>
 
-      <tbody>
-        <tr>
-      <td>
-        <%= image_tag user.get_profile_image %>
-      </td>
-      <td>
-        <%= user.name %>
-      </td>
-      <td><%= user.followings.count %></td>
+    <tbody>
+      <tr>
+        <td><%= image_tag user.get_profile_image %></td>
+        <td><%= user.name %></td>
+        <td><%= user.followings.count %></td>
         <td><%= user.followers.count %></td>
-      <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
-      <td><%= link_to "詳細ページ", admins_user_path(user.id) %></td>
-        </tr>
-      </tbody>
+        <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
+            <% if user.is_deleted == false %>
+        <td>有効</td>
+            <% else %>
+        <td>退会</td>
+            <% end %>
+        <td><%= link_to "詳細ページ", admins_user_path(user.id) %></td>
+      </tr>
+    </tbody>
 
     <% end %>
 
    </table>
-
-  </div>

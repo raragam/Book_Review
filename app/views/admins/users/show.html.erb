@@ -1,39 +1,39 @@
   <div class="col-md-8 offset-md-1">
 
-  <h2>会員情報</h2>
+    <h2>会員情報</h2>
 
-  <table class="table">
-   <tbody>
-    <tr>
-    <th>登録画像</th>
-    <td><%= image_tag @user.get_profile_image %></td>
-    </tr>
-    <tr>
-    <th>登録名</th>
-    <td><%= @user.name %></td>
-    </tr>
-    <tr>
-    <th>メールアドレス</th>
-    <td><%= @user.email %></td>
-    </tr>
-    <tr>
-    <th>自己紹介の内容</th>
-    <td><%= @user.introduction %></td>
-    </tr>
-    <tr>
-    <th>会員ステータス</th>
-    <% if @user.is_deleted == false %>
-    <td>有効</td>
-    <% else %>
-    <td>退会</td>
-    <% end %>
-    </tr>
-    <tr>
-    <th>アカウント作成日時</th>
-    <td><%= @user.created_at.strftime('%Y/%m/%d') %></td>
-    </tr>
-   </tbody>
- </table>
+    <table class="table">
+      <tbody>
+        <tr>
+         <th>登録画像</th>
+         <td><%= image_tag @user.get_profile_image %></td>
+        </tr>
+        <tr>
+         <th>登録名</th>
+         <td><%= @user.name %></td>
+        </tr>
+        <tr>
+         <th>メールアドレス</th>
+         <td><%= @user.email %></td>
+        </tr>
+        <tr>
+         <th>自己紹介の内容</th>
+         <td><%= @user.introduction %></td>
+        </tr>
+        <tr>
+         <th>会員ステータス</th>
+         <% if @user.is_deleted == false %>
+         <td>有効</td>
+         <% else %>
+         <td>退会</td>
+         <% end %>
+        </tr>
+        <tr>
+         <th>アカウント作成日時</th>
+         <td><%= @user.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+      </tbody>
+    </table>
 
     <div class="row">
 

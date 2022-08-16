@@ -1,51 +1,51 @@
 <div class="col-md-8 offset-md-1">
 
-<h2>タイトル</h2>
-<h2><%= @review.review_title %></h2>
+   <h2>タイトル</h2>
+   <h2><%= @review.review_title %></h2>
 
-<p>投稿者：<%= @review.user.name %></p>
+      <p>投稿者：<%= @review.user.name %></p>
 
-<p>投稿日：<%= @review.created_at.strftime('%Y/%m/%d') %></p>
+      <p>投稿日：<%= @review.created_at.strftime('%Y/%m/%d') %></p>
 
-<p>本の名前</p>
-<%= @review.book_name %>
+      <p>本の名前</p>
+         <%= @review.book_name %>
 
-<h2>画像</h2>
-<% if @review.image.attached? %>
-  <%= image_tag @review.image, size: "300x300" %>
-<% else %>
-  <%= image_tag 'no_image', size: "300x300" %>
-<% end %>
+   <h2>画像</h2>
+      <% if @review.image.attached? %>
+         <%= image_tag @review.image, size: "300x300" %>
+      <% else %>
+         <%= image_tag 'no_image', size: "300x300" %>
+      <% end %>
 
-<h2>本文</h2>
-<p><%= @review.review_body %></p>
+   <h2>本文</h2>
+      <p><%= @review.review_body %></p>
 
-<%= link_to "Destroy", admins_review_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+         <%= link_to "Destroy", admins_review_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 
-        <div>コメントは現在<%= @review.review_comments.count %>です</div>
+      <div>コメントは現在<%= @review.review_comments.count %>です</div>
 
-<table class="table table-hover table-inverse">
-  <thead>
-    <tr>
-      <th>コメント投稿者</th>
-      <th>コメント内容</th>
+   <table class="table table-hover table-inverse">
+     <thead>
+      <tr>
+       <th>コメント投稿者</th>
+       <th>コメント内容</th>
       <th></th>
     </tr>
-  </thead>
-  <tbody>
-    <% @review.review_comments.each do |review_comment| %>
+   </thead>
+   <tbody>
+     <% @review.review_comments.each do |review_comment| %>
       <tr>
-        <td>
+       <td>
           <%= link_to admins_user_path(review_comment.user.id) do %>
           　<%= image_tag review_comment.user.get_profile_image %><br>
             <%= review_comment.user.name %>
           <% end %>
-        </td>
-        <td><%= review_comment.review_comment %></td>
-        <td><%= link_to "削除", users_review_review_comment_path(review_comment.id), method: :delete %></td>
+       </td>
+       <td><%= review_comment.review_comment %></td>
+       <td><%= link_to "削除", users_review_review_comment_path(review_comment.id), method: :delete %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+   </tbody>
+   </table>
 
 </div>
