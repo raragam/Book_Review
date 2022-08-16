@@ -1,18 +1,23 @@
-  <h2>User info</h2>
-    <%= image_tag @user.get_profile_image %>
+  <div class="col-md-8 offset-md-1">
+
+  <h2>会員情報</h2>
 
   <table class="table">
    <tbody>
     <tr>
-    <th>name</th>
+    <th>登録画像</th>
+    <td><%= image_tag @user.get_profile_image %></td>
+    </tr>
+    <tr>
+    <th>登録名</th>
     <td><%= @user.name %></td>
     </tr>
     <tr>
-    <th>email</th>
+    <th>メールアドレス</th>
     <td><%= @user.email %></td>
     </tr>
     <tr>
-    <th>introduction</th>
+    <th>自己紹介の内容</th>
     <td><%= @user.introduction %></td>
     </tr>
     <tr>
@@ -28,37 +33,27 @@
 
     <div class="row">
 
-      <%= link_to edit_admins_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-        <i class="fas fa-user-cog">編集ボタン</i>
+      <%= link_to edit_admins_user_path(@user), class: 'btn btn-outline-secondary btn-block font-weight-bold' do %>
+        <i>会員情報編集</i>
+      <% end %>
+
+      <%= link_to admins_opinions_path(@user), class: 'btn btn-outline-secondary btn-block font-weight-bold' do %>
+        <i>投稿一覧</i>
+      <% end %>
+
+      <%= link_to user_opinion_index_admins_user_path(@user), class: 'btn btn-outline-secondary btn-block font-weight-bold' do %>
+        <i>会員ごとの投稿一覧</i>
+      <% end %>
+
+      <%= link_to admins_reviews_path(@user), class: 'btn btn-outline-secondary btn-block font-weight-bold' do %>
+        <i>投稿記事一覧</i>
+      <% end %>
+
+      <%= link_to user_review_index_admins_user_path(@user), class: 'btn btn-outline-secondary btn-block font-weight-bold' do %>
+        <i>会員ごとの投稿記事一覧</i>
       <% end %>
     </div>
 
-    <div class="row">
-
-      <%= link_to admins_opinions_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-        <i class="fas fa-user-cog">つぶやき一覧</i>
-      <% end %>
-    </div>
-
-    <div class="row">
-
-      <%= link_to user_opinion_index_admins_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-        <i class="fas fa-user-cog">ユーザーごとのつぶやき一覧</i>
-      <% end %>
-    </div>
-
-    <div class="row">
-
-      <%= link_to admins_reviews_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-        <i class="fas fa-user-cog">記事一覧</i>
-      <% end %>
-    </div>
-
-    <div class="row">
-
-      <%= link_to user_review_index_admins_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-        <i class="fas fa-user-cog">ユーザーごとの記事一覧</i>
-      <% end %>
-    </div>
+  </div>
 
 

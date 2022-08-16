@@ -1,61 +1,60 @@
  <div class="col-md-8 offset-md-1">
 
-    <h2>Book detail</h2>
+    <h2>投稿詳細</h2>
 
       <table class="table table-hover table-inverse">
-
-        <tbody>
+       <thead>
         <tr>
-      <td>
-        <div>
-          <%= image_tag @user.get_profile_image %>
-        </div>
-        <div>
-          <%= @user.name %>
-        </div>
-      </td>
-      <td>
-        <span><%= @opinion.opinion_title %></span>
-      </td>
-      <td>
-        <span><%= @opinion.opinion_body %></span>
-      </td>
+        <th>投稿者</th>
+        <th>投稿タイトル</th>
+        <th>投稿内容</th>
+        <th></th>
+        </tr>
+      </thead>
 
-      <td>
-        <%= link_to "Destroy", admins_opinion_path(@opinion.id), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に消しますか？" %>
-      </td>
-
+       <tbody>
+        <tr>
+         <td>
+          <%= link_to admins_user_path(@opinion.user.id) do %>
+           <%= image_tag @user.get_profile_image %><br>
+           <%= @user.name %>
+          <% end %>
+         </td>
+         <td>
+           <span><%= @opinion.opinion_title %></span>
+         </td>
+         <td>
+           <span><%= @opinion.opinion_body %></span>
+         </td>
+         <td><%= link_to "管理者として削除する", admins_opinion_path(@opinion.id), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に消しますか？" %></td>
         </tr>
       </tbody>
 
       </table>
 
-      <div>コメントは現在<%= @opinion.opinion_comments.count %>です</div>
+      <h2>コメントは現在<%= @opinion.opinion_comments.count %>件です</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>コメント投稿者</th>
-      <th>コメント内容</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @opinion.opinion_comments.each do |opinion_comment| %>
-      <tr>
-        <td>
-
-          <%= image_tag opinion_comment.user.get_profile_image %>
-
-        </td>
-        <td><%= opinion_comment.user.name %></td>
-        <td><%= opinion_comment.opinion_comment %></td>
-        <td><%= link_to "削除", users_opinion_opinion_comment_path(opinion_comment.id), method: :delete %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+           <th>コメント投稿者</th>
+           <th>コメント内容</th>
+           <th></th>
+         </tr>
+        </thead>
+        <tbody>
+         <% @opinion.opinion_comments.each do |opinion_comment| %>
+          <tr>
+          <td>
+            <%= link_to admins_user_path(opinion_comment.user.id) do %>
+              <%= image_tag opinion_comment.user.get_profile_image %><br>
+              <%= opinion_comment.user.name %>
+            <% end %>
+          </td>
+          <td><%= opinion_comment.opinion_comment %></td>
+          <td><%= link_to "管理者として削除する", users_opinion_opinion_comment_path(opinion_comment.id), method: :delete %></td>
+         </tr>
+         <% end %>
+       </tbody>
+      </table>
   </div>

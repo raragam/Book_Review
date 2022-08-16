@@ -17,8 +17,8 @@
           <tr>
             <td>
               <%= link_to users_user_path(@user.id) do %>
-                <div><%= image_tag @user.get_profile_image %></div>
-                <div><%= @user.name %></div>
+                <%= image_tag @user.get_profile_image %><br>
+                <%= @user.name %>
               <% end %>
            </td>
             <td>
@@ -63,9 +63,9 @@
       <table>
         <thead>
           <tr>
-           <th></th>
            <th>コメント投稿者</th>
            <th>コメント内容</th>
+           <th></th>
            <th></th>
          </tr>
         </thead>

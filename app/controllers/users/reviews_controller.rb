@@ -9,12 +9,9 @@ class Users::ReviewsController < ApplicationController
   end
 
   def create
-    # １.&2. データを受け取り新規登録するためのインスタンス作成
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    # 3. データをデータベースに保存するためのsaveメソッド実行
     if @review.save
-    # 詳細画面へリダイレクト
     redirect_to users_review_path(@review.id)
     else
     render :new
@@ -42,13 +39,12 @@ class Users::ReviewsController < ApplicationController
   end
 
   def destroy
-    review = Review.find(params[:id])  # データ（レコード）を1件取得
-    review.destroy  # データ（レコード）を削除
-    redirect_to '/users/reviews'  # 投稿一覧画面へリダイレクト
+    review = Review.find(params[:id])
+    review.destroy
+    redirect_to '/users/reviews'
   end
 
   private
-  # ストロングパラメータ
   def review_params
     params.require(:review).permit(:review_title, :review_body, :book_name, :image)
   end
