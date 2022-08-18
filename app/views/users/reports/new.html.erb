@@ -1,0 +1,11 @@
+<h3>通報</h3>
+
+<%= form_with(model:[@user, @report], url: '/users/users/'+"#{@user.id}"+'/reports', method: :post) do |f| %>
+  <div class="form-group">
+    <div>通報理由</div>
+    <%= f.text_area :reason, rows:'3', class:"form-control" %>
+    <div>該当URL</div>
+    <%= f.text_field :url, class:"form-control" %>
+    <%= f.submit "通報する", class: "btn btn-danger" %>
+  </div>
+<% end %>

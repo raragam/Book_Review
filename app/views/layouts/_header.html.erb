@@ -11,6 +11,7 @@
                  <li><%= link_to "会員一覧", admins_users_path, class:"link btn btn-light"  %></li>
                  <li><%= link_to "投稿一覧", admins_opinions_path, class:"link btn btn-light"  %></li>
                  <li><%= link_to "投稿記事一覧", admins_reviews_path, class:"link btn btn-light" %></li>
+                 <li><%= link_to "通報一覧", admins_reports_path, class:"link btn btn-light" %></li>
                  <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"link btn btn-light" %></li>
               <% elsif user_signed_in? %>
                  <li><%= link_to 'マイページ', users_user_path(current_user.id), class:"link btn btn-light" %></li>

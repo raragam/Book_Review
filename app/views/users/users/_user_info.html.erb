@@ -37,11 +37,11 @@
       <div class="row">
 
         <%= link_to edit_users_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
-          <i class="fas fa-user-cog">編集ボタン</i>
+          <i>編集ボタン</i>
         <% end %>
 
         <%= link_to users_user_confirm_unsubscribe_path(user), class: 'btn btn-outline-secondary btn-block' do %>
-          <i class="fas fa-user-cog">退会ボタン</i>
+          <i>退会ボタン</i>
         <% end %>
 
       </div>
@@ -51,7 +51,11 @@
       <div class="row">
 
         <%= link_to edit_users_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
-          <i class="fas fa-user-cog">編集ボタン</i>
+          <i>編集ボタン</i>
+        <% end %>
+
+        <%= link_to new_users_user_report_path(user), class: 'btn btn-outline-secondary btn-block' do %>
+          <i>通報ボタン</i>
         <% end %>
 
       </div>

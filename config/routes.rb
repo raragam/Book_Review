@@ -25,18 +25,19 @@ Rails.application.routes.draw do
         get :user_review_index
        end
        member do
-          get :opinion_favorites
-        end
+        get :opinion_favorites
+       end
        member do
-          get :review_favorites
-        end
-      resource :relationships, only: [:create, :destroy]
-      get 'followings' => 'relationships#followings', as: 'followings'
-      get 'followers' => 'relationships#followers', as: 'followers'
-      get 'unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'
-      patch 'withdraw' => 'users#withdraw', as: 'withdraw_user'
-      put 'withdraw' => 'users#withdraw'
-      get "search" => "searches#search"
+        get :review_favorites
+       end
+       resource :relationships, only: [:create, :destroy]
+        get 'followings' => 'relationships#followings', as: 'followings'
+        get 'followers' => 'relationships#followers', as: 'followers'
+        get 'unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'
+        patch 'withdraw' => 'users#withdraw', as: 'withdraw_user'
+        put 'withdraw' => 'users#withdraw'
+        get "search" => "searches#search"
+        resources :reports, only: [:new, :create]
     end
 
   end
@@ -66,6 +67,9 @@ Rails.application.routes.draw do
         get :user_review_index
       end
     end
+
+    resources :reports, only: [:index, :show, :update]
+
   end
 
   root to: "homes#top"
