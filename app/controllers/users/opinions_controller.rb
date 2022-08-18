@@ -12,12 +12,12 @@ class Users::OpinionsController < ApplicationController
     @opinion = Opinion.new(opinion_params)
     @opinion.user_id = current_user.id
     if @opinion.save
-    flash[:notice] = "You have created opinion successfully."
-    redirect_to users_opinions_path(@opinion.id)
+       flash[:notice] = "投稿しました。"
+       redirect_to users_opinions_path(@opinion.id)
     else
-    @opinions = Opinion.all
-    @user = current_user
-    render :index
+       @opinions = Opinion.all
+       @user = current_user
+       render :index
     end
   end
 
@@ -37,16 +37,17 @@ class Users::OpinionsController < ApplicationController
   def update
     @opinion = Opinion.find(params[:id])
     if @opinion.update(opinion_params)
-      flash[:notice] = "You have updated opinion successfully."
-      redirect_to users_opinion_path(@opinion.id)
+       flash[:notice] = "投稿を編集しました。"
+       redirect_to users_opinion_path(@opinion.id)
     else
-      render :edit
+       render :edit
     end
   end
 
   def destroy
     @opinion = Opinion.find(params[:id])
     @opinion.destroy
+    flash[:notice] = "投稿を削除しました。"
     redirect_to '/users/opinions'
   end
 

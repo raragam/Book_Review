@@ -19,6 +19,7 @@ class Users::UsersController < ApplicationController
     @opinion = Opinion.new(opinion_params)
     @opinion.user_id = current_user.id
     @opinion.save
+    flash[:notice] = "投稿しました。"
     redirect_to users_opinion_path(@opinion.id)
   end
 
@@ -37,7 +38,7 @@ class Users::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "You have updated user successfully."
+      flash[:notice] = "会員情報を編集しました。"
       redirect_to users_user_path(@user.id)
     else
       render :edit
@@ -66,8 +67,8 @@ class Users::UsersController < ApplicationController
     @user = current_user
     @user.update(is_deleted: true)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました"
-    redirect_to root_path
+    flash[:notice] = "退会処理を実行しました。"
+    redirect_to about_path
   end
 
   private

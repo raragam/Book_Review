@@ -14,9 +14,10 @@ class Users::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
-    redirect_to users_review_path(@review.id)
+       flash[:notice] = "記事を投稿しました。"
+       redirect_to users_review_path(@review.id)
     else
-    render :new
+       render :new
     end
   end
 
@@ -33,16 +34,18 @@ class Users::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
-    redirect_to users_review_path(@review.id)
+       flash[:notice] = "投稿記事を編集しました。"
+       redirect_to users_review_path(@review.id)
     else
-    @review.all
-    render :edit
+       @review.all
+       render :edit
     end
   end
 
   def destroy
     review = Review.find(params[:id])
     review.destroy
+    flash[:notice] = "投稿記事を削除しました。"
     redirect_to '/users/reviews'
   end
 

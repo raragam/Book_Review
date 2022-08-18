@@ -5,11 +5,11 @@ class Users::ReviewFavoritesController < ApplicationController
     review_favorite = current_user.review_favorites.new(review_id: review.id)
     review_favorite.save
     if params[:review][:up] == '1'
-    redirect_to users_reviews_path
+       redirect_to users_reviews_path
     elsif params[:review][:up] == '2'
-    redirect_to users_review_path(review)
+       redirect_to users_review_path(review)
     else
-    redirect_to root_path
+       redirect_to users_review_path(review)
     end
   end
 
@@ -18,11 +18,11 @@ class Users::ReviewFavoritesController < ApplicationController
     review_favorite = current_user.review_favorites.find_by(review_id: review.id)
     review_favorite.destroy
     if params[:review][:down] == '1'
-    redirect_to users_reviews_path
+       redirect_to users_reviews_path
     elsif params[:review][:down] == '2'
-    redirect_to users_review_path(review)
+       redirect_to users_review_path(review)
     else
-    redirect_to root_path
+       redirect_to users_review_path(review)
     end
   end
 end

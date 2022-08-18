@@ -5,18 +5,20 @@ class Users::ReviewCommentsController < ApplicationController
     review_comment = current_user.review_comments.new(review_comment_params)
     review_comment.review_id = review.id
     if review_comment.save
-         redirect_to users_review_path(review)
+       flash[:notice] = "コメントを投稿しました。"
+       redirect_to users_review_path(review)
     else
        @review = review
        @user = @review.user
        @review_comment = review_comment
-         render 'users/reviews/show'
+       render 'users/reviews/show'
     end
   end
 
   def destroy
     ReviewComment.find_by(review_id: params[:id], id: params[:review_id]).destroy
-    redirect_to request.referer
+    flash[:notice] = "コメントを削除しました。"
+    redirect_to users_review_path(review)
   end
 
   private
