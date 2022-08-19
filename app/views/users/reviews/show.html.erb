@@ -1,56 +1,58 @@
-<div class="col-md-8 offset-md-1">
+<div class="mx-auto mt-4" style="width: 800px;">
 
   <%= render 'layouts/errors', obj: @review_comment %>
 
+  <p>投稿日：<%= @review.created_at.strftime('%Y/%m/%d') %></p>
+
   <% if @user.is_deleted == false %>
 
-    <h2>タイトル</h2>
-       <p><%= @review.review_title %></p>
-       <p>投稿日：<%= @review.created_at.strftime('%Y/%m/%d') %></p>
-       <p>本の名前</p>
-       <%= @review.book_name %>
-    <h2>画像</h2>
-       <% if @review.image.attached? %>
-          <%= image_tag @review.image, size: "300x300" %>
-       <% else %>
-          <%= image_tag 'no_image', size: "300x300" %>
-       <% end %>
+    <h2><%= @review.review_title %></h2>
+    <div>
+      <div>
+        <% if @review.image.attached? %>
+             <%= image_tag @review.image, size: "300x300" %>
+        <% else %>
+             <%= image_tag 'no_image', size: "300x300" %>
+        <% end %>
+      </div>
+      <div>原作：<%= @review.book_name %></div>
+    </div>
 
-    <h2>本文</h2>
-       <p><%= @review.review_body %></p>
+    <h2 class="mt-5">本文</h2>
+       <div><%= @review.review_body %></div>
 
+       <div class="mt-5">
+        <% if @review.user == current_user %>
           <%= link_to "記事を編集する", edit_users_review_path(@review.id) %>
-          <%= link_to "削除", users_review_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+          <%= link_to "削除", users_review_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？"  %>
+        <% else %>
+        <% end %>
           <%= link_to "記事一覧に戻る", users_reviews_path %>
+       </div>
 
-       <% if @review.user == current_user %>
-          <%= link_to "削除", users_review_path(@review.id), method: :delete %>
+        <% if user_signed_in? %>
+
+          <% if @review.favorited_by?(current_user) %>
+
+             <%= link_to users_review_review_favorites_path(@review, params: { review: { down: 2} }), method: :delete do %>
+             ♥<%= @review.review_favorites.count %> いいね
+             <% end %>
+
        <% else %>
+
+             <%= link_to users_review_review_favorites_path(@review, params: { review: { up: 2} }), method: :post do %>
+             ♡<%= @review.review_favorites.count %> いいね
+             <% end %>
+
        <% end %>
-
-  <% if user_signed_in? %>
-
-    <% if @review.favorited_by?(current_user) %>
-    <p>
-      <%= link_to users_review_review_favorites_path(@review, params: { review: { down: 2} }), method: :delete do %>
-        ♥<%= @review.review_favorites.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to users_review_review_favorites_path(@review, params: { review: { up: 2} }), method: :post do %>
-        ♡<%= @review.review_favorites.count %> いいね
-      <% end %>
-    </p>
-    <% end %>
 
   <% else %>
 
-  ♥<%= @review.review_favorites.count %> いいね
+    ♥<%= @review.review_favorites.count %> いいね
 
   <% end %>
 
-    <h2>コメントは現在<%= @review.review_comments.count %>件です</h2>
+    <h2>コメントは現在<%= @review.review_comments.count %>件です。</h2>
 
       <% if user_signed_in? %>
 

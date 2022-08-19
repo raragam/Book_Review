@@ -1,4 +1,4 @@
-  <div class="container px-5 px-sm-0">
+  <div class="container mt-4">
     <div class="row">
       <div class="col-md-3">
 
@@ -9,19 +9,14 @@
       </div>
       <div class="col-md-8 offset-md-1">
 
-      <div class="row">
-
-        <%= link_to user_opinion_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-          <i class="fas fa-user-cog">このユーザーのつぶやき一覧</i>
+        <%= link_to user_opinion_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block mt-5 mr-5' do %>
+          <i class="fas fa-user-cog">このユーザーの投稿一覧</i>
         <% end %>
-      </div>
 
-      <div class="row">
-        <%= link_to user_review_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-          <i class="fas fa-user-cog">このユーザーの記事一覧</i>
+        <%= link_to user_review_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block mt-5 mr-5' do %>
+          <i class="fas fa-user-cog">このユーザーの投稿記事一覧</i>
         <% end %>
-      </div>
 
-       </div>
+      </div>
     </div>
   </div>

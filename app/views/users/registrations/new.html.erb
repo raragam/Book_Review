@@ -1,33 +1,41 @@
-<h2>Sign up</h2>
+<div class="container mx-auto" style="width: 300px;">
 
-<%= form_with model: @user, url: user_registration_path do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+  <h2 class="text-center mt-5 mr-3">新規登録</h2>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <%= form_with model: @user, url: user_registration_path do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+      <div class="field mt-4">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, size: 30 %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="field mt-4">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 30 %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <div class="field mt-4">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+           <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", size: 30 %>
+      </div>
 
-<%= render "users/shared/links" %>
+      <div class="field mt-4">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", size: 30 %>
+      </div>
+
+      <div class="actions mt-4 mr-2">
+        <%= f.submit "この内容で新規登録します", class: 'btn btn-primary btn-block' %>
+      </div>
+
+    <% end %>
+
+      <div class="text-center mt-4 mr-2">
+        既に登録済の方は<%= link_to "こちら", new_user_session_path %>から
+      </div>
+
+</div>

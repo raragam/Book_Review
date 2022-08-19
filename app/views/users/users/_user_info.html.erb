@@ -1,33 +1,36 @@
   <% if user_signed_in? %>
 
-  <h2>User info</h2>
-    <%= image_tag user.get_profile_image %>
+  <h2 class="text-center mt-3 mb-3">会員情報</h2>
 
   <table class="table">
     <tbody>
       <tr>
-        <th>name</th>
+        <th><img  src="/assets/no_image.jpg" /></th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>アカウント名</th>
         <th><%= user.name %></th>
       </tr>
       <tr>
-        <th>introduction</th>
+        <th>自己紹介</th>
         <th><%= user.introduction %></th>
       </tr>
       <tr>
-        <th>follows</th>
+        <th>フォロー一覧</th>
         <th><%= link_to user.followings.count, users_user_followings_path(user) %></th>
       </tr>
       <tr>
-        <th>followers</th>
+        <th>フォロワー一覧</th>
         <th><%= link_to user.followers.count, users_user_followers_path(user) %></th>
       </tr>
       <tr>
-        <th>ブックマークしたつぶやき</th>
-        <th><%=link_to"お気に入りのつぶやき", opinion_favorites_users_user_path(user) %></th>
+        <th>ブックマークした投稿</th>
+        <th><%=link_to"お気に入りの投稿", opinion_favorites_users_user_path(user) %></th>
       </tr>
       <tr>
         <th>ブックマークした記事</th>
-        <th><%=link_to"お気に入り記事", review_favorites_users_user_path(user) %></th>
+        <th><%=link_to"お気に入りの記事", review_favorites_users_user_path(user) %></th>
       </tr>
     </tbody>
  </table>
@@ -63,5 +66,41 @@
     <% end %>
 
   <% else %>
+
+  <h2 class="text-center mt-3 mb-3">会員情報</h2>
+
+
+  <table class="table">
+    <tbody>
+      <tr>
+        <th><img  src="/assets/no_image.jpg" /></th>
+        <th>会員情報はログイン状態でのみ表示されます。</th>
+      </tr>
+      <tr>
+        <th>アカウント名</th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>自己紹介</th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>フォロー一覧</th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>フォロワー一覧</th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>ブックマークした投稿</th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>ブックマークした記事</th>
+        <th></th>
+      </tr>
+    </tbody>
+ </table>
 
   <% end %>

@@ -1,4 +1,4 @@
-  <div class="container px-5 px-sm-0">
+  <div class="container mt-4">
     <div class="row">
       <div class="col-md-3">
 
@@ -14,20 +14,14 @@
 
       <h2><%= @opinion.created_at.strftime('%Y/%m/%d') %>の投稿</h2>
 
-      <table class="table table-hover table-inverse">
+      <table class="table">
         <tbody>
           <tr>
             <td>
-              <%= link_to users_user_path(@user.id) do %>
-                <%= image_tag @user.get_profile_image %><br>
-                <%= @user.name %>
-              <% end %>
+              <%= image_tag @user.get_profile_image %><br>
+              <%= @user.name %>
            </td>
-            <td>
-              <%= link_to users_opinion_path(@opinion.id) do %>
-               <span><%= @opinion.opinion_title %></span>
-              <% end %>
-           </td>
+            <td><span><%= @opinion.opinion_title %></span></td>
             <td><span><%= @opinion.opinion_body %></span></td>
          <% if @user == current_user %>
             <td><%= link_to "Edit", edit_users_opinion_path(@opinion.id), class: 'btn btn-sm btn-success' %></td>
@@ -39,7 +33,7 @@
         </tbody>
       </table>
 
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
 
           <% if @opinion.favorited_by?(current_user) %>
            <p>
@@ -55,20 +49,26 @@
           </p>
           <% end %>
 
+          <h4>コメント投稿</h4>
+
         <%= form_with(model:[@opinion, @opinion_comment], url: '/users/opinions/'+"#{@opinion.id}"+'/opinion_comments', method: :post) do |f| %>
-          <%= f.text_area :opinion_comment, size: "40x5" %>
-          <%= f.submit '送信', class: "btn-sm btn-primary" %>
+          <%= f.text_area :opinion_comment, size: "96x5" %><br>
+          <%= f.submit '送信', class: "btn btn-primary btn-block mt-2" %>
         <% end %>
 
     <% else %>
 
-    <div>コメントはログイン状態でのみ可能です</div>
+    ♥<%= @opinion.opinion_favorites.count %> いいね
+
+    <div class="mt-4 mr-2">
+        ※ブックマークおよびコメントは<%= link_to "ログイン", new_user_session_path %>ユーザーのみ可能となります。
+    </div>
 
     <% end %>
 
-    <div>コメントは現在<%= @opinion.opinion_comments.count %>です</div>
+    <h4 class="mt-5">コメントは現在<%= @opinion.opinion_comments.count %>件です。</h4>
 
-      <table>
+      <table class="table mt-5">
         <thead>
           <tr>
            <th>コメント投稿者</th>

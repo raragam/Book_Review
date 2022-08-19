@@ -7,7 +7,9 @@ class Users::ReviewsController < ApplicationController
   end
 
   def index
+    @opinion = Opinion.new
     @reviews = Review.all
+    @user = current_user
   end
 
   def create
@@ -24,11 +26,13 @@ class Users::ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @user = @review.user
+    @opinion_new = Opinion.new
     @review_comment = ReviewComment.new
   end
 
   def edit
     @review = Review.find(params[:id])
+    redirect_to users_review_path unless current_user.id == @review.user_id
   end
 
   def update

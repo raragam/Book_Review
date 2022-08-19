@@ -68,6 +68,12 @@ class User < ApplicationRecord
     end
   end
 
+  #退会機能
+
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
   validates :name, uniqueness: true
   validates :name, length: { minimum: 2, maximum: 20 }
   validates :introduction, length: { maximum: 50 }
