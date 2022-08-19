@@ -9,6 +9,17 @@
       </div>
       <div class="col-md-8 offset-md-1">
 
+        <% if @user == current_user %>
+
+        <h2 class="text-center mt-3">ここは、あなたのマイページです。</h2>
+
+        <% else %>
+
+        <h2 class="text-center mt-3">ここは、<%= @user.name %> さんの詳細ページです。</h2>
+
+        <% end %>
+
+
         <%= link_to user_opinion_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block mt-5 mr-5' do %>
           <i class="fas fa-user-cog">このユーザーの投稿一覧</i>
         <% end %>
