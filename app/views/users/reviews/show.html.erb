@@ -124,9 +124,13 @@
 
   <% end %>
 
+  <% if @user.is_deleted == true %>
+
   <div class="text-center m-5">
-    もしこの記事が見れない場合、<br>
-    投稿ユーザーは退会になっている可能性があります。
+    投稿者退会のため<br>
+    記事は非表示にさせていただきます。
   </div>
+
+  <% end %>
 
 </div>

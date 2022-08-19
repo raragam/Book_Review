@@ -13,19 +13,26 @@
 
         <h2 class="text-center mt-3">ここは、あなたのマイページです。</h2>
 
+          <%= link_to user_opinion_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block mt-5 mr-5' do %>
+              <i class="fas fa-user-cog">あなたの投稿一覧</i>
+          <% end %>
+
+          <%= link_to user_review_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block mt-5 mr-5' do %>
+              <i class="fas fa-user-cog">あなたの投稿記事一覧</i>
+          <% end %>
+
         <% else %>
 
         <h2 class="text-center mt-3">ここは、<%= @user.name %> さんの詳細ページです。</h2>
 
-        <% end %>
+          <%= link_to user_opinion_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block mt-5 mr-5' do %>
+              <i class="fas fa-user-cog"><%= @user.name %> さんの投稿一覧</i>
+          <% end %>
 
+          <%= link_to user_review_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block mt-5 mr-5' do %>
+              <i class="fas fa-user-cog"><%= @user.name %> さんの投稿記事一覧</i>
+          <% end %>
 
-        <%= link_to user_opinion_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block mt-5 mr-5' do %>
-          <i class="fas fa-user-cog">このユーザーの投稿一覧</i>
-        <% end %>
-
-        <%= link_to user_review_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block mt-5 mr-5' do %>
-          <i class="fas fa-user-cog">このユーザーの投稿記事一覧</i>
         <% end %>
 
       </div>
