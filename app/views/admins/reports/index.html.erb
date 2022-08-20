@@ -6,8 +6,8 @@
   <thead>
     <tr>
       <th>通報id</th>
-      <th>会員名</th>
       <th>通報者</th>
+      <th>通報対象</th>
       <th>通報理由</th>
       <th>ステータス</th>
       <th>通報日</th>
@@ -17,8 +17,8 @@
     <% @reports.each do |report| %>
       <tr>
         <td><%= report.id %></td>
-        <td><%= report.reported.name %></td>
         <td><%= report.reporter.name %></td>
+        <td><%= report.reported.name %></td>
         <td><%= link_to "詳細はここに", admins_report_path(report) %></td>
         <td><%= report.status_i18n %></td>
         <td><%= report.created_at.strftime('%Y/%m/%d') %></td>

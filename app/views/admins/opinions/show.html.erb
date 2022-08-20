@@ -5,6 +5,7 @@
       <table class="table table-hover table-inverse">
        <thead>
         <tr>
+        <th>投稿日</th>
         <th>投稿者</th>
         <th>投稿タイトル</th>
         <th>投稿内容</th>
@@ -14,6 +15,7 @@
 
        <tbody>
         <tr>
+         <td><%= @opinion.created_at.strftime('%Y/%m/%d') %></td>
          <td>
           <%= link_to admins_user_path(@opinion.user.id) do %>
            <%= image_tag @user.get_profile_image %><br>
@@ -37,6 +39,7 @@
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
+           <th>コメント投稿日</th>
            <th>コメント投稿者</th>
            <th>コメント内容</th>
            <th></th>
@@ -45,6 +48,7 @@
         <tbody>
          <% @opinion.opinion_comments.each do |opinion_comment| %>
           <tr>
+          <td><%= opinion_comment.created_at.strftime('%Y/%m/%d') %></td>
           <td>
             <%= link_to admins_user_path(opinion_comment.user.id) do %>
               <%= image_tag opinion_comment.user.get_profile_image %><br>

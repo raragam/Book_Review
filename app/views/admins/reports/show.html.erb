@@ -6,31 +6,31 @@
     <tbody>
       <tr>
         <td>通報ID</td>
-        <td><%= link_to @report.id %></td>
-      </tr>
-      <tr>
-        <td>会員名</td>
-        <td><%= @report.reported.name %></td>
-      </tr>
-      <tr>
-        <td>理由</td>
-        <td><%= @report.reason %></td>
-      </tr>
-      <tr>
-        <td>URL等</td>
-        <td><%= @report.url %></td>
+        <td><%= @report.id %></td>
       </tr>
       <tr>
         <td>通報者</td>
         <td><%= @report.reporter.name %></td>
       </tr>
       <tr>
+        <td>通報対象</td>
+        <td><%= @report.reported.name %></td>
+      </tr>
+      <tr>
+        <td>通報理由</td>
+        <td><%= @report.reason %></td>
+      </tr>
+      <tr>
+        <td>該当URL</td>
+        <td><%= @report.url %></td>
+      </tr>
+      <tr>
         <td>対応ステータス</td>
         <td>
-          <%= @report.status_i18n %>
+            <%= @report.status_i18n %>
           <%= form_with model:@report, url:admins_report_path(@report), method: :patch, local: true do |f| %>
-            <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] } %>
-            <%= f.submit '更新' %>
+            <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] }, class:"m-2" %>
+            <%= f.submit '更新', class:"m-2" %>
           <% end %>
         </td>
       </tr>
