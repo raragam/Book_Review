@@ -1,10 +1,10 @@
 <% if @model == 'user' %>
 	<h3>Users search for "<%= @content %>"</h3>
-  <%= render 'users/users/index', users: @records %>
+  <%= render 'users/users/index_follow' %>
 <% elsif @model == 'opinion' %>
 	<h3>Opinions search for "<%= @content %>"</h3>
-  <%= render 'users/opinions/index', opinions: @records %>
+  <%= render 'users/users/show_opinions_all', opinions: @opinions %>
 <% elsif @model == 'review' %>
 	<h3>Reviews search for "<%= @content %>"</h3>
-<%= render 'users/reviews/index', reviews: @records %>
+<%= render 'users/users/show_reviews_all', reviews: @reviews %>
 <% end %>

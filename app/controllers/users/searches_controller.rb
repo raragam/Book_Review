@@ -5,13 +5,13 @@ class Users::SearchesController < ApplicationController
 	def search
 		@model = params[:model]
 		@content = params[:content]
-		@method = params[:method]
+		method = params[:method]
 		if @model == 'user'
-			@records = User.search_for(@content, @method)
+			@users = User.search_for(@content, method)
 		elsif @model == 'opinion'
-			@records = Opinion.search_for(@content, @method)
+			@opinions = Opinion.search_for(@content, method)
 		elsif @model == 'review'
-			@records = Review.search_for(@content, @method)
+			@reviews = Review.search_for(@content, method)
 		end
 	end
 
