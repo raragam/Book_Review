@@ -92,7 +92,7 @@
              <% end %>
            </td>
            <td><%= opinion_comment.opinion_comment %></td>
-           <td><% if @user == current_user %>
+           <td><% if opinion_comment.user == current_user %>
                  <%= link_to "削除", users_opinion_opinion_comment_path(@opinion.id, opinion_comment.id), method: :delete %>
                <% else %>
                <% end %>

@@ -18,9 +18,9 @@ class Users::OpinionCommentsController < ApplicationController
   end
 
   def destroy
-    OpinionComment.find_by(opinion_id: params[:id], id: params[:opinion_id]).destroy
+    OpinionComment.find_by(opinion_id: params[:opinion_id], id: params[:id]).destroy
     flash[:notice] = "コメントを削除しました。"
-    redirect_to users_opinion_path(opinion)
+    redirect_to request.referer
   end
 
   private
