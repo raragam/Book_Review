@@ -1,6 +1,23 @@
-<h2>ブックマークしたつぶやき投稿</h2>
-<% if @opinions.exists? %>
-  <%= render '/users/users/show_opinions_all', opinions: @favorite_opinions %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+<div class="mx-auto" style="width: 680px;">
+
+  <% if @user == current_user %>
+
+      <% if @opinions.exists? %>
+         <h2 class="text-center mb-5">あなたが、ブックマークした投稿です。</h2>
+         <%= render '/users/users/show_opinions_all', opinions: @favorite_opinions %>
+      <% else %>
+         <h2 class="ml-5">あなたは、まだブックマークしていません。</h2>
+      <% end %>
+
+  <% else %>
+
+      <% if @opinions.exists? %>
+         <h2 class="text-center mb-5"><%= @user.name %> さんが、ブックマークした投稿です。</h2>
+         <%= render '/users/users/show_opinions_all', opinions: @favorite_opinions %>
+      <% else %>
+         <h2 class="ml-5">あなたは、まだブックマークしていません。</h2>
+      <% end %>
+
+  <% end %>
+
+</div>

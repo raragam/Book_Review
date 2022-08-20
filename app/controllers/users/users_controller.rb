@@ -7,11 +7,11 @@ class Users::UsersController < ApplicationController
     @user = current_user
   end
 
-  def user_opinion_index
+  def opinions_user_index
     @opinions = Opinion.where(user_id: params[:id])
   end
 
-  def user_review_index
+  def reviews_user_index
     @reviews = Review.where(user_id: params[:id])
   end
 

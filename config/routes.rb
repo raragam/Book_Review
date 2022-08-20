@@ -19,10 +19,10 @@ Rails.application.routes.draw do
 
     resources :users do
        member do
-        get :user_opinion_index
+        get :opinions_user_index
        end
        member do
-        get :user_review_index
+        get :reviews_user_index
        end
        member do
         get :opinion_favorites
@@ -61,10 +61,10 @@ Rails.application.routes.draw do
 
     resources :users do
       member do
-        get :user_opinion_index
+        get :opinions_user_index
       end
       member do
-        get :user_review_index
+        get :reviews_user_index
       end
     end
 

@@ -1,6 +1,25 @@
-<h2>Follow Users</h2>
-<% if @users.exists? %>
-  <%= render '/users/users/index_follow', users: @users %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+<div class="mx-auto" style="width: 680px;">
+
+  <% if @user == current_user %>
+
+      <% if @users.exists? %>
+         <h2 class="text-center mb-5">あなたがフォローしている会員です。</h2>
+         <h3>フォロー一覧</h3>
+         <%= render '/users/users/index_follow', users: @users %>
+      <% else %>
+         <h2 class="ml-5">あなたは、まだフォローしていません。</h2>
+      <% end %>
+
+  <% else %>
+
+      <% if @users.exists? %>
+         <h2 class="text-center mb-5"><%= @user.name %> さんがフォローしている会員です。</h2>
+         <h3>フォロー一覧</h3>
+         <%= render '/users/users/index_follow', users: @users %>
+      <% else %>
+         <h2 class="ml-5"><%= @user.name %> さんは、まだフォローしていません。</h2>
+      <% end %>
+
+  <% end %>
+
+</div>

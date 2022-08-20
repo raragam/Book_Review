@@ -1,10 +1,14 @@
-<% if @model == 'user' %>
-	<h3>Users search for "<%= @content %>"</h3>
-  <%= render 'users/users/index_follow' %>
-<% elsif @model == 'opinion' %>
-	<h3>Opinions search for "<%= @content %>"</h3>
-  <%= render 'users/users/show_opinions_all', opinions: @opinions %>
-<% elsif @model == 'review' %>
-	<h3>Reviews search for "<%= @content %>"</h3>
-<%= render 'users/users/show_reviews_all', reviews: @reviews %>
-<% end %>
+<div class="mx-auto" style="width: 1000px;">
+
+ <% if @model == 'user' %>
+	<h3 class="mb-5">会員検索 ＝ "<%= @content %>"</h3>
+    <%= render 'users/users/index_follow' %>
+ <% elsif @model == 'opinion' %>
+	<h3 class="mb-5">投稿検索 ＝ "<%= @content %>"</h3>
+    <%= render 'users/users/show_opinions_all', opinions: @opinions %>
+ <% elsif @model == 'review' %>
+	<h3 class="mb-5">投稿記事検索 ＝ "<%= @content %>"</h3>
+    <%= render 'users/users/show_reviews_all', reviews: @reviews %>
+ <% end %>
+
+</div>
