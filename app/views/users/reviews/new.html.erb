@@ -1,21 +1,38 @@
-<%= render 'layouts/errors', obj: @review %>
-<h1>新規投稿記事</h1>
-<!-- form_with部分 -->
-<%= form_with model: @review, url: '/users/reviews', method: :post do |f| %>
-  <h4>記事のタイトル</h4>
-  <%= f.text_field :review_title %>
+<div class="mx-auto mt-4" style="width: 600px;">
 
-  <h4>本文</h4>
-  <%= f.text_area :review_body %>
+  <%= render '/layouts/errors', obj: @review %>
 
-  <h4>題材にした本の名前（必須）</h4>
-  <%= f.text_field :book_name %>
+  <h1 class="text-center mt-5 mr-3">新規投稿記事</h1>
 
-  <h4>題材にした本の画像（任意）</h4>
-  <%= f.file_field :image, accept: "image/*" %>
+    <%= form_with model: @review, url: '/users/reviews', method: :post do |f| %>
 
-  <%= f.submit '投稿' %>
-<% end %>
+    <div class="field mt-4">
+      <h4>記事のタイトル</h4>
+      <%= f.text_field :review_title, size: 80 %>
+    </div>
 
-<h6>※題材にした本の名前は絶対に入れてください。</h6>
-<h6>※意図の不明なもの、あるいは管理人が不適切と判断したものは削除されることがあります。</h6>
+    <div class="field mt-4">
+    <h4>本文</h4>
+    <%= f.text_area :review_body, size: "83x10" %>
+    </div>
+
+    <div class="field mt-4">
+    <h4>題材にした本の名前（必須）</h4>
+    <%= f.text_field :book_name, size: 50 %>
+    </div>
+
+    <div class="field mt-4">
+    <h4>題材にした本の画像（任意）</h4>
+    <%= f.file_field :image, accept: "image/*" %>
+    </div>
+
+    <div class="field mt-5 ml-5">
+      <%= f.submit 'この内容の記事を投稿します', class: 'btn btn-primary btn-block' %>
+    </div>
+
+    <% end %>
+
+<h6 class="mt-5">※題材にした本の名前は絶対に入力してください。</h6>
+<h6>※意図の不明な記事、あるいは管理人が不適切と判断した記事は削除されることがあります。</h6>
+
+</div>

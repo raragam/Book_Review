@@ -54,7 +54,7 @@
              <%= link_to users_review_review_favorites_path(@review, params: { review: { up: 2} }), method: :post do %>
              ♡<%= @review.review_favorites.count %> いいね と思ったらこちらのボタンを押してください。
              <% end %><br>
-             <div class="mt-3 mb-5">
+             <div class="mt-3 mb-4">
                ※いいね は一人一個まで可能です。<br>
                  ハートに色がついている場合、あなたは既に押されています。
              </div>
@@ -72,18 +72,16 @@
 
        </div>
 
-    <h2>コメントは現在<%= @review.review_comments.count %>件です。</h2>
+    <h2 class="mx-auto" style="width: 400px;">コメントは現在<%= @review.review_comments.count %>件です。</h2>
 
       <% if user_signed_in? %>
 
           <%= form_with(model:[@review, @review_comment], url: '/users/reviews/'+"#{@review.id}"+'/review_comments', method: :post) do |f| %>
-              <%= f.text_area :review_comment, size: "78x5" %><br>
+              <%= f.text_area :review_comment, size: "78x5", class:"mt-3" %><br>
               <%= f.submit '送信', class: "btn btn-primary btn-block mt-2" %>
           <% end %>
 
       <% else %>
-
-          <div>コメントはログイン状態でのみ可能です</div>
 
       <% end %>
 

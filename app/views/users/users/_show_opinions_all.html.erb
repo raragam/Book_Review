@@ -17,9 +17,14 @@
    <tbody>
       <tr>
         <td>
-          <%= link_to users_user_path(opinion.user.id) do %>
-            <%= image_tag opinion.user.get_profile_image %><br>
-            <%= opinion.user.name %>
+          <% if user_signed_in? %>
+            <%= link_to users_user_path(opinion.user.id) do %>
+               <%= image_tag opinion.user.get_profile_image %><br>
+               <%= opinion.user.name %>
+            <% end %>
+          <% else %>
+               <%= image_tag opinion.user.get_profile_image %><br>
+               <%= opinion.user.name %>
           <% end %>
        </td>
         <td>
