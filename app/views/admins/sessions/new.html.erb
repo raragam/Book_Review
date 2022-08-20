@@ -1,27 +1,30 @@
-<h2>Log in</h2>
+<div class="container mx-auto" style="width: 300px;">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <h2 class="text-center mt-5 mr-3">ログイン</h2>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, autocomplete: "name" %>
-  </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <div class="field mt-4">
+          <%= f.label :name %><br>
+          <%= f.text_field :name, autocomplete: "name", size: 30 %>
+        </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+        <div class="field mt-4">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password", size: 30 %>
+        </div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+      <% if devise_mapping.rememberable? %>
+        <div class="field mt-2 ml-2">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
 
-<%= render "admins/shared/links" %>
+        <div class="actions mt-4 mr-2">
+          <%= f.submit "この内容でログインします", class: 'btn btn-primary btn-block' %>
+        </div>
+
+    <% end %>
+
+</div>
