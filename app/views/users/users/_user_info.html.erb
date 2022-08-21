@@ -5,8 +5,19 @@
   <table class="table">
     <tbody>
       <tr>
-        <th><img  src="/assets/no_image.jpg" /></th>
-        <th></th>
+        <th>
+          <% if @user.is_deleted == false %>
+            <%= image_tag user.get_profile_image %>
+          <% elsif @user.is_deleted == true %>
+            <img  src="/assets/mark_batsu_illust_898.png" width="100%" />
+          <% end %>
+        </th>
+        <th>
+          <% if @user.is_deleted == true %>
+            この会員は退会済です。<br>
+            そのためアカウント名を除く全てが非表示となります。
+          <% end %>
+        </th>
       </tr>
       <tr>
         <th>アカウント名</th>
@@ -14,61 +25,84 @@
       </tr>
       <tr>
         <th>自己紹介</th>
-        <th><%= user.introduction %></th>
+        <th>
+          <% if @user.is_deleted == false %>
+            <%= user.introduction %>
+          <% end %>
+        </th>
       </tr>
       <tr>
         <th>フォロー一覧</th>
-        <th><%= link_to user.followings.count, users_user_followings_path(user) %></th>
+        <th>
+          <% if @user.is_deleted == false %>
+            <%= link_to user.followings.count, users_user_followings_path(user) %>
+          <% end %>
+        </th>
       </tr>
       <tr>
         <th>フォロワー一覧</th>
-        <th><%= link_to user.followers.count, users_user_followers_path(user) %></th>
+        <th>
+          <% if @user.is_deleted == false %>
+            <%= link_to user.followers.count, users_user_followers_path(user) %>
+          <% end %>
+        </th>
       </tr>
       <tr>
         <th>ブックマークした投稿</th>
-        <th><%=link_to"お気に入りの投稿", opinion_favorites_users_user_path(user) %></th>
+        <th>
+          <% if @user.is_deleted == false %>
+            <%=link_to"お気に入りの投稿", opinion_favorites_users_user_path(user) %>
+          <% end %>
+        </th>
       </tr>
       <tr>
         <th>ブックマークした記事</th>
-        <th><%=link_to"お気に入りの記事", review_favorites_users_user_path(user) %></th>
+        <th>
+          <% if @user.is_deleted == false %>
+            <%=link_to"お気に入りの記事", review_favorites_users_user_path(user) %>
+          <% end %>
+        </th>
       </tr>
     </tbody>
  </table>
 
-    <% if user == current_user %>
+      <% if user == current_user %>
 
-      <div class="row">
+        <div class="row">
 
-        <%= link_to edit_users_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
-          <i>編集ボタン</i>
-        <% end %>
+            <%= link_to edit_users_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
+                <i>編集ボタン</i>
+            <% end %>
 
-        <%= link_to users_user_confirm_unsubscribe_path(user), class: 'btn btn-outline-secondary btn-block' do %>
-          <i>退会ボタン</i>
-        <% end %>
+            <%= link_to users_user_confirm_unsubscribe_path(user), class: 'btn btn-outline-secondary btn-block' do %>
+                <i>退会ボタン</i>
+            <% end %>
 
-      </div>
+        </div>
 
-    <% else %>
+      <% else %>
 
-      <div class="row">
+            <% if @user.is_deleted == false %>
 
-        <%= link_to edit_users_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
-          <i>編集ボタン</i>
-        <% end %>
+        <div class="row">
 
-        <%= link_to new_users_user_report_path(user), class: 'btn btn-outline-secondary btn-block' do %>
-          <i>通報ボタン</i>
-        <% end %>
+            <%= link_to edit_users_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
+                <i>編集ボタン</i>
+            <% end %>
 
-      </div>
+            <%= link_to new_users_user_report_path(user), class: 'btn btn-outline-secondary btn-block' do %>
+                <i>通報ボタン</i>
+            <% end %>
 
-    <% end %>
+        </div>
+
+            <% end %>
+
+      <% end %>
 
   <% else %>
 
   <h2 class="text-center mt-3 mb-3">会員情報</h2>
-
 
   <table class="table">
     <tbody>

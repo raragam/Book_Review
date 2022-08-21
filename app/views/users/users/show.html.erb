@@ -23,6 +23,8 @@
 
         <% else %>
 
+  <% if @user.is_deleted == false %>
+
         <h2 class="text-center mt-3">ここは、<%= @user.name %> さんの詳細ページです。</h2>
 
           <%= link_to opinions_user_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block mt-5 mr-5' do %>
@@ -32,6 +34,12 @@
           <%= link_to reviews_user_index_users_user_path(@user), class: 'btn btn-outline-secondary btn-block mt-5 mr-5' do %>
               <i class="fas fa-user-cog"><%= @user.name %> さんの投稿記事一覧</i>
           <% end %>
+
+  <% elsif @user.is_deleted == true %>
+
+          <h1 class="text-center m-5"><%= @user.name %> さんは退会しています。</h1>
+
+  <% end %>
 
         <% end %>
 

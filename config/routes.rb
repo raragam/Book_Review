@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :admins do
+    get 'opinion_comments/destroy'
+  end
+  namespace :admins do
+    get 'review_comments/destroy'
+  end
   devise_for :users, controllers: {
      sessions:      'users/sessions',
      passwords:     'users/passwords',
@@ -51,12 +57,12 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :opinions do
       resource :opinion_favorites, only: [:create, :destroy]
-      resources :opinion_comments, only: [:create, :destroy]
+      resources :opinion_comments, only: [:destroy]
     end
 
     resources :reviews do
       resource :review_favorites, only: [:create, :destroy]
-      resources :review_comments, only: [:create, :destroy]
+      resources :review_comments, only: [:destroy]
     end
 
     resources :users do

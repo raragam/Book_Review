@@ -18,40 +18,76 @@
     <tbody>
      <tr>
       <td>
-      <%= image_tag review.get_image, size: "100x100" %><br>
-      <%= review.book_name %>
+        <% if review.user.is_deleted == false %>
+           <%= image_tag review.get_image, size: "100x100" %><br>
+           <%= review.book_name %>
+        <% end %>
       </td>
-      <td><%= link_to review.review_title, users_review_path(review.id) %></td>
-      <td><% if user_signed_in? %>
-             <%= link_to users_user_path(review.user.id) do %>
-               <%= image_tag review.user.get_profile_image %><br>
-               <%= review.user.name %>
-             <% end %>
-          <% else %>
-               <%= image_tag review.user.get_profile_image %><br>
-               <%= review.user.name %>
+      <td>
+        <% if review.user.is_deleted == false %>
+          <%= link_to review.review_title, users_review_path(review.id) %>
+        <% elsif review.user.is_deleted == true %>
+          <%= link_to users_review_path(review.id) do %>
+            投稿者退会のため、非表示になりました。
           <% end %>
+        <% end %>
       </td>
-      <td><%= review.review_comments.count %></td>
-      <td><% if user_signed_in? %>
+      <td>
+        <% if review.user.is_deleted == false %>
 
-             <% if review.favorited_by?(current_user) %>
-             <p>
-               <%= link_to users_review_review_favorites_path(review, params: { review: { down: 1} }), method: :delete do %>
-               ♥<%= review.review_favorites.count %> いいね
-               <% end %>
-             </p>
-             <% else %>
-             <p>
-               <%= link_to users_review_review_favorites_path(review, params: { review: { up: 1} }), method: :post do %>
-               ♡<%= review.review_favorites.count %> いいね
-               <% end %>
-             </p>
-             <% end %>
+            <% if user_signed_in? %>
+
+              <%= link_to users_user_path(review.user.id) do %>
+                <%= image_tag review.user.get_profile_image %><br>
+                <%= review.user.name %>
+              <% end %>
+
+            <% else %>
+
+                <%= image_tag review.user.get_profile_image %><br>
+                <%= review.user.name %>
+
+            <% end %>
+
+        <% elsif review.user.is_deleted == true %>
+
+                <img  src="/assets/mark_batsu_illust_898.png" width="85px" /><br>
+                <%= review.user.name %>
+
+        <% end %>
+
+      </td>
+      <td>
+        <% if review.user.is_deleted == false %>
+           <%= review.review_comments.count %>
+        <% end %>
+      </td>
+      <td>
+        <% if review.user.is_deleted == false %>
+
+          <% if user_signed_in? %>
+
+              <% if review.favorited_by?(current_user) %>
+
+                <%= link_to users_review_review_favorites_path(review, params: { review: { down: 1} }), method: :delete do %>
+                  ♥<%= review.review_favorites.count %> いいね
+                <% end %>
+
+              <% else %>
+
+                <%= link_to users_review_review_favorites_path(review, params: { review: { up: 1} }), method: :post do %>
+                  ♡<%= review.review_favorites.count %> いいね
+                <% end %>
+
+              <% end %>
 
           <% else %>
+
                 ♥<%= review.review_favorites.count %> いいね
+
           <% end %>
+
+        <% end %>
       </td>
       <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
      </tr>

@@ -56,7 +56,7 @@
             <% end %>
           </td>
           <td><%= opinion_comment.opinion_comment %></td>
-          <td><%= link_to "管理者として削除する", users_opinion_opinion_comment_path(opinion_comment.id), method: :delete %></td>
+          <td><%= link_to "管理者として削除する", admins_opinion_opinion_comment_path(@opinion.id, opinion_comment.id), method: :delete %></td>
          </tr>
          <% end %>
        </tbody>

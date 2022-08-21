@@ -51,7 +51,7 @@
           <% end %>
         </td>
         <td><%= review_comment.review_comment %></td>
-        <td><%= link_to "削除", users_review_review_comment_path(@review.id, review_comment.id), method: :delete %></td>
+        <td><%= link_to "削除", admins_review_review_comment_path(@review.id, review_comment.id), method: :delete %></td>
         <td><%= review_comment.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
      <% end %>

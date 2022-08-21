@@ -17,40 +17,64 @@
    <tbody>
       <tr>
         <td>
-          <% if user_signed_in? %>
-            <%= link_to users_user_path(opinion.user.id) do %>
-               <%= image_tag opinion.user.get_profile_image %><br>
-               <%= opinion.user.name %>
-            <% end %>
-          <% else %>
-               <%= image_tag opinion.user.get_profile_image %><br>
-               <%= opinion.user.name %>
+          <% if opinion.user.is_deleted == false %>
+              <% if user_signed_in? %>
+                  <%= link_to users_user_path(opinion.user.id) do %>
+                     <%= image_tag opinion.user.get_profile_image %><br>
+                     <%= opinion.user.name %>
+                  <% end %>
+              <% else %>
+                     <%= image_tag opinion.user.get_profile_image %><br>
+                     <%= opinion.user.name %>
+              <% end %>
+          <% elsif opinion.user.is_deleted == true %>
+                     <img  src="/assets/mark_batsu_illust_898.png" width="85px" /><br>
+                     <%= opinion.user.name %>
           <% end %>
        </td>
         <td>
-          <%= link_to users_opinion_path(opinion.id) do %>
-            <%= opinion.opinion_title %>
+          <% if opinion.user.is_deleted == false %>
+             <%= link_to users_opinion_path(opinion.id) do %>
+                <%= opinion.opinion_title %>
+             <% end %>
+          <% elsif opinion.user.is_deleted == true %>
+             <%= link_to users_opinion_path(opinion.id) do %>
+                投稿者退会のため、非表示になりました。
+             <% end %>
           <% end %>
        </td>
-        <td><%= opinion.opinion_body %></td>
-        <td><%= opinion.opinion_comments.count %></td>
-        <td><% if user_signed_in? %>
+        <td>
+          <% if opinion.user.is_deleted == false %>
+             <%= opinion.opinion_body %>
+          <% end %>
+        </td>
+        <td>
+          <% if opinion.user.is_deleted == false %>
+             <%= opinion.opinion_comments.count %>
+          <% end %>
+        </td>
+        <td>
+          <% if opinion.user.is_deleted == false %>
 
-             <% if opinion.favorited_by?(current_user) %>
-               <%= link_to users_opinion_opinion_favorites_path(opinion, params: { opinion: { down: 1} }), method: :delete do %>
-               ♥<%= opinion.opinion_favorites.count %> いいね
+             <% if user_signed_in? %>
+
+               <% if opinion.favorited_by?(current_user) %>
+                  <%= link_to users_opinion_opinion_favorites_path(opinion, params: { opinion: { down: 1} }), method: :delete do %>
+                    ♥<%= opinion.opinion_favorites.count %> いいね
+                  <% end %>
+               <% else %>
+                  <%= link_to users_opinion_opinion_favorites_path(opinion, params: { opinion: { up: 1} }), method: :post do %>
+                    ♡<%= opinion.opinion_favorites.count %> いいね
+                  <% end %>
                <% end %>
+
              <% else %>
-               <%= link_to users_opinion_opinion_favorites_path(opinion, params: { opinion: { up: 1} }), method: :post do %>
-               ♡<%= opinion.opinion_favorites.count %> いいね
-               <% end %>
+
+                    ♥<%= opinion.opinion_favorites.count %> いいね
+
              <% end %>
 
-             <% else %>
-
-               ♥<%= opinion.opinion_favorites.count %> いいね
-
-             <% end %>
+          <% end %>
         </td>
         <td><%= opinion.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
