@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2022_08_21_111113) do
   create_table "contacts", force: :cascade do |t|
     t.string "contact_title"
     t.text "contact_body"
-    t.integer "user_id"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

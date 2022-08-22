@@ -10,7 +10,30 @@
 
     <div class="col-md-8 offset-md-1">
 
-      <%= render '/users/users/show_contacts_all', contacts: @contacts %>
+      <%#= render '/users/users/show_contacts_all', contacts: @contacts %>
+
+            <h2>通達一覧</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>通達</th>
+        <th>投稿日</th>
+      </tr>
+    </thead>
+
+  <% @contact.each do |contact| %>
+
+    <tbody>
+      <tr>
+        <td><%= link_to contact.contact_title, users_contact_path(contact.id) %></td>
+        <td><%= contact.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+    </tbody>
+
+  <% end %>
+
+  </table>
 
     </div>
   </div>

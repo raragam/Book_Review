@@ -1,14 +1,14 @@
 <div class="mx-auto mt-4" style="width: 600px;">
 
   <h4 class="mx-auto text-center mt-4" style="width: 400px;">管理人からの通達</h4>
-  <h6 class="mx-auto text-center mt-1" style="width: 400px;">投稿日：<%= @contact.created_at.strftime('%Y/%m/%d') %></h6>
+  <h6 class="mx-auto text-center mt-1" style="width: 400px;">投稿日：<%#= contact.created_at.strftime('%Y/%m/%d') %></h6>
 
-    <h1 class="mx-auto mt-4" style="width: 400px;"><%= @contact.contact_title %></h1>
+    <h1 class="mx-auto mt-4" style="width: 400px;"><%#= contact.contact_title %></h1>
 
-       <h4 class="mx-auto mt-4" style="width: 400px;"><%= @contact.contact_body %></h4>
+       <h4 class="mx-auto mt-4" style="width: 400px;"><%#= contact.contact_body %></h4>
 
        <div class="text-center mt-5">
-          <%= link_to "削除", admins_contact_path(@contact.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"m-3"  %>
+          <%#= link_to "削除", admins_contact_path(@contact.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"m-3"  %>
           <%= link_to "記事一覧に戻る", admins_contacts_path, class:"m-3" %>
        </div>
 
