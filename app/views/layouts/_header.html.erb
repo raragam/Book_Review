@@ -14,7 +14,8 @@
                  <li class="nav-item nav-link"><%= link_to "投稿一覧", admins_opinions_path, class:"link btn btn-light"  %></li>
                  <li class="nav-item nav-link"><%= link_to "投稿記事一覧", admins_reviews_path, class:"link btn btn-light" %></li>
                  <li class="nav-item nav-link"><%= link_to "通報一覧", admins_reports_path, class:"link btn btn-light" %></li>
-                 <li class="nav-item nav-link"><%= link_to 'お問い合わせ一覧', admins_contacts_path, class:"link btn btn-light" %></li>
+                 <li class="nav-item nav-link"><%= link_to '通達投稿フォーム', new_admins_contact_path, class:"link btn btn-light" %></li>
+                 <li class="nav-item nav-link"><%= link_to '通達一覧', admins_contacts_path, class:"link btn btn-light" %></li>
                  <li class="nav-item nav-link"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"link btn btn-light" %></li>
               <% elsif user_signed_in? %>
                  <li class="nav-item nav-link"><%= link_to 'マイページ', users_user_path(current_user.id), class:"link btn btn-light" %></li>
@@ -22,7 +23,6 @@
                  <li class="nav-item nav-link"><%= link_to '投稿一覧', users_opinions_path, class:"link btn btn-light" %></li>
                  <li class="nav-item nav-link"><%= link_to '投稿記事一覧', users_reviews_path, class:"link btn btn-light" %></li>
                  <li class="nav-item nav-link"><%= link_to '記事投稿フォーム', new_users_review_path, class:"link btn btn-light" %></li>
-                 <li class="nav-item nav-link"><%= link_to 'お問い合わせ', new_users_contact_path(current_user.id), class:"link btn btn-light" %></li>
                  <li class="nav-item nav-link"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"link btn btn-light mr-2" %></li>
                         <%= form_with url: users_user_search_path(current_user), local: true, method: :get do |f| %>
                         <div class="mt-2">

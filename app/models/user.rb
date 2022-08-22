@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable
+         :recoverable, :rememberable, :validatable
 
   #投稿
   has_many :opinions, dependent: :destroy
@@ -98,7 +98,11 @@ class User < ApplicationRecord
   #validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :email, uniqueness: true
 
-  validates :password, length: { minimum: 6 }
+  # validates :password, length: { minimum: 6 }, on: :create
+
+  # with_options if: :is_users? do |users|
+  #   users.validates :password, length: { minimum: 6 }
+  # end
 
   validates :introduction, length: { maximum: 50 }
 

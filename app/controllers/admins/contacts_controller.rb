@@ -1,32 +1,47 @@
 class Admins::ContactsController < ApplicationController
 
+	def new
+    @contact = Contact.new
+  end
+
 	def index
-		@users = User.all
+		@contacts = Contact.all
 	end
+
+	def create
+    @contact = Contact.new(contact_params)
+    if @contact.save
+       flash[:notice] = "通達を投稿しました。"
+       redirect_to admins_contact_path(@contact.id)
+    else
+       render :new
+    end
+  end
 
 	def edit
 		@contact = Contact.find(params[:id])
 	end
 
 	def update
-		contact = Contact.find(params[:id]) #contact_mailer.rbの引数を指定
-	   	contact.update(contact_params)
-	   	user = contact.user
-	   	ContactMailer.send_when_admin_reply(user, contact).deliver_now #確認メールを送信
-	   	redirect_to admins_items_path
+    @contact = Contact.find(params[:id])
+    if @contact.update(contact_params)
+      flash[:notice] = "通達を変更しました。"
+      redirect_to admins_contact_path(@contact.id)
+    else
+      render :edit
+    end
 	end
 
 	def destroy
-		contact = Contact.find(params[:id])
-		contact.destroy
-		@contacts = Contact.page(params[:page]).order(created_at: :desc).per(16)
-		@users = User.all
-		render :index
+		@contact = Contact.find(params[:id])
+		@contact.destroy
+		flash[:notice] = "投稿を削除しました。"
+    redirect_to '/admins/contacts'
 	end
 
 	private
 	def contact_params
-		params.require(:contact).permit(:contact_title, :contact_body, :reply)
+		params.require(:contact).permit(:contact_title, :contact_body)
 	end
 
 end

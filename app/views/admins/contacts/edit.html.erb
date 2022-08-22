@@ -1,14 +1,13 @@
-<h2>お問い合わせ内容</h2>
-    <%= form_for @contact, url: admins_contact_path do |f| %>
-        <h3>顧客名</h3>
-	    <%= @contact.user.name %>さん
-	    <h3>問い合わせ日</h3>
-	    <%= @contact.created_at.strftime("%Y年%m月%d日 ") %>
-	    <h3>タイトル</h3>
-	    <%= @contact.title %>
-	    <h3>問い合わせ内容</h3>
-	    <%= @contact.body %>
-	    <h3>返信</h3>
-	    <%= f.text_area :reply, class:"form-control", placeholder: "返信内容" %>
-	    <%= f.submit "送信" %>
-    <% end %>
+<h1>レビュー記事編集画面</h1>
+
+<%= form_with model: @contact, url: users_contact_path(@contact.id), method: :patch do |f| %>
+
+  <h4>タイトル</h4>
+  <%= f.text_field :contact_title %>
+
+  <h4>本文</h4>
+  <%= f.text_area :contact_body %>
+
+  <%= f.submit '保存' %>
+
+<% end %>

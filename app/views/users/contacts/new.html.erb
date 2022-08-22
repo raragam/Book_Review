@@ -1,8 +1,0 @@
- <h2 class="contact-title">お問い合わせフォーム</h2>
-      <%= form_with model: @contact, url: '/users/contacts', method: :post do |f| %>
-          <%= f.label :タイトル %>
-              <%= f.text_field :contact_title, class:"form-control" %>
-          <%= f.label :内容 %>
-              <%= f.text_field :contact_body, class:"form-control" %>
-          <%= f.submit "送信" %>
-      <% end %>

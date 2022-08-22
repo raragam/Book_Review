@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 2022_08_21_111113) do
   create_table "contacts", force: :cascade do |t|
     t.string "contact_title"
     t.text "contact_body"
-    t.text "reply"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -134,6 +133,7 @@ ActiveRecord::Schema.define(version: 2022_08_21_111113) do
     t.datetime "remember_created_at"
     t.string "name"
     t.string "introduction"
+    t.text "message"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
