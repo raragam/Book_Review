@@ -18,6 +18,11 @@ class Admins::ContactsController < ApplicationController
     end
   end
 
+  def show
+    @contact = Contact.find(params[:id])
+    @contacts = Contact.all
+  end
+
 	def edit
 		@contact = Contact.find(params[:id])
 	end
@@ -35,7 +40,7 @@ class Admins::ContactsController < ApplicationController
 	def destroy
 		@contact = Contact.find(params[:id])
 		@contact.destroy
-		flash[:notice] = "投稿を削除しました。"
+		flash[:notice] = "通達を削除しました。"
     redirect_to '/admins/contacts'
 	end
 

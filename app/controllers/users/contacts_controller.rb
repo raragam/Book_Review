@@ -7,7 +7,6 @@ class Users::ContactsController < ApplicationController
 
 	def show
     @contact = Contact.find(params[:id])
-    @user = @contact.user
   end
 
 	private
