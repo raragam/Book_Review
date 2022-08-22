@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   namespace :admins do
     get 'review_comments/destroy'
   end
+
   devise_for :users, controllers: {
      sessions:      'users/sessions',
      passwords:     'users/passwords',
-     registrations: 'users/registrations'
-   }
+     registrations: 'users/registrations',
+     #omniauth_callbacks: 'users/omniauth_callbacks'
+  }
 
   namespace :users do
     resources :opinions do
@@ -22,6 +24,8 @@ Rails.application.routes.draw do
       resource :review_favorites, only: [:create, :destroy]
       resources :review_comments, only: [:create, :destroy]
     end
+
+    resources :contacts
 
     resources :users do
        member do
@@ -48,7 +52,19 @@ Rails.application.routes.draw do
 
   end
 
-  devise_for :admins, controllers: {
+  devise_for :admins,
+
+    # path: 'auth',
+    # path_names: {
+    # sign_in: 'xxxxxxxxxx',
+    # sign_out: 'xxxxxxxxxx',
+    # password: 'xxxxxxxxxx',
+    # confirmation: 'xxxxxxxxxx',
+    # unlock: 'xxxxxxxxxx',
+    # registration: 'xxxxxxxxxx',
+    # sign_up: 'xxxxxxxxxx' },
+
+     controllers: {
      sessions:      'admins/sessions',
      passwords:     'admins/passwords',
      registrations: 'admins/registrations'
@@ -75,6 +91,8 @@ Rails.application.routes.draw do
     end
 
     resources :reports, only: [:index, :show, :update]
+
+    resources :contacts
 
   end
 

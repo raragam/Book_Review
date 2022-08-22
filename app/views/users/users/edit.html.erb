@@ -27,6 +27,24 @@
 
       <div class="form-group">
         <div>
+          <label>パスワード</label>
+        </div>
+        <div>
+          <%= f.password_field :password, autofocus: true, class: 'form-control password' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div>
+          <label>確認用パスワード</label>
+        </div>
+        <div>
+          <%= f.password_field :password_confirmation, autofocus: true, class: 'form-control password' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div>
           <label for="user_image">登録画像</label>
         </div>
         <div>

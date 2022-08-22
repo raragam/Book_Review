@@ -1,0 +1,42 @@
+<h1>お問い合わせ一覧</h1>
+
+  <table class="table">
+
+    <thead>
+      <tr>
+        <th></th>
+        <th>内容</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+  <% contacts.each do |contact| %>
+
+    <tbody>
+     <tr>
+      <td>
+        <%= image_tag contact.user.get_profile_image %><br>
+        <%= contact.user.name %>
+      </td>
+      <td>
+        <%= link_to contact.contact_title, users_contact_path(contact.id) %>
+      </td>
+      <td>
+        <%= contact.contact_body %>
+      </td>
+      <td>
+
+      </td>
+      <td>
+
+      </td>
+      <td></td>
+     </tr>
+    </tbody>
+
+  <% end %>
+
+  </table>

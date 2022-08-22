@@ -37,8 +37,10 @@ class Users::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
     if @user.update(user_params)
       flash[:notice] = "会員情報を編集しました。"
+      sign_in(@user, bypass: true)
       redirect_to users_user_path(@user.id)
     else
       render :edit

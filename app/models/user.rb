@@ -2,10 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
-  #プロフィール画像
-  has_one_attached :profile_image
+         :recoverable, :rememberable
 
   #投稿
   has_many :opinions, dependent: :destroy
@@ -30,14 +27,29 @@ class User < ApplicationRecord
   has_many :reports, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
   has_many :reverse_of_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
 
+  #メール
+  has_many :contact, dependent: :destroy
+
+  #プロフィール画像
+  has_one_attached :profile_image
+
   #プロフィール画像
 
+  # def get_profile_image
+  #   unless profile_image.attached?
+  #     file_path = Rails.root.join('app/assets/images/no_image.jpg')
+  #     profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+  #   end
+  #   #byebug
+  #   profile_image.variant(resize_to_limit: [100, 100]).processed
+  # end
+
   def get_profile_image
-    unless profile_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    if profile_image.attached?
+      profile_image.variant(resize_to_limit: [100, 100]).processed
+    else
+      'no_image.jpg'
     end
-    profile_image.variant(resize_to_limit: [100, 100]).processed
   end
 
   #フォロー機能
@@ -74,8 +86,20 @@ class User < ApplicationRecord
     super && (is_deleted == false)
   end
 
+  #バリデーション
+
+  validates :name, presence: true
   validates :name, uniqueness: true
   validates :name, length: { minimum: 2, maximum: 20 }
+
+  #これがメールアドレス用のバリデーション。テストデプロイの際はコメントアウトを外す。
+  #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true
+  #validates :email, format: { with: VALID_EMAIL_REGEX }
+  validates :email, uniqueness: true
+
+  validates :password, length: { minimum: 6 }
+
   validates :introduction, length: { maximum: 50 }
 
 end
