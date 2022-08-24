@@ -5,4 +5,7 @@ class Report < ApplicationRecord
 
   enum status: { waiting: 0, keep: 1, complete: 2 }
 
+  validates :reason, presence: true
+  validates :url, presence: true
+
 end

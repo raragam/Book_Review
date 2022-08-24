@@ -35,38 +35,38 @@
         </tbody>
       </table>
 
-    <% if user_signed_in? %>
+      <% if user_signed_in? %>
 
           <% if @opinion.favorited_by?(current_user) %>
 
             <%= link_to users_opinion_opinion_favorites_path(@opinion, params: { opinion: { down: 2} }), method: :delete do %>
-            ♥<%= @opinion.opinion_favorites.count %> いいね
+            ♥<%= @opinion.opinion_favorites.count %> いいね と思ったらこちらを押してください。
             <% end %>
 
           <% else %>
 
             <%= link_to users_opinion_opinion_favorites_path(@opinion, params: { opinion: { up: 2} }), method: :post do %>
-            ♡<%= @opinion.opinion_favorites.count %> いいね
+            ♡<%= @opinion.opinion_favorites.count %> いいね と思ったらこちらを押してください。
             <% end %>
 
           <% end %>
 
           <h4>コメント投稿</h4>
 
-        <%= form_with(model:[@opinion, @opinion_comment], url: '/users/opinions/'+"#{@opinion.id}"+'/opinion_comments', method: :post) do |f| %>
-          <%= f.text_area :opinion_comment, size: "96x5" %><br>
-          <%= f.submit '送信', class: "btn btn-primary btn-block mt-2" %>
-        <% end %>
+            <%= form_with(model:[@opinion, @opinion_comment], url: '/users/opinions/'+"#{@opinion.id}"+'/opinion_comments', method: :post) do |f| %>
+              <%= f.text_area :opinion_comment, size: "96x5" %><br>
+              <%= f.submit '送信', class: "btn btn-primary btn-block mt-2" %>
+            <% end %>
 
-    <% else %>
+      <% else %>
 
-    ♥<%= @opinion.opinion_favorites.count %> いいね
+            ♥<%= @opinion.opinion_favorites.count %> いいね
 
-    <div class="mt-4 mr-2">
-        ※ブックマークおよびコメントは<%= link_to "ログイン", new_user_session_path %>ユーザーのみ可能となります。
-    </div>
+          <div class="mt-4 mr-2">
+             ※ブックマークおよびコメントは<%= link_to "ログイン", new_user_session_path %>ユーザーのみ可能となります。
+          </div>
 
-    <% end %>
+      <% end %>
 
     <h4 class="mt-5">コメントは現在<%= @opinion.opinion_comments.count %>件です。</h4>
 

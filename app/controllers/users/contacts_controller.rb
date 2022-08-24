@@ -1,6 +1,7 @@
 class Users::ContactsController < ApplicationController
 
 	def index
+	  @opinion = Opinion.new
     @contact = Contact.all
     @user = current_user
   end

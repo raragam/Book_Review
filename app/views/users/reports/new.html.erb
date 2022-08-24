@@ -1,8 +1,10 @@
 <div class="container mx-auto" style="width: 800px;">
 
+  <%= render '/layouts/errors', obj: @report %>
+
 <h2 class="text-center mb-5">通報</h2>
 
-<%= form_with(model:[@user, @report], url: '/users/users/'+"#{@user.id}"+'/reports', method: :post) do |f| %>
+  <%= form_with(model:[@user, @report], url: '/users/users/'+"#{@user.id}"+'/reports', method: :post) do |f| %>
 
 
     <h3>該当URL</h3>
@@ -11,6 +13,6 @@
     <%= f.text_area :reason, size: "102x10", class: "mb-3" %>
     <%= f.submit "通報する", class: "btn btn btn-danger btn-block" %>
 
-<% end %>
+  <% end %>
 
  </div>

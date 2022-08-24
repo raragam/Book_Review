@@ -1,0 +1,27 @@
+ja:
+  activerecord:
+    models:
+      opinion: 投稿
+      opinion_comment: 投稿コメント
+      review: 記事
+      review_comment: 記事コメント
+      contact: お知らせ
+      report: 通報
+    attributes:
+      opinion:
+        opinion_title: 投稿のタイトル
+        opinion_body: 投稿の内容
+      opinion_comment:
+        opinion_comment: コメント
+      review:
+        review_title: 記事のタイトル
+        review_body: 記事の内容
+        book_name: 本の名前
+      review_comment:
+        review_comment: コメント
+      contact:
+        contact_title: お知らせのタイトル
+        contact_body: お知らせの内容
+      report:
+        url: URL
+        reason: 通報理由
