@@ -24,7 +24,7 @@
       <div><h2>原作：<%= @review.book_name %></h2></div>
     </div>
 
-       <h4 class="mx-auto mt-4" style="width: 400px;"><%= @review.review_body %></h4>
+       <h4 class="mx-auto mt-4" style="width: 400px;"><%=safe_join(@review.review_body.split("\n"),tag(:br))%><%#= @review.review_body %></h4>
 
        <div class="text-center mt-5">
         <% if @review.user == current_user %>
@@ -42,20 +42,20 @@
           <% if @review.favorited_by?(current_user) %>
 
              <%= link_to users_review_review_favorites_path(@review, params: { review: { down: 2} }), method: :delete do %>
-             ♥<%= @review.review_favorites.count %> いいね と思ったらこちらのボタンを押してください。
+             ♥<%= @review.review_favorites.count %> いいね と思ったらこちらを押してください。
              <% end %><br>
              <div class="mt-3 mb-5">
-               ※いいね は一人一個まで可能です。<br>
+               ※いいね （ブックマーク）は、一人一個まで可能です。<br>
                  ハートに色がついている場合、あなたは既に押されています。
              </div>
 
       <% else %>
 
              <%= link_to users_review_review_favorites_path(@review, params: { review: { up: 2} }), method: :post do %>
-             ♡<%= @review.review_favorites.count %> いいね と思ったらこちらのボタンを押してください。
+             ♡<%= @review.review_favorites.count %> いいね と思ったらこちらを押してください。
              <% end %><br>
              <div class="mt-3 mb-4">
-               ※いいね は一人一個まで可能です。<br>
+               ※いいね （ブックマーク）は、一人一個まで可能です。<<br>
                  ハートに色がついている場合、あなたは既に押されています。
              </div>
 
@@ -65,7 +65,7 @@
 
              ♥<%= @review.review_favorites.count %> いいね
              <div class="mt-3 mb-5">
-                ※ブックマークおよびコメントは<%= link_to "ログイン", new_user_session_path %>ユーザーのみ可能となります。
+                ※いいね（ブックマーク）およびコメントは<%= link_to "ログイン", new_user_session_path %>ユーザーのみ可能となります。
             </div>
 
           <% end %>

@@ -18,7 +18,7 @@
       </tr>
       <tr>
         <td>通報理由</td>
-        <td><%= @report.reason %></td>
+        <td><%=safe_join(@report.reason.split("\n"),tag(:br))%><%#= @report.reason %></td>
       </tr>
       <tr>
         <td>該当URL</td>

@@ -5,12 +5,12 @@
 
     <h1 class="mx-auto text-center mt-4" style="width: 1000px;"><%= @contact.contact_title %></h1>
 
-       <h4 class="mx-auto text-center mt-4" style="width: 1000px;"><%= @contact.contact_body %></h4>
+       <h4 class="mx-auto mt-4" style="width: 570px;"><%=safe_join(@contact.contact_body.split("\n"),tag(:br))%></h4>
 
        <div class="text-center mt-5">
-          <%= link_to "記事一覧に戻る", admins_contacts_path, class:"m-3" %>
-          <%= link_to "編集", edit_admins_contact_path(@contact.id), class:"m-3" %>
-          <%= link_to "削除", admins_contact_path(@contact.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"m-3"  %>
+          <%= link_to "お知らせを編集する", edit_admins_contact_path(@contact.id), class:"m-3" %>
+          <%= link_to "削除", admins_contact_path(@contact.id), method: :delete, "data-confirm" => "このお知らせを本当に削除しますか？", class:"m-3"  %>
+          <%= link_to "お知らせ一覧に戻る", admins_contacts_path, class:"m-3" %>
        </div>
 
 </div>

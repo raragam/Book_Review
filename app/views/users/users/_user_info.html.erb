@@ -27,7 +27,7 @@
         <th>自己紹介</th>
         <th>
           <% if @user.is_deleted == false %>
-            <%= user.introduction %>
+            <%=safe_join(@user.introduction.split("\n"),tag(:br)) if @user.introduction %><%#= user.introduction %>
           <% end %>
         </th>
       </tr>
