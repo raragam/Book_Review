@@ -10,7 +10,7 @@
 
     <div class="form-group">
       <div>
-        <label>登録名</label>
+        <label>アカウント名</label>
       </div>
       <div>
         <%= f.text_field :name, autofocus: true, id:"name", class: 'form-control name' %>
@@ -37,9 +37,9 @@
 
     <div class="form-group">
       <div>
-        <label>管理人からのメッセージ</label>
+        <label>管理者から会員個人に向けた通告</label>
       </div>
-      <div>
+      <div class="mt-5 mb-5">
          <%= f.text_area :message, autofocus: true, class: 'form-control introduction' %>
       </div>
     </div>

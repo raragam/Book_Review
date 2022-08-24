@@ -1,1 +1,9 @@
+<% if @opinions.exists? %>
+
 <%= render '/users/users/show_opinions_all', opinions: @opinions %>
+
+<% else %>
+
+<h2 class="text-center mb-5">あなたは、まだ投稿していません。</h2>
+
+<% end %>

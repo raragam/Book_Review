@@ -1,1 +1,26 @@
-<%= render '/admins/users/contact_index', contacts: @contacts %>
+  <div class="mx-auto" style="width: 1200px;">
+
+      <h2>お知らせ一覧</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th>投稿日</th>
+      </tr>
+    </thead>
+
+  <% @contacts.each do |contact| %>
+
+    <tbody>
+      <tr>
+        <td><%= link_to contact.contact_title, admins_contact_path(contact.id) %></td>
+        <td><%= contact.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+    </tbody>
+
+  <% end %>
+
+  </table>
+
+  </div>

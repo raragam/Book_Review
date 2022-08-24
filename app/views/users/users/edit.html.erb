@@ -45,7 +45,7 @@
 
       <div class="form-group">
         <div>
-          <label for="user_image">登録画像</label>
+          <label>登録画像</label>
         </div>
         <div>
           <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: 'form-control-file' %>
@@ -54,7 +54,7 @@
 
       <div class="form-group">
         <div>
-          <label for="user_introduction">自己紹介の内容</label>
+          <label>自己紹介の内容</label>
         </div>
         <div>
           <%= f.text_area :introduction, autofocus: true, id:"introduction", class: 'form-control' %>
@@ -63,9 +63,9 @@
 
       <div class="form-group">
         <div>
-          <label for="user_introduction">管理人からのメッセージ</label>
+          <label>管理人からの通告</label>
         </div>
-        <div>
+        <div class="mt-4 mb-5">
           <%= @user.message %>
         </div>
       </div>

@@ -41,7 +41,6 @@ class Users::ReviewsController < ApplicationController
        flash[:notice] = "投稿記事を編集しました。"
        redirect_to users_review_path(@review.id)
     else
-       @review.all
        render :edit
     end
   end

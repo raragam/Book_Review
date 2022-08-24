@@ -9,7 +9,7 @@
          <td><%= image_tag @user.get_profile_image %></td>
         </tr>
         <tr>
-         <th>登録名</th>
+         <th>アカウント名</th>
          <td><%= @user.name %></td>
         </tr>
         <tr>
@@ -38,24 +38,21 @@
     <div class="row">
 
       <%= link_to edit_admins_user_path(@user), class: 'btn btn-outline-secondary btn-block font-weight-bold' do %>
-        <i>会員情報編集</i>
-      <% end %>
-
-      <%= link_to admins_opinions_path(@user), class: 'btn btn-outline-secondary btn-block font-weight-bold' do %>
-        <i>投稿一覧</i>
+        会員情報編集
       <% end %>
 
       <%= link_to opinions_user_index_admins_user_path(@user), class: 'btn btn-outline-secondary btn-block font-weight-bold' do %>
-        <i>会員ごとの投稿一覧</i>
-      <% end %>
-
-      <%= link_to admins_reviews_path(@user), class: 'btn btn-outline-secondary btn-block font-weight-bold' do %>
-        <i>投稿記事一覧</i>
+        <%= @user.name %> さんの投稿一覧
       <% end %>
 
       <%= link_to reviews_user_index_admins_user_path(@user), class: 'btn btn-outline-secondary btn-block font-weight-bold' do %>
-        <i>会員ごとの投稿記事一覧</i>
+        <%= @user.name %> さんの投稿記事一覧
       <% end %>
+
+    </div>
+
+    <div class="text-center mt-5">
+      <%= link_to "会員一覧に戻る", admins_users_path, class:"m-3" %>
     </div>
 
   </div>

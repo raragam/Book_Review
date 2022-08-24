@@ -1,1 +1,9 @@
+<% if @reviews.exists? %>
+
 <%= render '/users/users/show_reviews_all', reviews: @reviews %>
+
+<% else %>
+
+<h2 class="text-center mb-5">あなたは、まだ記事を投稿していません。</h2>
+
+<% end %>

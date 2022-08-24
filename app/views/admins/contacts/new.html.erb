@@ -2,12 +2,12 @@
 
   <%= render '/layouts/errors', obj: @contact %>
 
-  <h1 class="text-center mt-5 mr-3">管理人からの通達</h1>
+  <h1 class="text-center mt-5 mr-3">管理者からのお知らせ</h1>
 
     <%= form_with model: @contact, url: '/admins/contacts', method: :post, local: true do |f| %>
 
     <div class="field mt-4">
-      <h4>通達のタイトル</h4>
+      <h4>お知らせのタイトル</h4>
       <%= f.text_field :contact_title, size: 80 %>
     </div>
 

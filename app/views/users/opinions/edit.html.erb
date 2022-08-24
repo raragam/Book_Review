@@ -1,20 +1,16 @@
-
-
-      <div class="container">
-
-      <div class="row">
-
-        <diV class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  <div class="container">
+    <div class="row">
+      <diV class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
         <% if @opinion.errors.any? %>
-        <div id="error_explanation">
-        <h2><%= @opinion.errors.count %> errors prohibited this opinion from being saved:</h2>
-        <ul>
-        <% @opinion.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-        </ul>
-        </div>
+          <div id="error_explanation">
+            <h2><%= @opinion.errors.count %> errors prohibited this opinion from being saved:</h2>
+            <ul>
+                <% @opinion.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+           </ul>
+         </div>
         <% end %>
 
           <h1>Editing Book</h1>
