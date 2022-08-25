@@ -55,11 +55,7 @@
         </td>
         <td>
           <% if opinion.user.is_deleted == false %>
-
-            <%= link_to users_opinion_opinion_favorites_path(opinion, params: { opinion: { down: 4} }), method: :delete do %>
-              ♥<%= opinion.opinion_favorites.count %> いいね
-            <% end %>
-
+             ♥<%= opinion.opinion_favorites.count %> いいね
           <% end %>
         </td>
         <td><%= opinion.created_at.strftime('%Y/%m/%d') %></td>

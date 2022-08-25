@@ -1,5 +1,7 @@
 class Users::UsersController < ApplicationController
 
+  before_action :authenticate_user!, except: [:opinions_user_index, :reviews_user_index]
+
   def index
     @opinion = Opinion.new
     @user = User.new
@@ -39,7 +41,6 @@ class Users::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
     if @user.update(user_params)
       flash[:notice] = "会員情報を編集しました。"
       sign_in(@user, bypass: true)
@@ -53,7 +54,6 @@ class Users::UsersController < ApplicationController
     @user = User.find(params[:id])
     opinion_favorites = OpinionFavorite.where(user_id: @user.id).pluck(:opinion_id)
     @favorite_opinions = Opinion.find(opinion_favorites)
-    #byebug
     @opinions = OpinionFavorite.all
   end
 

@@ -35,19 +35,10 @@
       <td>
         <% if review.user.is_deleted == false %>
 
-            <% if user_signed_in? %>
-
               <%= link_to users_user_path(review.user.id) do %>
                 <%= image_tag review.user.get_profile_image %><br>
                 <%= review.user.name %>
               <% end %>
-
-            <% else %>
-
-                <%= image_tag review.user.get_profile_image %><br>
-                <%= review.user.name %>
-
-            <% end %>
 
         <% elsif review.user.is_deleted == true %>
 
@@ -64,11 +55,7 @@
       </td>
       <td>
         <% if review.user.is_deleted == false %>
-
-           <%= link_to users_review_review_favorites_path(review, params: { review: { down: 4} }), method: :delete do %>
-             ♥<%= review.review_favorites.count %> いいね
-           <% end %>
-
+           ♥<%= review.review_favorites.count %> いいね
         <% end %>
       </td>
       <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
