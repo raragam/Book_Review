@@ -22,8 +22,10 @@
        <h4 class="mx-auto mt-4" style="width: 400px;"><%= @review.review_body %></h4>
 
        <div class="text-center mt-5">
+          <%= link_to "この会員の投稿一覧", reviews_user_index_admins_user_path(@user), class:"m-3" %>
           <%= link_to "削除", admins_review_path(@review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"m-3"  %>
-          <%= link_to "記事一覧に戻る", admins_reviews_path, class:"m-3" %>
+          <%= link_to "全ての記事一覧", admins_reviews_path, class:"m-3" %>
+
        </div>
 
        <div class="text-center m-3">

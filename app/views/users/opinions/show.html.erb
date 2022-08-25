@@ -26,8 +26,8 @@
             <td><span><%= @opinion.opinion_title %></span></td>
             <td><span><%= @opinion.opinion_body %></span></td>
          <% if @user == current_user %>
-            <td><%= link_to "Edit", edit_users_opinion_path(@opinion.id), class: 'btn btn-sm btn-success' %></td>
-            <td><%= link_to "Destroy", users_opinion_path(@opinion.id), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+            <td><%= link_to "編集", edit_users_opinion_path(@opinion.id), class: 'btn btn-sm btn-success' %></td>
+            <td><%= link_to "削除", users_opinion_path(@opinion.id), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に消しますか？" %></td>
          <% else %>
 
          <% end %>
@@ -104,6 +104,11 @@
         <% end %>
       </tbody>
      </table>
+
+    <div class="text-center m-5">
+      <%= link_to "全ての会員の投稿一覧", users_opinions_path, class:"m-3" %>
+      <%= link_to "この会員の投稿一覧", opinions_user_index_users_user_path(@user), class:"m-3" %>
+    </div>
 
   <% elsif @user.is_deleted == true %>
 

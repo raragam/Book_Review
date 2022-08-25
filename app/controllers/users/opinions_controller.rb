@@ -56,4 +56,5 @@ class Users::OpinionsController < ApplicationController
   def opinion_params
     params.require(:opinion).permit(:opinion_title, :opinion_body)
   end
+
 end

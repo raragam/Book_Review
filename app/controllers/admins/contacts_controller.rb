@@ -11,7 +11,7 @@ class Admins::ContactsController < ApplicationController
 	def create
     @contact = Contact.new(contact_params)
     if @contact.save
-       flash[:notice] = "通達を投稿しました。"
+       flash[:notice] = "お知らせを投稿しました。"
        redirect_to admins_contact_path(@contact.id)
     else
        render :new
@@ -30,7 +30,7 @@ class Admins::ContactsController < ApplicationController
 	def update
     @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
-      flash[:notice] = "通達を変更しました。"
+      flash[:notice] = "お知らせを変更しました。"
       redirect_to admins_contact_path(@contact.id)
     else
       render :edit
@@ -40,7 +40,7 @@ class Admins::ContactsController < ApplicationController
 	def destroy
 		@contact = Contact.find(params[:id])
 		@contact.destroy
-		flash[:notice] = "通達を削除しました。"
+		flash[:notice] = "お知らせを削除しました。"
     redirect_to '/admins/contacts'
 	end
 

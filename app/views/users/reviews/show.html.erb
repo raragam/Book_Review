@@ -24,16 +24,21 @@
       <div><h2>原作：<%= @review.book_name %></h2></div>
     </div>
 
-       <h4 class="mx-auto mt-4" style="width: 400px;"><%=safe_join(@review.review_body.split("\n"),tag(:br))%><%#= @review.review_body %></h4>
+       <h4 class="mx-auto mt-4 mb-4" style="width: 400px;"><%=safe_join(@review.review_body.split("\n"),tag(:br))%><%#= @review.review_body %></h4>
 
-       <div class="text-center mt-5">
         <% if @review.user == current_user %>
+        <div class="text-center">
           <%= link_to "記事を編集する", edit_users_review_path(@review.id), class:"m-3" %>
-          <%= link_to "削除", users_review_path(@review.id), method: :delete, "data-confirm" => "本当にこの記事を削除しても構いませんか？", class:"m-3"  %>
+          <%= link_to "記事を削除する", users_review_path(@review.id), method: :delete, "data-confirm" => "本当にこの記事を削除しても構いませんか？", class:"m-3" %>
+        </div>
         <% else %>
         <% end %>
-          <%= link_to "記事一覧に戻る", users_reviews_path, class:"m-3" %>
-       </div>
+        <div class="text-center m-2">
+          <%= link_to "この会員の記事一覧", reviews_user_index_users_user_path(@user), class:"m-3" %>
+        </div>
+        <div class="text-center">
+          <%= link_to "全ての会員の記事一覧", users_reviews_path, class:"m-3" %>
+        </div>
 
        <div class="text-center m-3">
 

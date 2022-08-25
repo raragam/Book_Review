@@ -32,15 +32,6 @@ class User < ApplicationRecord
 
   #プロフィール画像
 
-  # def get_profile_image
-  #   unless profile_image.attached?
-  #     file_path = Rails.root.join('app/assets/images/no_image.jpg')
-  #     profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-  #   end
-  #   #byebug
-  #   profile_image.variant(resize_to_limit: [100, 100]).processed
-  # end
-
   def get_profile_image
     if profile_image.attached?
       profile_image.variant(resize_to_limit: [100, 100]).processed
@@ -95,7 +86,7 @@ class User < ApplicationRecord
   #validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :email, uniqueness: true
 
-  # validates :password, length: { minimum: 6 }, on: :create
+  validates :password, length: { minimum: 6 }, on: :create
 
   # with_options if: :is_users? do |users|
   #   users.validates :password, length: { minimum: 6 }

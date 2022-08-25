@@ -2,20 +2,20 @@
 
   <% if @user == current_user %>
 
-      <% if @opinions.exists? %>
+      <% if @favorite_opinions.present? %>
          <h2 class="text-center mb-5">あなたが、ブックマークした投稿です。</h2>
-         <%= render '/users/users/opinions_all', opinions: @favorite_opinions %>
+         <%= render '/users/users/opinions_all_favorites', opinions: @favorite_opinions %>
       <% else %>
-         <h2 class="ml-5">あなたは、まだブックマークしていません。</h2>
+         <h2 class="ml-5">あなたは、まだ投稿をブックマークしていません。</h2>
       <% end %>
 
   <% else %>
 
-      <% if @opinions.exists? %>
+      <% if @favorite_opinions.present? %>
          <h2 class="text-center mb-5"><%= @user.name %> さんが、ブックマークした投稿です。</h2>
-         <%= render '/users/users/opinions_all', opinions: @favorite_opinions %>
+         <%= render '/users/users/opinions_all_favorites', opinions: @favorite_opinions %>
       <% else %>
-         <h2 class="ml-5">あなたは、まだブックマークしていません。</h2>
+         <h2 class="ml-5"><%= @user.name %> さんは、まだ投稿をブックマークしていません。</h2>
       <% end %>
 
   <% end %>

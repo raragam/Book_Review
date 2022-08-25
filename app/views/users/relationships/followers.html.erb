@@ -2,7 +2,7 @@
 
   <% if @user == current_user %>
 
-      <% if @users.exists? %>
+      <% if @users.present? %>
          <h2 class="text-center mb-5">あなたをフォローしている会員です。</h2>
          <h3>フォロワー一覧</h3>
          <%= render '/users/users/users_follow_index', users: @users %>
@@ -12,7 +12,7 @@
 
   <% else %>
 
-      <% if @users.exists? %>
+      <% if @users.present? %>
          <h2 class="text-center mb-5"><%= @user.name %> さんをフォローしている会員です。</h2>
          <h3>フォロワー一覧</h3>
          <%= render '/users/users/users_follow_index', users: @users %>

@@ -9,10 +9,12 @@ class Users::UsersController < ApplicationController
 
   def opinions_user_index
     @opinions = Opinion.where(user_id: params[:id])
+    @user = User.find(params[:id])
   end
 
   def reviews_user_index
     @reviews = Review.where(user_id: params[:id])
+    @user = User.find(params[:id])
   end
 
   def create
@@ -51,6 +53,7 @@ class Users::UsersController < ApplicationController
     @user = User.find(params[:id])
     opinion_favorites = OpinionFavorite.where(user_id: @user.id).pluck(:opinion_id)
     @favorite_opinions = Opinion.find(opinion_favorites)
+    #byebug
     @opinions = OpinionFavorite.all
   end
 
