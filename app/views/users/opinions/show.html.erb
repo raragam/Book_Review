@@ -20,11 +20,18 @@
         <tbody>
           <tr>
             <td>
-              <%= image_tag @user.get_profile_image %><br>
-              <%= @user.name %>
+              <% if user_signed_in? %>
+                <%= link_to users_user_path(@opinion.user.id) do %>
+                    <%= image_tag @opinion.user.get_profile_image %><br>
+                    <%= @opinion.user.name %>
+                <% end %>
+              <% else %>
+                    <%= image_tag @opinion.user.get_profile_image %><br>
+                    <%= @opinion.user.name %>
+              <% end %>
            </td>
-            <td><span><%= @opinion.opinion_title %></span></td>
-            <td><span><%= @opinion.opinion_body %></span></td>
+            <td><%= @opinion.opinion_title %></td>
+            <td><%= @opinion.opinion_body %></td>
          <% if @user == current_user %>
             <td><%= link_to "編集", edit_users_opinion_path(@opinion.id), class: 'btn btn-sm btn-success' %></td>
             <td><%= link_to "削除", users_opinion_path(@opinion.id), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に消しますか？" %></td>

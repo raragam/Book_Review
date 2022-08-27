@@ -56,9 +56,19 @@
         <td>
           <% if opinion.user.is_deleted == false %>
 
-            <%= link_to users_opinion_opinion_favorites_path(opinion, params: { opinion: { down: 4} }), method: :delete do %>
-              ♥<%= opinion.opinion_favorites.count %> いいね
-            <% end %>
+            <div class="m-2">♥<%= opinion.opinion_favorites.count %> いいね</div>
+
+              <% if @user == current_user %>
+
+                <div class="m-2">
+                   <%= link_to users_opinion_opinion_favorites_path(opinion, params: { opinion: { down: 3} }), method: :delete do %>
+                     ブックマークを外す
+                   <% end %>
+                </div>
+
+              <% else %>
+
+              <% end %>
 
           <% end %>
         </td>

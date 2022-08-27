@@ -65,9 +65,19 @@
       <td>
         <% if review.user.is_deleted == false %>
 
-           <%= link_to users_review_review_favorites_path(review, params: { review: { down: 4} }), method: :delete do %>
-             ♥<%= review.review_favorites.count %> いいね
-           <% end %>
+            <div class="m-2">♥<%= review.review_favorites.count %> いいね</div>
+
+            <% if @user == current_user %>
+
+            <div class="m-2">
+              <%= link_to users_review_review_favorites_path(review, params: { review: { down: 3} }), method: :delete do %>
+                自分のブックマークを外す
+              <% end %>
+            </div>
+
+            <% else %>
+
+            <% end %>
 
         <% end %>
       </td>

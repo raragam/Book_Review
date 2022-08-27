@@ -1,4 +1,4 @@
-<div class="mx-auto" style="width: 680px;">
+<div class="mx-auto" style="width: 1000px;">
 
   <% if @user == current_user %>
 
@@ -17,6 +17,10 @@
       <% else %>
          <h2 class="ml-5"><%= @user.name %> さんは、まだ投稿をブックマークしていません。</h2>
       <% end %>
+
+      <div class="text-center m-5">
+         <%= @user.name %> さんの<%= link_to "詳細に戻る", users_user_path(@user.id) %>
+      </div>
 
   <% end %>
 
