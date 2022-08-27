@@ -18,7 +18,11 @@
         </tr>
         <tr>
          <th>自己紹介の内容</th>
-         <td><%=safe_join(@user.introduction.split("\n"),tag(:br)) %><%#= @user.introduction %></td>
+         <td>
+           <% if @user.introduction.present? %>
+              <%=safe_join(@user.introduction.split("\n"),tag(:br)) %>
+           <% end %>
+        </td>
         </tr>
         <tr>
          <th>会員ステータス</th>
