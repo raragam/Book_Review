@@ -13,7 +13,7 @@
         <% if @review.image.attached? %>
              <%= image_tag @review.image, size: "400x400" %>
         <% else %>
-             <%= image_tag 'no_image', size: "400x400" %>
+             <%= image_tag 'no_image.jpg', size: "400x400" %>
         <% end %>
       </div>
       <div><h2>原作：<%= @review.book_name %></h2></div>
