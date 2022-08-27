@@ -19,7 +19,7 @@
           <% if user.is_deleted == false %>
             <%= image_tag user.get_profile_image %>
           <% elsif user.is_deleted == true %>
-            <img  src="/assets/mark_batsu_illust_898.png" width="85px" />
+            <%= image_tag asset_path("mark_batsu_illust_898.png"), width: '85%' %>
           <% end %>
         </td>
         <td><%= user.name %></td>

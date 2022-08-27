@@ -32,7 +32,7 @@
                            <%= opinion.user.name %>
                     <% end %>
                 <% elsif opinion.user.is_deleted == true %>
-                           <img  src="/assets/mark_batsu_illust_898.png" width="85px" /><br>
+                           <%= image_tag asset_path("mark_batsu_illust_898.png"), width: '85px' %><br>
                            <%= opinion.user.name %>
                 <% end %>
              </td>
