@@ -14,7 +14,7 @@ class Admins::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @user = @review.user
     @review.destroy
-    redirect_to admins_user_path(@user.id)
+    redirect_to admins_reviews_path
   end
 
   private
