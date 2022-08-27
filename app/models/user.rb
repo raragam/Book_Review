@@ -81,9 +81,9 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 2, maximum: 20 }
 
   #これがメールアドレス用のバリデーション。テストデプロイの際はコメントアウトを外す。
-  #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true
-  #validates :email, format: { with: VALID_EMAIL_REGEX }
+  validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :email, uniqueness: true
 
   validates :password, length: { minimum: 6 }, on: :create
