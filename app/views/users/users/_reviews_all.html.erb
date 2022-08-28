@@ -38,13 +38,13 @@
             <% if user_signed_in? %>
 
               <%= link_to users_user_path(review.user.id) do %>
-                <%= image_tag review.user.get_profile_image %><br>
+                <%= image_tag review.user.get_profile_image, width: '85px' %><br>
                 <%= review.user.name %>
               <% end %>
 
             <% else %>
 
-                <%= image_tag review.user.get_profile_image %><br>
+                <%= image_tag review.user.get_profile_image, width: '85px' %><br>
                 <%= review.user.name %>
 
             <% end %>

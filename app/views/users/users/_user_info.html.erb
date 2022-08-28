@@ -7,7 +7,7 @@
       <tr>
         <th>
           <% if @user.is_deleted == false %>
-            <%= image_tag user.get_profile_image %>
+            <%= image_tag user.get_profile_image, width: '85%' %>
           <% elsif @user.is_deleted == true %>
             <%= image_tag asset_path("mark_batsu_illust_898.png"), width: '100%' %>
           <% end %>
@@ -27,7 +27,7 @@
         <th>自己紹介</th>
         <th>
           <% if @user.is_deleted == false %>
-            <%=safe_join(@user.introduction.split("\n"),tag(:br)) if @user.introduction %><%#= user.introduction %>
+            <%=safe_join(@user.introduction.split("\n"),tag(:br)) if @user.introduction %>
           <% end %>
         </th>
       </tr>

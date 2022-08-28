@@ -20,7 +20,7 @@
       <tr>
         <td>
           <%= link_to admins_user_path(opinion.user.id) do %>
-            <%= image_tag opinion.user.get_profile_image %><br>
+            <%= image_tag opinion.user.get_profile_image, width: '85px' %><br>
             <%= opinion.user.name %>
           <% end %>
        </td>

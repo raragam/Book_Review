@@ -18,7 +18,7 @@
          <td><%= @opinion.created_at.strftime('%Y/%m/%d') %></td>
          <td>
           <%= link_to admins_user_path(@opinion.user.id) do %>
-           <%= image_tag @user.get_profile_image %><br>
+           <%= image_tag @user.get_profile_image, width: '85px' %><br>
            <%= @user.name %>
           <% end %>
          </td>
@@ -51,7 +51,7 @@
           <td><%= opinion_comment.created_at.strftime('%Y/%m/%d') %></td>
           <td>
             <%= link_to admins_user_path(opinion_comment.user.id) do %>
-              <%= image_tag opinion_comment.user.get_profile_image %><br>
+              <%= image_tag opinion_comment.user.get_profile_image, width: '85px' %><br>
               <%= opinion_comment.user.name %>
             <% end %>
           </td>

@@ -48,7 +48,7 @@
       <tr>
         <td>
           <%= link_to admins_user_path(review_comment.user.id) do %>
-            <%= image_tag review_comment.user.get_profile_image %><br>
+            <%= image_tag review_comment.user.get_profile_image, width: '85px' %><br>
             <%= review_comment.user.name %>
           <% end %>
         </td>

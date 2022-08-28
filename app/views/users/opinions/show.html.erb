@@ -22,11 +22,11 @@
             <td>
               <% if user_signed_in? %>
                 <%= link_to users_user_path(@opinion.user.id) do %>
-                    <%= image_tag @opinion.user.get_profile_image %><br>
+                    <%= image_tag @opinion.user.get_profile_image, width: '85px' %><br>
                     <%= @opinion.user.name %>
                 <% end %>
               <% else %>
-                    <%= image_tag @opinion.user.get_profile_image %><br>
+                    <%= image_tag @opinion.user.get_profile_image, width: '85px' %><br>
                     <%= @opinion.user.name %>
               <% end %>
            </td>
@@ -92,11 +92,11 @@
            <td>
              <% if user_signed_in? %>
                 <%= link_to users_user_path(opinion_comment.user.id) do %>
-                  <%= image_tag opinion_comment.user.get_profile_image %><br>
+                  <%= image_tag opinion_comment.user.get_profile_image, width: '85px' %><br>
                   <%= opinion_comment.user.name %>
                 <% end %>
              <% else %>
-                  <%= image_tag opinion_comment.user.get_profile_image %><br>
+                  <%= image_tag opinion_comment.user.get_profile_image, width: '85px' %><br>
                   <%= opinion_comment.user.name %>
              <% end %>
            </td>

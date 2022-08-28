@@ -20,11 +20,11 @@
           <% if opinion.user.is_deleted == false %>
               <% if user_signed_in? %>
                   <%= link_to users_user_path(opinion.user.id) do %>
-                     <%= image_tag opinion.user.get_profile_image %><br>
+                     <%= image_tag opinion.user.get_profile_image, width: '85px' %><br>
                      <%= opinion.user.name %>
                   <% end %>
               <% else %>
-                     <%= image_tag opinion.user.get_profile_image %><br>
+                     <%= image_tag opinion.user.get_profile_image, width: '85px' %><br>
                      <%= opinion.user.name %>
               <% end %>
           <% elsif opinion.user.is_deleted == true %>
