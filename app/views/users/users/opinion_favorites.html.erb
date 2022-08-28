@@ -1,21 +1,27 @@
-<div class="mx-auto" style="width: 1000px;">
-
   <% if @user == current_user %>
 
       <% if @favorite_opinions.present? %>
+      <div class="mx-auto" style="width: 1400px;">
          <h2 class="text-center mb-5">あなたが、ブックマークした投稿です。</h2>
          <%= render '/users/users/opinions_all_favorites', opinions: @favorite_opinions %>
+      </div>
       <% else %>
-         <h2 class="ml-5">あなたは、まだ投稿をブックマークしていません。</h2>
+      <div class="mx-auto" style="width: 900px;">
+         <h2 class="mx-auto text-center" style="width: 1000px;">あなたは、まだ投稿をブックマークしていません。</h2>
+      </div>
       <% end %>
 
   <% else %>
 
       <% if @favorite_opinions.present? %>
+      <div class="mx-auto" style="width: 1400px;">
          <h2 class="text-center mb-5"><%= @user.name %> さんが、ブックマークした投稿です。</h2>
          <%= render '/users/users/opinions_all_favorites', opinions: @favorite_opinions %>
+      </div>
       <% else %>
-         <h2 class="ml-5"><%= @user.name %> さんは、まだ投稿をブックマークしていません。</h2>
+      <div class="mx-auto" style="width: 900px;">
+         <h2 class="text-center"><%= @user.name %> さんは、まだ投稿をブックマークしていません。</h2>
+      </div>
       <% end %>
 
       <div class="text-center m-5">
@@ -23,5 +29,3 @@
       </div>
 
   <% end %>
-
-</div>

@@ -1,30 +1,28 @@
-<div class="mx-auto mt-4" style="width: 600px;">
+<div class="mx-auto mt-4" style="width: 1000px;">
 
   <%= render 'layouts/errors', obj: @review_comment %>
 
-  <h4 class="mx-auto text-center mt-4" style="width: 400px;">
+  <h4 class="mx-auto text-center mt-4" style="width: 1000px;">
     <%= link_to users_user_path(@review.user.id) do %>
       投稿者：<%= @review.user.name %>
     <% end %>
   </h4>
-  <h6 class="mx-auto text-center mt-1" style="width: 400px;">投稿日：<%= @review.created_at.strftime('%Y/%m/%d') %></h6>
+  <h6 class="mx-auto text-center mt-1" style="width: 1000px;">投稿日：<%= @review.created_at.strftime('%Y/%m/%d') %></h6>
 
 
   <% if @user.is_deleted == false %>
 
-    <h1 class="mx-auto mt-4" style="width: 400px;"><%= @review.review_title %></h1>
+    <h1 class="mx-auto mt-4" style="width: 800px;"><%= @review.review_title %></h1>
     <div class="mx-auto mt-4" style="width: 400px;">
-      <div>
         <% if @review.image.attached? %>
              <%= image_tag @review.image, size: "400x400" %>
         <% else %>
              <%= image_tag 'no_image.jpg', size: "400x400" %>
         <% end %>
-      </div>
-      <div><h2>原作：<%= @review.book_name %></h2></div>
     </div>
+    <div class="mx-auto text-center mt-4" style="width: 400px;"><h2>原作：<%= @review.book_name %></h2></div>
 
-       <h4 class="mx-auto mt-4 mb-4" style="width: 400px;"><%=safe_join(@review.review_body.split("\n"),tag(:br))%><%#= @review.review_body %></h4>
+       <h4 class="mx-auto mt-4 mb-4" style="width: 600px;"><%=safe_join(@review.review_body.split("\n"),tag(:br))%><%#= @review.review_body %></h4>
 
         <% if @review.user == current_user %>
         <div class="text-center">
@@ -78,10 +76,12 @@
 
       <% if user_signed_in? %>
 
-          <%= form_with(model:[@review, @review_comment], url: '/users/reviews/'+"#{@review.id}"+'/review_comments', method: :post) do |f| %>
-              <%= f.text_area :review_comment, size: "78x5", class:"mt-3" %><br>
-              <%= f.submit '送信', class: "btn btn-primary btn-block mt-2" %>
-          <% end %>
+      <div class="mx-auto" style="width: 600px;">
+        <%= form_with(model:[@review, @review_comment], url: '/users/reviews/'+"#{@review.id}"+'/review_comments', method: :post) do |f| %>
+          <%= f.text_area :review_comment, size: "78x5", class:"mt-3" %><br>
+          <%= f.submit '送信', class: "btn btn-primary btn-block mt-2" %>
+        <% end %>
+      </div>
 
       <% else %>
 

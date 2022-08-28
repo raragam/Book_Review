@@ -1,25 +1,24 @@
-<div class="mx-auto mt-4" style="width: 600px;">
+<div class="mx-auto mt-4" style="width: 1400px;">
 
-  <h4 class="mx-auto text-center mt-4" style="width: 400px;">
+  <h4 class="mx-auto text-center mt-4" style="width: 1000px;">
     <%= link_to admins_user_path(@review.user.id) do %>
       投稿者：<%= @review.user.name %>
     <% end %>
   </h4>
-  <h6 class="mx-auto text-center mt-1" style="width: 400px;">投稿日：<%= @review.created_at.strftime('%Y/%m/%d') %></h6>
+  <h6 class="mx-auto text-center mt-1" style="width: 1000px;">投稿日：<%= @review.created_at.strftime('%Y/%m/%d') %></h6>
 
-    <h1 class="mx-auto mt-4" style="width: 400px;"><%= @review.review_title %></h1>
+    <h1 class="mx-auto mt-4" style="width: 800px;"><%= @review.review_title %></h1>
     <div class="mx-auto mt-4" style="width: 400px;">
-      <div>
+
         <% if @review.image.attached? %>
              <%= image_tag @review.image, size: "400x400" %>
         <% else %>
              <%= image_tag 'no_image.jpg', size: "400x400" %>
         <% end %>
-      </div>
-      <div><h2>原作：<%= @review.book_name %></h2></div>
     </div>
+    <div class="mx-auto text-center mt-4" style="width: 400px;"><h2>原作：<%= @review.book_name %></h2></div>
 
-       <h4 class="mx-auto mt-4" style="width: 400px;"><%= @review.review_body %></h4>
+       <h4 class="mx-auto mt-4" style="width: 600px;"><%=safe_join(@review.review_body.split("\n"),tag(:br))%><%#= @review.review_body %></h4>
 
        <div class="text-center mt-5">
           <%= link_to "この会員の記事一覧", reviews_user_index_admins_user_path(@user), class:"m-3" %>
@@ -34,7 +33,7 @@
 
     <h2 class="mx-auto" style="width: 400px;">コメントは現在<%= @review.review_comments.count %>件です。</h2>
 
-  <table class="table mt-5">
+  <table class="table mt-5 mx-auto" style="width: 1300px;">
     <thead>
      <tr>
       <th>コメント投稿者</th>
