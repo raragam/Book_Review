@@ -79,7 +79,19 @@ SNSサイトを基盤にしているので、つぶやくことで記事の宣�
 - IDE：Cloud9
 
 ## 使用素材
+管理者が扱う画像
 - イラストエイト（mark_batsu_illust_898.png）
 - Icon-rainbow（はてなマークのアイコン素材 12.png）
 - フリー素材ブログ（20200501_noimage.jpg）
-- 
+
+会員が扱う画像
+
+プロフィール画像
+- パブリックドメインQ：著作権フリー画像素材集 (publicdomainq-0051525pdu.jpg)
+- パブリックドメインQ：著作権フリー画像素材集 (publicdomainq-0043281hdy.jpg)
+- パブリックドメインQ：著作権フリー画像素材集 (publicdomainq-0063744wcw.jpg)
+
+題材作品画像
+- パブリックドメインQ：著作権フリー画像素材集 (publicdomainq-0003857.jpg)
+- パブリックドメインQ：著作権フリー画像素材集 (publicdomainq-0020215zdi.jpg)
+- パブリックドメインQ：著作権フリー画像素材集 (publicdomainq-0011657cau.jpg)
