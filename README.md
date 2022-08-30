@@ -80,11 +80,11 @@ SNSサイトを基盤にしているので、つぶやくことで記事の宣�
 
 ## 使用素材
 ## 管理者が扱う画像の出展
-- バツマーク
-- サイト名：イラストエイト
-- URL：https://illust8.com/contents/898
-- 画像ファイル名：mark_batsu_illust_898.png
-- はてなマーク
+バツマーク
+サイト名：イラストエイト
+URL：https://illust8.com/contents/898
+画像ファイル名：mark_batsu_illust_898.png
+はてなマーク
 - サイト名：Icon-rainbow
 - URL：https://icon-rainbow.com/%e3%81%af%e3%81%a6%e3%81%aa%e3%83%9e%e3%83%bc%e3%82%af%e3%81%ae%e3%82%a2%e3%82%a4%e3%82%b3%e3%83%b3%e7%b4%a0%e6%9d%90-12/
 - 画像ファイル名：はてなマークのアイコン素材 12.png
@@ -95,7 +95,7 @@ SNSサイトを基盤にしているので、つぶやくことで記事の宣�
 
 ## 会員が扱う画像
 
-- プロフィール画像
+## プロフィール画像
 - アカウント名：ららんぱ　ごーる
 - サイト名：パブリックドメインQ：著作権フリー画像素材集
 - URL：https://publicdomainq.net/invisible-man-0051525/
