@@ -96,15 +96,15 @@ SNSサイトを基盤にしているので、つぶやくことで記事の宣�
 ## 会員が扱う画像
 
 - プロフィール画像
-- ららんぱ　ごーる
+- アカウント名：ららんぱ　ごーる
 - サイト名：パブリックドメインQ：著作権フリー画像素材集
 - URL：https://publicdomainq.net/invisible-man-0051525/
 - 画像ファイル名：publicdomainq-0051525pdu.jpg
-- おいくら　だいふく
+- アカウント名：おいくら　だいふく
 - サイト名：パブリックドメインQ：著作権フリー画像素材集
 - URL：https://publicdomainq.net/invisible-man-hoodie-0043281/
 - 画像ファイル名：publicdomainq-0043281hdy.jpg
-- ふばえら　ぼっほ
+- アカウント名：ふばえら　ぼっほ
 - サイト名：パブリックドメインQ：著作権フリー画像素材集
 - URL：https://publicdomainq.net/icon-man-user-0063744/
 - 画像ファイル名：publicdomainq-0063744wcw.jpg
