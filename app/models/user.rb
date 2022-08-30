@@ -36,7 +36,7 @@ class User < ApplicationRecord
     if profile_image.attached?
       profile_image.variant(resize_to_limit: [100, 100]).processed
     else
-      'no_image.jpg'
+      '20200501_noimage.jpg'
     end
   end
 

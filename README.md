@@ -79,4 +79,7 @@ SNSサイトを基盤にしているので、つぶやくことで記事の宣�
 - IDE：Cloud9
 
 ## 使用素材
-使用検討中です。
+- イラストエイト（mark_batsu_illust_898.png）
+- Icon-rainbow（はてなマークのアイコン素材 12.png）
+- フリー素材ブログ（20200501_noimage.jpg）
+- 
