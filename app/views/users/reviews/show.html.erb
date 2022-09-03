@@ -16,6 +16,11 @@
     <div class="mx-auto mt-4" style="width: 400px;">
         <% if @review.image.attached? %>
              <%= image_tag @review.image, size: "400x400" %>
+             <div class="tag-box">
+                <% @review.tags.each do |tag| %>
+                   <span class="label"><%= tag.name %></span>
+                <% end %>
+             </div>
         <% else %>
              <%= image_tag 'no_image.jpg', size: "400x400" %>
         <% end %>

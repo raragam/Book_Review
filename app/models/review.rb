@@ -2,6 +2,8 @@ class Review < ApplicationRecord
 
   belongs_to :user
 
+  has_many :tags, dependent: :destroy
+
   has_many :review_comments, dependent: :destroy
   has_many :review_favorites, dependent: :destroy
 

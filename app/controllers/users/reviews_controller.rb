@@ -16,6 +16,10 @@ class Users::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
+       tags = Vision.get_image_data(@review.image)
+       tags.each do |tag|
+       @review.tags.create(name: tag)
+       end
        flash[:notice] = "記事を投稿しました。"
        redirect_to users_review_path(@review.id)
     else
