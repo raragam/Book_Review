@@ -69,7 +69,7 @@ SNSサイトを基盤にしているので、つぶやくことで記事の宣�
 - レビュー記事を書いて需要を満たし、ストレスを発散したい時
 
 ## 設計書
-テーマは確定しているため、それに沿ったものを作成中です。
+準備中です。
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -113,16 +113,16 @@ SNSサイトを基盤にしているので、つぶやくことで記事の宣�
 - URL：https://publicdomainq.net/sakura-flower-0007721/
 - 画像ファイル名：publicdomainq-0007721.jpg
 
-### 題材作品の画像
-### 走れメロス（著：太宰治）
+#### 題材作品の画像
+##### 走れメロス（著：太宰治）
 - 作品名：走れメロス
 - URL：https://publicdomainq.net/running-man-pictogram-0011657/
 - 画像ファイル名：publicdomainq-0011657cau.jpg
-### 桃太郎
+##### 桃太郎
 - 作品名：桃太郎
 - URL：https://publicdomainq.net/momotaro-japanese-folklore-0020215/
 - 画像ファイル名：publicdomainq-0020215zdi.jpg
-### かちかち山
+##### かちかち山
 - 作品名：かちかち山
 - URL：https://publicdomainq.net/kachi-kachi-yama-0003857/
 - 画像ファイル名：publicdomainq-0003857.jpg
