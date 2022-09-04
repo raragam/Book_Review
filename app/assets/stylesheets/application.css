@@ -14,4 +14,17 @@
  *= require_self
  */
 
-
+.AI {
+  background-color: red;
+  font-weight: 500;
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 100%;
+  font-weight: bold;
+  line-height: 5;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}

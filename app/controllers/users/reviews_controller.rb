@@ -42,6 +42,11 @@ class Users::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
+       @review.tags.destroy_all
+       tags = Vision.get_image_data(@review.image)
+       tags.each do |tag|
+       @review.tags.create(name: tag)
+       end
        flash[:notice] = "投稿記事を編集しました。"
        redirect_to users_review_path(@review.id)
     else
