@@ -113,7 +113,7 @@ SNSサイトを基盤にしているので、つぶやくことで記事の宣�
 - URL：https://publicdomainq.net/sakura-flower-0007721/
 - 画像ファイル名：publicdomainq-0007721.jpg
 
-### 題材作品の画像の出展
+### 題材作品の画像
 ### 走れメロス（著：太宰治）
 - 作品名：走れメロス
 - URL：https://publicdomainq.net/running-man-pictogram-0011657/
