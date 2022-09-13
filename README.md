@@ -69,6 +69,11 @@ SNSサイトを基盤にしているので、つぶやくことで記事の宣�
 - レビュー記事を書いて需要を満たし、ストレスを発散したい時
 
 ## 設計書
+### テーブル定義書
+- URL：https://docs.google.com/spreadsheets/d/1egN3VRX8xLGjszUIiUa8a03LXJnZXSoi6oFW7fATZuo/edit?usp=sharing
+### ER図
+- URL：https://drive.google.com/file/d/1MxpIj3-yCE8xS5LKS0KDIiYUoyMxwq1R/view?usp=sharing
+
 準備中です。
 
 ## 開発環境
