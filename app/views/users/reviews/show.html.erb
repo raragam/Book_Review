@@ -104,17 +104,30 @@
      <% @review.review_comments.each do |review_comment| %>
       <tr>
         <td>
-          <% if user_signed_in? %>
+         <% if review_comment.user.is_deleted == false %>
+            <% if user_signed_in? %>
+              <%= link_to users_user_path(review_comment.user.id) do %>
+               <%= image_tag review_comment.user.get_profile_image, width: '85px' %><br>
+               <%= review_comment.user.name %>
+              <% end %>
+            <% else %>
+               <%= image_tag review_comment.user.get_profile_image, width: '85px' %><br>
+               <%= review_comment.user.name %>
+            <% end %>
+         <% elsif review_comment.user.is_deleted == true %>
+               <%= image_tag asset_path("publicdomainq-0066061vap.jpg"), width: '85px' %><br>
+               <%= review_comment.user.name %>
+         <% end %>
+        </td>
+        <td>
+          <% if review_comment.user.is_deleted == false %>
+             <%= review_comment.review_comment %>
+          <% elsif review_comment.user.is_deleted == true %>
              <%= link_to users_user_path(review_comment.user.id) do %>
-               <%= image_tag review_comment.user.get_profile_image, width: '85px' %><br>
-               <%= review_comment.user.name %>
+               投稿者退会のため、非表示になりました。
              <% end %>
-          <% else %>
-               <%= image_tag review_comment.user.get_profile_image, width: '85px' %><br>
-               <%= review_comment.user.name %>
           <% end %>
         </td>
-        <td><%= review_comment.review_comment %></td>
         <td><% if review_comment.user == current_user %>
                <%= link_to "削除", users_review_review_comment_path(@review.id, review_comment.id), method: :delete %>
             <% else %>

@@ -21,9 +21,9 @@ class Users::ReviewsController < ApplicationController
        tags.each do |tag|
        @review.tags.create(name: tag)
        end
-     end
-     flash[:notice] = "記事を投稿しました。"
-     redirect_to users_review_path(@review.id)
+      end
+       flash[:notice] = "記事を投稿しました。"
+       redirect_to users_review_path(@review.id)
     else
        render :new
     end
@@ -50,9 +50,9 @@ class Users::ReviewsController < ApplicationController
        tags.each do |tag|
          @review.tags.create(name: tag)
        end
-     end
-     flash[:notice] = "投稿記事を編集しました。"
-     redirect_to users_review_path(@review.id)
+      end
+       flash[:notice] = "投稿記事を編集しました。"
+       redirect_to users_review_path(@review.id)
     else
        render :edit
     end

@@ -90,17 +90,30 @@
         <% @opinion.opinion_comments.each do |opinion_comment| %>
           <tr>
            <td>
-             <% if user_signed_in? %>
+            <% if opinion_comment.user.is_deleted == false %>
+              <% if user_signed_in? %>
                 <%= link_to users_user_path(opinion_comment.user.id) do %>
                   <%= image_tag opinion_comment.user.get_profile_image, width: '85px' %><br>
                   <%= opinion_comment.user.name %>
                 <% end %>
-             <% else %>
+              <% else %>
                   <%= image_tag opinion_comment.user.get_profile_image, width: '85px' %><br>
                   <%= opinion_comment.user.name %>
+              <% end %>
+            <% elsif opinion_comment.user.is_deleted == true %>
+                  <%= image_tag asset_path("publicdomainq-0066061vap.jpg"), width: '85px' %><br>
+                  <%= opinion_comment.user.name %>
+            <% end %>
+           </td>
+           <td>
+             <% if opinion_comment.user.is_deleted == false %>
+                <%= opinion_comment.opinion_comment %>
+             <% elsif opinion_comment.user.is_deleted == true %>
+                <%= link_to users_user_path(opinion_comment.user.id) do %>
+                  投稿者退会のため、非表示になりました。
+                <% end %>
              <% end %>
            </td>
-           <td><%= opinion_comment.opinion_comment %></td>
            <td><% if opinion_comment.user == current_user %>
                  <%= link_to "削除", users_opinion_opinion_comment_path(@opinion.id, opinion_comment.id), method: :delete %>
                <% else %>
