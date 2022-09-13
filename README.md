@@ -74,8 +74,6 @@ SNSサイトを基盤にしているので、つぶやくことで記事の宣�
 ### ER図
 - URL：https://drive.google.com/file/d/1MxpIj3-yCE8xS5LKS0KDIiYUoyMxwq1R/view?usp=sharing
 
-準備中です。
-
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
@@ -113,10 +111,6 @@ SNSサイトを基盤にしているので、つぶやくことで記事の宣�
 - サイト名：パブリックドメインQ：著作権フリー画像素材集
 - URL：https://publicdomainq.net/icon-man-user-0063744/
 - 画像ファイル名：publicdomainq-0063744wcw.jpg
-##### アカウント名：ななな
-- サイト名：パブリックドメインQ：著作権フリー画像素材集
-- URL：https://publicdomainq.net/sakura-flower-0007721/
-- 画像ファイル名：publicdomainq-0007721.jpg
 
 #### 題材作品の画像
 ##### 走れメロス（著：太宰治）

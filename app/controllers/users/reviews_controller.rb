@@ -16,12 +16,14 @@ class Users::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
+      if @review.image.attached?
        tags = Vision.get_image_data(@review.image)
        tags.each do |tag|
        @review.tags.create(name: tag)
        end
-       flash[:notice] = "記事を投稿しました。"
-       redirect_to users_review_path(@review.id)
+     end
+     flash[:notice] = "記事を投稿しました。"
+     redirect_to users_review_path(@review.id)
     else
        render :new
     end
@@ -42,13 +44,15 @@ class Users::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
+      if @review.image.attached?
        @review.tags.destroy_all
        tags = Vision.get_image_data(@review.image)
        tags.each do |tag|
-       @review.tags.create(name: tag)
+         @review.tags.create(name: tag)
        end
-       flash[:notice] = "投稿記事を編集しました。"
-       redirect_to users_review_path(@review.id)
+     end
+     flash[:notice] = "投稿記事を編集しました。"
+     redirect_to users_review_path(@review.id)
     else
        render :edit
     end
