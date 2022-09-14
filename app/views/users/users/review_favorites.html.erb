@@ -11,6 +11,10 @@
       </div>
       <% end %>
 
+      <div class="text-center m-5">
+         <%= link_to "マイページに戻る", users_user_path(@user.id) %>
+      </div>
+
   <% else %>
 
       <% if @favorite_reviews.present? %>
