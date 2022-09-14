@@ -21,6 +21,8 @@
         <% if review.user.is_deleted == false %>
            <%= image_tag review.get_image, size: "100x100" %><br>
            <%= review.book_name %>
+        <% elsif review.user.is_deleted == true %>
+           <%= image_tag asset_path("はてなマークのアイコン素材 12.png"), width: '85px' %>
         <% end %>
       </td>
       <td>
