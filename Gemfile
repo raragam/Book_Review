@@ -71,3 +71,5 @@ gem 'rmagick'
 
 gem 'enum_help'
 gem 'devise-i18n'
+
+gem 'kaminari'

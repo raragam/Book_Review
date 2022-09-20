@@ -1,0 +1,1 @@
+$('#opinion_favorite_<%= @opinion.id %>').html("<%= j(render partial: '/users/opinions/opinion_favorite', locals: { post: @opinion }) %>");

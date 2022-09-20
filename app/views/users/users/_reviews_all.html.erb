@@ -17,9 +17,9 @@
 
     <tbody>
      <tr>
-      <td>
+      <td class="align-middle text-center">
         <% if review.user.is_deleted == false %>
-           <%= image_tag review.get_image, size: "100x100" %><br>
+           <%= image_tag review.get_image, width: '85px' %><br>
            <%= review.book_name %>
         <% elsif review.user.is_deleted == true %>
            <%= image_tag asset_path("はてなマークのアイコン素材 12.png"), width: '85px' %>

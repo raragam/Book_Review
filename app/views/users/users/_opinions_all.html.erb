@@ -59,7 +59,7 @@
              <% if user_signed_in? %>
 
                <% if opinion.favorited_by?(current_user) %>
-                  <%= link_to users_opinion_opinion_favorites_path(opinion, params: { opinion: { down: 1} }), method: :delete do %>
+                  <%= link_to users_opinion_opinion_favorites_path(opinion, params: { opinion: { down: 1} }), method: :delete, remote: true do %>
                     ♥<%= opinion.opinion_favorites.count %> いいね
                   <% end %>
                <% else %>
@@ -83,3 +83,5 @@
   <% end %>
 
   </table>
+
+  <%= paginate(@opinions) %>

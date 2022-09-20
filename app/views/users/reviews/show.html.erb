@@ -14,7 +14,7 @@
     <h1 class="mx-auto mt-4" style="width: 800px;"><%= @review.review_title %></h1>
     <div class="mx-auto mt-4" style="width: 400px;">
         <% if @review.image.attached? %>
-             <%= image_tag @review.image, size: "400x400" %>
+               <%= image_tag @review.image, width: '380px' %>
              <div class="text-center">
                 <% @review.tags.each do |tag| %>
                    <span class="AI"><%= tag.name %></span>
