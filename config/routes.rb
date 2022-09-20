@@ -14,7 +14,7 @@ Rails.application.routes.draw do
      #omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  namespace :users do
+  namespace :users do#scope module: :users do
     resources :opinions do
       resource :opinion_favorites, only: [:create, :destroy]
       resources :opinion_comments, only: [:create, :destroy]

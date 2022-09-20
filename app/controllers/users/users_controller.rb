@@ -5,17 +5,17 @@ class Users::UsersController < ApplicationController
   def index
     @opinion = Opinion.new
     @user = User.new
-    @users = User.all.order(id: "DESC")
+    @users = User.all.order(id: "DESC").page(params[:page]).per(5)
     @user = current_user
   end
 
   def opinions_user_index
-    @opinions = Opinion.where(user_id: params[:id]).order(id: "DESC")
+    @opinions = Opinion.where(user_id: params[:id]).order(id: "DESC").page(params[:page]).per(5)
     @user = User.find(params[:id])
   end
 
   def reviews_user_index
-    @reviews = Review.where(user_id: params[:id]).order(id: "DESC")
+    @reviews = Review.where(user_id: params[:id]).order(id: "DESC").page(params[:page]).per(5)
     @user = User.find(params[:id])
   end
 
@@ -52,14 +52,14 @@ class Users::UsersController < ApplicationController
 
   def opinion_favorites
     @user = User.find(params[:id])
-    opinion_favorites = OpinionFavorite.where(user_id: @user.id).order(created_at: :desc).pluck(:opinion_id)
+    @opinion_favorites = OpinionFavorite.where(user_id: @user.id).order(id: "DESC").page(params[:page]).per(5).pluck(:opinion_id)
     @favorite_opinions = Opinion.find(opinion_favorites)
     @opinions = OpinionFavorite.all
   end
 
   def review_favorites
     @user = User.find(params[:id])
-    review_favorites = ReviewFavorite.where(user_id: @user.id).order(created_at: :desc).pluck(:review_id)
+    review_favorites = ReviewFavorite.where(user_id: @user.id).order(id: "DESC").page(params[:page]).per(5).pluck(:review_id)
     @favorite_reviews = Review.find(review_favorites)
     @reviews = ReviewFavorite.all
   end

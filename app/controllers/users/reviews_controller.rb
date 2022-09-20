@@ -8,7 +8,7 @@ class Users::ReviewsController < ApplicationController
 
   def index
     @opinion = Opinion.new
-    @reviews = Review.all.order(id: "DESC")
+    @reviews = Review.all.order(id: "DESC").page(params[:page]).per(5)
     @user = current_user
   end
 

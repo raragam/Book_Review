@@ -128,6 +128,10 @@
       </tbody>
      </table>
 
+    <div class="pagination justify-content-center">
+      <%#= paginate(@opinion.opinion_comments) %>
+    </div>
+
     <div class="text-center m-5">
       <%= link_to "全ての会員の投稿一覧", users_opinions_path, class:"m-3" %>
       <%= link_to "この会員の投稿一覧", opinions_user_index_users_user_path(@user), class:"m-3" %>

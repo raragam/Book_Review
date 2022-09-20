@@ -25,8 +25,9 @@ class Users::OpinionsController < ApplicationController
     @opinion = Opinion.find(params[:id])
     @user = @opinion.user
     @opinion_new = Opinion.new
-    @opinions = Opinion.all
+    #@opinions = Opinion.all
     @opinion_comment = OpinionComment.new
+    #@opinion.opinion_comments = OpinionComment.all.order(id: "DESC").page(params[:page]).per(5)
   end
 
   def edit
