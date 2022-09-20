@@ -20,7 +20,7 @@ class Users::OpinionFavoritesController < ApplicationController
     elsif params[:opinion][:down] == '2'
        redirect_to users_opinion_path(opinion)
     elsif params[:opinion][:down] == '3'
-       redirect_to opinions_user_index_users_user_path(opinion)
+       redirect_to opinion_favorites_users_user_path(current_user.id)
     else
        redirect_to users_opinion_path(opinion)
     end

@@ -7,11 +7,11 @@ class Users::SearchesController < ApplicationController
 		@content = params[:content]
 		method = params[:method]
 		if @model == 'user'
-			@users = User.search_for(@content, method)
+			@users = User.search_for(@content, method).order(id: "DESC")
 		elsif @model == 'opinion'
-			@opinions = Opinion.search_for(@content, method)
+			@opinions = Opinion.search_for(@content, method).order(id: "DESC")
 		elsif @model == 'review'
-			@reviews = Review.search_for(@content, method)
+			@reviews = Review.search_for(@content, method).order(id: "DESC")
 		end
 	end
 

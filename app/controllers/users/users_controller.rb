@@ -5,17 +5,17 @@ class Users::UsersController < ApplicationController
   def index
     @opinion = Opinion.new
     @user = User.new
-    @users = User.all
+    @users = User.all.order(id: "DESC")
     @user = current_user
   end
 
   def opinions_user_index
-    @opinions = Opinion.where(user_id: params[:id])
+    @opinions = Opinion.where(user_id: params[:id]).order(id: "DESC")
     @user = User.find(params[:id])
   end
 
   def reviews_user_index
-    @reviews = Review.where(user_id: params[:id])
+    @reviews = Review.where(user_id: params[:id]).order(id: "DESC")
     @user = User.find(params[:id])
   end
 
@@ -54,7 +54,7 @@ class Users::UsersController < ApplicationController
     @user = User.find(params[:id])
     opinion_favorites = OpinionFavorite.where(user_id: @user.id).pluck(:opinion_id)
     @favorite_opinions = Opinion.find(opinion_favorites)
-    @opinions = OpinionFavorite.all
+    @opinions = OpinionFavorite.all.order(created_at: :desc)
   end
 
   def review_favorites

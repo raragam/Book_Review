@@ -1,7 +1,7 @@
 class Admins::OpinionsController < ApplicationController
 
   def index
-    @opinions = Opinion.all
+    @opinions = Opinion.all.order(id: "DESC")
   end
 
   def show

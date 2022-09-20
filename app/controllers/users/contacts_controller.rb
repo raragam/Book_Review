@@ -2,7 +2,7 @@ class Users::ContactsController < ApplicationController
 
 	def index
 	  @opinion = Opinion.new
-    @contact = Contact.all
+    @contact = Contact.all.order(id: "DESC")
     @user = current_user
   end
 

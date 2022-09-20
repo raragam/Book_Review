@@ -5,7 +5,7 @@ class Admins::ContactsController < ApplicationController
   end
 
 	def index
-		@contacts = Contact.all
+		@contacts = Contact.all.order(id: "DESC")
 	end
 
 	def create

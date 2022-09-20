@@ -8,7 +8,7 @@ class Users::ReviewsController < ApplicationController
 
   def index
     @opinion = Opinion.new
-    @reviews = Review.all
+    @reviews = Review.all.order(id: "DESC")
     @user = current_user
   end
 

@@ -1,15 +1,15 @@
 class Admins::UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @users = User.all.order(id: "DESC")
   end
 
   def opinions_user_index
-    @opinions = Opinion.where(user_id: params[:id])
+    @opinions = Opinion.where(user_id: params[:id]).order(id: "DESC")
   end
 
   def reviews_user_index
-    @reviews = Review.where(user_id: params[:id])
+    @reviews = Review.where(user_id: params[:id]).order(id: "DESC")
   end
 
   def show
