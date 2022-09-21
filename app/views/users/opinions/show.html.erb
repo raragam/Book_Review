@@ -58,9 +58,9 @@
 
           <%# end %>
           <br>
-
-          <%= render partial: "users/opinions/opinion_favorite", locals: { post: @opinion } %>
-
+          <div id="opinion_favorite_buttons_<%= @opinion.id %>">
+            <%= render partial: "users/opinions/opinion_favorite", opinion: @opinion %>
+          </div>
           <h4>コメント投稿</h4>
 
             <%= form_with(model:[@opinion, @opinion_comment], url: '/users/opinions/'+"#{@opinion.id}"+'/opinion_comments', method: :post) do |f| %>
