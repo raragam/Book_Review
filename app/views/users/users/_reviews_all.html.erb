@@ -69,7 +69,7 @@
 
           <% if user_signed_in? %>
 
-              <div class="m-2" id="review_favorite_buttons_<%= review.id %>">
+              <div id="review_favorite_buttons_<%= review.id %>">
                 <%= render partial: "users/reviews/review_favorite", locals: { review: review } %>
               </div>
 
@@ -90,5 +90,5 @@
   </table>
 
   <div class="pagination justify-content-center">
-    <%= paginate(@reviews) %>
+    <%= paginate(reviews) %>
   </div>
