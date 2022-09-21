@@ -46,19 +46,9 @@
 
       <% if user_signed_in? %>
 
-          <% if @review.favorited_by?(current_user) %>
-
-             <%= link_to users_review_review_favorites_path(@review, params: { review: { down: 2} }), method: :delete do %>
-             ♥<%= @review.review_favorites.count %> いいね と思ったらこちらを押してください。
-             <% end %><br>
-
-          <% else %>
-
-             <%= link_to users_review_review_favorites_path(@review, params: { review: { up: 2} }), method: :post do %>
-             ♡<%= @review.review_favorites.count %> いいね と思ったらこちらを押してください。
-             <% end %><br>
-
-          <% end %>
+             <div id="review_favorite_buttons_<%= @review.id %>">
+               <%= render partial: "users/reviews/review_favorite", locals: { review: @review } %>
+             </div>
 
              <div class="mt-3 mb-4">
                ※いいね （ブックマーク）は、一人一個まで可能です。<br>

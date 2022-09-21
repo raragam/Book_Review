@@ -69,19 +69,9 @@
 
           <% if user_signed_in? %>
 
-              <% if review.favorited_by?(current_user) %>
-
-                <%= link_to users_review_review_favorites_path(review, params: { review: { down: 1} }), method: :delete do %>
-                  ♥<%= review.review_favorites.count %> いいね
-                <% end %>
-
-              <% else %>
-
-                <%= link_to users_review_review_favorites_path(review, params: { review: { up: 1} }), method: :post do %>
-                  ♡<%= review.review_favorites.count %> いいね
-                <% end %>
-
-              <% end %>
+              <div class="m-2" id="review_favorite_buttons_<%= review.id %>">
+                <%= render partial: "users/reviews/review_favorite", locals: { review: review } %>
+              </div>
 
           <% else %>
 

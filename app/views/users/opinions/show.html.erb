@@ -44,23 +44,10 @@
 
       <% if user_signed_in? %>
 
-          <%# if @opinion.favorited_by?(current_user) %>
-
-            <%#= link_to users_opinion_opinion_favorites_path(@opinion, params: { opinion: { down: 2} }), method: :delete do %>
-            ♥<%#= @opinion.opinion_favorites.count %> いいね と思ったらこちらを押してください。
-            <%# end %>
-
-          <%# else %>
-
-            <%#= link_to users_opinion_opinion_favorites_path(@opinion, params: { opinion: { up: 2} }), method: :post do %>
-            ♡<%#= @opinion.opinion_favorites.count %> いいね と思ったらこちらを押してください。
-            <%# end %>
-
-          <%# end %>
-          <br>
           <div id="opinion_favorite_buttons_<%= @opinion.id %>">
-            <%= render partial: "users/opinions/opinion_favorite", opinion: @opinion %>
+            <%= render partial: "users/opinions/opinion_favorite", locals: { opinion: @opinion } %>
           </div>
+
           <h4>コメント投稿</h4>
 
             <%= form_with(model:[@opinion, @opinion_comment], url: '/users/opinions/'+"#{@opinion.id}"+'/opinion_comments', method: :post) do |f| %>

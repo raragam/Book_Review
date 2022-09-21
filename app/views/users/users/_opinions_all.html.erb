@@ -58,19 +58,13 @@
 
              <% if user_signed_in? %>
 
-               <% if opinion.favorited_by?(current_user) %>
-                  <%= link_to users_opinion_opinion_favorites_path(opinion, params: { opinion: { down: 1} }), method: :delete, remote: true do %>
-                    ♥<%= opinion.opinion_favorites.count %> いいね
-                  <% end %>
-               <% else %>
-                  <%= link_to users_opinion_opinion_favorites_path(opinion, params: { opinion: { up: 1} }), method: :post do %>
-                    ♡<%= opinion.opinion_favorites.count %> いいね
-                  <% end %>
-               <% end %>
+                <div id="opinion_favorite_buttons_<%= opinion.id %>">
+                  <%= render partial: "users/opinions/opinion_favorite", locals: { opinion: opinion } %>
+                </div>
 
              <% else %>
 
-                    ♥<%= opinion.opinion_favorites.count %> いいね
+                  ♥<%= opinion.opinion_favorites.count %> いいね
 
              <% end %>
 

@@ -67,15 +67,11 @@
       <td>
         <% if review.user.is_deleted == false %>
 
-            <div class="m-2">♥<%= review.review_favorites.count %> いいね</div>
-
             <% if @user == current_user %>
 
-            <div class="m-2">
-              <%= link_to users_review_review_favorites_path(review, params: { review: { down: 3} }), method: :delete do %>
-                自分のブックマークを外す
-              <% end %>
-            </div>
+                <div class="m-2" id="review_favorite_buttons_<%= review.id %>">
+                  <%= render partial: "users/reviews/review_favorite", locals: { review: review } %>
+                </div>
 
             <% else %>
 
@@ -90,3 +86,7 @@
   <% end %>
 
   </table>
+
+  <div class="pagination justify-content-center">
+    <%= paginate reviews %>
+  </div>

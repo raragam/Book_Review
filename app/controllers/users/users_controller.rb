@@ -52,15 +52,20 @@ class Users::UsersController < ApplicationController
 
   def opinion_favorites
     @user = User.find(params[:id])
-    @opinion_favorites = OpinionFavorite.where(user_id: @user.id).order(id: "DESC").page(params[:page]).per(5).pluck(:opinion_id)
-    @favorite_opinions = Opinion.find(opinion_favorites)
+    opinion_favorites = OpinionFavorite.where(user_id: @user.id)
+    #@opinion_favorites = opinion_favorites.order(id: "DESC").page(params[:page]).per(5)
+    @favorite_opinions = Opinion.where(id: opinion_favorites.pluck(:opinion_id)).order(id: "DESC").page(params[:page]).per(5)
     @opinions = OpinionFavorite.all
   end
 
   def review_favorites
+    # @user = User.find(params[:id])
+    # review_favorites = ReviewFavorite.where(user_id: @user.id).order(id: "DESC").page(params[:page]).per(5).pluck(:review_id)
+    # @favorite_reviews = Review.find(review_favorites)
+    # @reviews = ReviewFavorite.all
     @user = User.find(params[:id])
-    review_favorites = ReviewFavorite.where(user_id: @user.id).order(id: "DESC").page(params[:page]).per(5).pluck(:review_id)
-    @favorite_reviews = Review.find(review_favorites)
+    review_favorites = ReviewFavorite.where(user_id: @user.id)
+    @favorite_reviews = Review.where(id: review_favorites.pluck(:review_id)).order(id: "DESC").page(params[:page]).per(5)
     @reviews = ReviewFavorite.all
   end
 
