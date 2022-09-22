@@ -8,13 +8,13 @@
       </div>
  <% elsif @model == 'opinion' %>
 	<h3 class="mb-5">投稿検索 ＝ "<%= @content %>"</h3>
-    <%= render 'users/users/opinions_all_search', opinions: @opinions %>
+    <%= render 'users/users/opinions_all', opinions: @opinions %>
       <div class="text-center m-5">
          <%= link_to "全ての投稿一覧", users_opinions_path, class:"m-3" %>
       </div>
  <% elsif @model == 'review' %>
 	<h3 class="mb-5">投稿記事検索 ＝ "<%= @content %>"</h3>
-    <%= render 'users/users/reviews_all_search', reviews: @reviews %>
+    <%= render 'users/users/reviews_all', reviews: @reviews %>
       <div class="text-center m-5">
          <%= link_to "全ての記事一覧", users_reviews_path, class:"m-3" %>
       </div>

@@ -3,7 +3,7 @@
       <% if @favorite_opinions.present? %>
       <div class="mx-auto" style="width: 1400px;">
          <h2 class="text-center mb-5">あなたが、ブックマークした投稿です。</h2>
-         <%= render '/users/users/opinions_all_favorites', opinions: @favorite_opinions %>
+         <%= render '/users/users/opinions_all', opinions: @favorite_opinions %>
          <h4 class="text-center m-5">※一覧から消したいものがあれば、自分のいいねを外して画面をリロードしてください。</h4>
       </div>
       <% else %>
@@ -21,7 +21,7 @@
       <% if @favorite_opinions.present? %>
       <div class="mx-auto" style="width: 1400px;">
          <h2 class="text-center mb-5"><%= @user.name %> さんが、ブックマークした投稿です。</h2>
-         <%= render '/users/users/opinions_all_favorites', opinions: @favorite_opinions %>
+         <%= render '/users/users/opinions_all', opinions: @favorite_opinions %>
       </div>
       <% else %>
       <div class="mx-auto" style="width: 900px;">
