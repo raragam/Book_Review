@@ -119,7 +119,7 @@
           <% end %>
         </td>
         <td><% if review_comment.user == current_user %>
-               <%= link_to "削除", users_review_review_comment_path(@review.id, review_comment.id), method: :delete %>
+               <%= link_to "削除", review_review_comment_path(@review.id, review_comment.id), method: :delete %>
             <% else %>
             <% end %>
         </td>
