@@ -13,7 +13,7 @@
       <% end %>
 
       <div class="text-center m-5">
-         <%= link_to "マイページに戻る", users_user_path(@user.id) %>
+         <%= link_to "マイページに戻る", user_path(@user.id) %>
       </div>
 
   <% else %>
@@ -31,7 +31,7 @@
       <% end %>
 
       <div class="text-center m-5">
-         <%= @user.name %> さんの<%= link_to "詳細に戻る", users_user_path(@user.id) %>
+         <%= @user.name %> さんの<%= link_to "詳細に戻る", user_path(@user.id) %>
       </div>
 
   <% end %>

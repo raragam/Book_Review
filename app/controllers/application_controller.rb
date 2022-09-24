@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
      if admin_signed_in?
        admins_users_path
      else
-       users_user_path(current_user.id)
+       user_path(current_user.id)
      end
    end
 

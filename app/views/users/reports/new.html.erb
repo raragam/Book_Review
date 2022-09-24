@@ -4,7 +4,7 @@
 
 <h2 class="text-center mb-5">この会員を通報する</h2>
 
-  <%= form_with(model:[@user, @report], url: '/users/users/'+"#{@user.id}"+'/reports', method: :post) do |f| %>
+  <%= form_with(model:[@user, @report], url: '/users/'+"#{@user.id}"+'/reports', method: :post) do |f| %>
 
     <h3>該当URL</h3>
     <%= f.text_field :url, size: 99, class: "mb-3" %>

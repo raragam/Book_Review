@@ -35,7 +35,7 @@
         <th>フォロー一覧</th>
         <th>
           <% if @user.is_deleted == false %>
-            <%= link_to user.followings.count, users_user_followings_path(user) %>
+            <%= link_to user.followings.count, user_followings_path(user) %>
           <% end %>
         </th>
       </tr>
@@ -43,7 +43,7 @@
         <th>フォロワー一覧</th>
         <th>
           <% if @user.is_deleted == false %>
-            <%= link_to user.followers.count, users_user_followers_path(user) %>
+            <%= link_to user.followers.count, user_followers_path(user) %>
           <% end %>
         </th>
       </tr>
@@ -51,7 +51,7 @@
         <th>ブックマークした投稿</th>
         <th>
           <% if @user.is_deleted == false %>
-            <%=link_to"お気に入りの投稿", opinion_favorites_users_user_path(user) %>
+            <%=link_to"お気に入りの投稿", opinion_favorites_user_path(user) %>
           <% end %>
         </th>
       </tr>
@@ -59,7 +59,7 @@
         <th>ブックマークした記事</th>
         <th>
           <% if @user.is_deleted == false %>
-            <%=link_to"お気に入りの記事", review_favorites_users_user_path(user) %>
+            <%=link_to"お気に入りの記事", review_favorites_user_path(user) %>
           <% end %>
         </th>
       </tr>
@@ -70,11 +70,11 @@
 
         <div class="row">
 
-            <%= link_to edit_users_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
+            <%= link_to edit_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
                 <i>編集ボタン</i>
             <% end %>
 
-            <%= link_to users_user_confirm_unsubscribe_path(user), class: 'btn btn-outline-secondary btn-block' do %>
+            <%= link_to user_confirm_unsubscribe_path(user), class: 'btn btn-outline-secondary btn-block' do %>
                 <i>退会ボタン</i>
             <% end %>
 
@@ -86,11 +86,11 @@
 
         <div class="row">
 
-            <%= link_to edit_users_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
+            <%= link_to edit_user_path(user), class: 'btn btn-outline-secondary btn-block' do %>
                 <i>編集ボタン</i>
             <% end %>
 
-            <%= link_to new_users_user_report_path(user), class: 'btn btn-outline-secondary btn-block' do %>
+            <%= link_to new_user_report_path(user), class: 'btn btn-outline-secondary btn-block' do %>
                 <i>通報ボタン</i>
             <% end %>
 

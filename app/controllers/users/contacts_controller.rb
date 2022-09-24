@@ -1,12 +1,12 @@
 class Users::ContactsController < ApplicationController
 
-	def index
-	  @opinion = Opinion.new
-    @contact = Contact.all.order(id: "DESC")
+  def index
+    @opinion = Opinion.new
+    @contacts = Contact.all.order(id: "DESC").page(params[:page]).per(5)
     @user = current_user
   end
 
-	def show
+  def show
     @contact = Contact.find(params[:id])
   end
 

@@ -19,7 +19,7 @@
 
    <h2 class="text-center mt-5 mb-5">本当に退会してよろしいですか？</h2>
 
-  <%= link_to "退会する", users_user_withdraw_user_path(@user.id), method: :patch, data: { confirm: "本当に退会しますか？" }, class: 'btn btn-danger btn-block m-3' %>
-  <%= link_to "退会しない", users_user_path(current_user.id), class: 'btn btn-warning btn-block m-3' %>
+  <%= link_to "退会する", user_withdraw_user_path(@user.id), method: :patch, data: { confirm: "本当に退会しますか？" }, class: 'btn btn-danger btn-block m-3' %>
+  <%= link_to "退会しない", user_path(current_user.id), class: 'btn btn-warning btn-block m-3' %>
 
  </div>

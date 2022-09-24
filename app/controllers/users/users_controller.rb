@@ -19,13 +19,13 @@ class Users::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def create
-    @opinion = Opinion.new(opinion_params)
-    @opinion.user_id = current_user.id
-    @opinion.save
-    flash[:notice] = "投稿しました。"
-    redirect_to users_opinion_path(@opinion.id)
-  end
+  #def create
+    #@opinion = Opinion.new(opinion_params)
+    #@opinion.user_id = current_user.id
+    #@opinion.save
+    #flash[:notice] = "投稿しました。"
+    #redirect_to opinion_path(@opinion.id)
+  #end
 
   def show
     @user = User.find(params[:id])
@@ -36,7 +36,7 @@ class Users::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    redirect_to users_user_path(current_user.id) unless @user == current_user
+    redirect_to user_path(current_user.id) unless @user == current_user
   end
 
   def update
@@ -44,7 +44,7 @@ class Users::UsersController < ApplicationController
     if @user.update(user_params)
       flash[:notice] = "会員情報を編集しました。"
       sign_in(@user, bypass: true)
-      redirect_to users_user_path(@user.id)
+      redirect_to user_path(@user.id)
     else
       render :edit
     end

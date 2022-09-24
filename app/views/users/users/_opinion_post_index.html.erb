@@ -2,7 +2,7 @@
 
 <h2 class="text-center mt-3">新規投稿</h2>
 
-  <%= form_with model: @opinion, url: '/users/opinions', method: :post do |f| %>
+  <%= form_with model: @opinion, url: '/opinions', method: :post do |f| %>
   <div class="form-group">
     <div>
       <label>タイトル</label>
@@ -33,7 +33,7 @@
 
 <h2 class="text-center mt-5">新規投稿</h2>
 
- <div class="text-center mt-2">ログイン状態のみ可能です。</div>
+ <div class="text-center mt-2">投稿はログイン状態のみ可能です。</div>
 
   <div class="mt-2 mb-4">
     <%= link_to new_user_session_path, class: 'btn btn-success btn-block' do %>

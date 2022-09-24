@@ -23,7 +23,7 @@ class Users::ReviewsController < ApplicationController
        end
       end
        flash[:notice] = "記事を投稿しました。"
-       redirect_to users_review_path(@review.id)
+       redirect_to review_path(@review.id)
     else
        render :new
     end
@@ -38,7 +38,7 @@ class Users::ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
-    redirect_to users_review_path unless current_user.id == @review.user_id
+    redirect_to review_path unless current_user.id == @review.user_id
   end
 
   def update
@@ -52,7 +52,7 @@ class Users::ReviewsController < ApplicationController
        end
       end
        flash[:notice] = "投稿記事を編集しました。"
-       redirect_to users_review_path(@review.id)
+       redirect_to review_path(@review.id)
     else
        render :edit
     end
@@ -62,7 +62,7 @@ class Users::ReviewsController < ApplicationController
     review = Review.find(params[:id])
     review.destroy
     flash[:notice] = "投稿記事を削除しました。"
-    redirect_to '/users/reviews'
+    redirect_to '/reviews'
   end
 
   private

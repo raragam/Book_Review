@@ -12,7 +12,7 @@ class Users::ReportsController < ApplicationController
     @report.reported_id = @user.id
     if @report.save
        flash[:notice] = "ご報告ありがとうございます。"
-       redirect_to users_user_path(@user)
+       redirect_to user_path(@user)
     else
        render :new
     end

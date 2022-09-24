@@ -21,7 +21,7 @@
           <tr>
             <td>
               <% if user_signed_in? %>
-                <%= link_to users_user_path(@opinion.user.id) do %>
+                <%= link_to user_path(@opinion.user.id) do %>
                     <%= image_tag @opinion.user.get_profile_image, width: '85px' %><br>
                     <%= @opinion.user.name %>
                 <% end %>
@@ -33,8 +33,8 @@
             <td><%= @opinion.opinion_title %></td>
             <td><%= @opinion.opinion_body %></td>
          <% if @user == current_user %>
-            <td><%= link_to "編集", edit_users_opinion_path(@opinion.id), class: 'btn btn-sm btn-success' %></td>
-            <td><%= link_to "削除", users_opinion_path(@opinion.id), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+            <td><%= link_to "編集", edit_opinion_path(@opinion.id), class: 'btn btn-sm btn-success' %></td>
+            <td><%= link_to "削除", opinion_path(@opinion.id), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に消しますか？" %></td>
          <% else %>
 
          <% end %>
@@ -50,7 +50,7 @@
 
           <h4>コメント投稿</h4>
 
-            <%= form_with(model:[@opinion, @opinion_comment], url: '/users/opinions/'+"#{@opinion.id}"+'/opinion_comments', method: :post) do |f| %>
+            <%= form_with(model:[@opinion, @opinion_comment], url: '/opinions/'+"#{@opinion.id}"+'/opinion_comments', method: :post) do |f| %>
               <%= f.text_area :opinion_comment, size: "96x5" %><br>
               <%= f.submit '送信', class: "btn btn-primary btn-block mt-2" %>
             <% end %>
@@ -82,7 +82,7 @@
            <td>
             <% if opinion_comment.user.is_deleted == false %>
               <% if user_signed_in? %>
-                <%= link_to users_user_path(opinion_comment.user.id) do %>
+                <%= link_to user_path(opinion_comment.user.id) do %>
                   <%= image_tag opinion_comment.user.get_profile_image, width: '85px' %><br>
                   <%= opinion_comment.user.name %>
                 <% end %>
@@ -99,13 +99,13 @@
              <% if opinion_comment.user.is_deleted == false %>
                 <%= opinion_comment.opinion_comment %>
              <% elsif opinion_comment.user.is_deleted == true %>
-                <%= link_to users_user_path(opinion_comment.user.id) do %>
+                <%= link_to user_path(opinion_comment.user.id) do %>
                   投稿者退会のため、非表示になりました。
                 <% end %>
              <% end %>
            </td>
            <td><% if opinion_comment.user == current_user %>
-                 <%= link_to "削除", users_opinion_opinion_comment_path(@opinion.id, opinion_comment.id), method: :delete %>
+                 <%= link_to "削除", opinion_opinion_comment_path(@opinion.id, opinion_comment.id), method: :delete %>
                <% else %>
                <% end %>
            </td>
@@ -120,8 +120,8 @@
     </div>
 
     <div class="text-center m-5">
-      <%= link_to "全ての会員の投稿一覧", users_opinions_path, class:"m-3" %>
-      <%= link_to "この会員の投稿一覧", opinions_user_index_users_user_path(@user), class:"m-3" %>
+      <%= link_to "全ての会員の投稿一覧", opinions_path, class:"m-3" %>
+      <%= link_to "この会員の投稿一覧", opinions_user_index_user_path(@user), class:"m-3" %>
     </div>
 
   <% elsif @user.is_deleted == true %>

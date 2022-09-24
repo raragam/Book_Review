@@ -1,6 +1,6 @@
 class Admins::ContactsController < ApplicationController
 
-	def new
+  def new
     @contact = Contact.new
   end
 
@@ -8,7 +8,7 @@ class Admins::ContactsController < ApplicationController
 		@contacts = Contact.all.order(id: "DESC")
 	end
 
-	def create
+  def create
     @contact = Contact.new(contact_params)
     if @contact.save
        flash[:notice] = "お知らせを投稿しました。"
@@ -20,7 +20,7 @@ class Admins::ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
-    @contacts = Contact.all
+    #@contacts = Contact.all
   end
 
 	def edit

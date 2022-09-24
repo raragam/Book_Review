@@ -3,7 +3,7 @@
 <%= render 'layouts/errors', obj: @review %>
 <h1 class="text-center mt-5 mr-3">投稿記事編集画面</h1>
 
-<%= form_with model: @review, url: users_review_path(@review.id), method: :patch do |f| %>
+<%= form_with model: @review, url: review_path(@review.id), method: :patch do |f| %>
 
   <div class="field mt-4">
     <h4>記事のタイトル</h4>

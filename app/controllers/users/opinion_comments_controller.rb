@@ -6,7 +6,7 @@ class Users::OpinionCommentsController < ApplicationController
     opinion_comment.opinion_id = opinion.id
     if opinion_comment.save
         flash[:notice] = "コメントを投稿しました。"
-        redirect_to users_opinion_path(opinion)
+        redirect_to opinion_path(opinion)
     else
         @opinion = opinion
         @user = @opinion.user

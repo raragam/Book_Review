@@ -27,9 +27,9 @@
       </td>
       <td>
         <% if review.user.is_deleted == false %>
-          <%= link_to review.review_title, users_review_path(review.id) %>
+          <%= link_to review.review_title, review_path(review.id) %>
         <% elsif review.user.is_deleted == true %>
-          <%= link_to users_review_path(review.id) do %>
+          <%= link_to review_path(review.id) do %>
             投稿者退会のため、非表示になりました。
           <% end %>
         <% end %>
@@ -39,7 +39,7 @@
 
             <% if user_signed_in? %>
 
-              <%= link_to users_user_path(review.user.id) do %>
+              <%= link_to user_path(review.user.id) do %>
                 <%= image_tag review.user.get_profile_image, width: '85px' %><br>
                 <%= review.user.name %>
               <% end %>
