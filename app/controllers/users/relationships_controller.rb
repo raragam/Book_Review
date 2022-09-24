@@ -11,11 +11,11 @@ class Users::RelationshipsController < ApplicationController
 
   def followings
     @user = User.find(params[:user_id])
-    @users = @user.followings.order(id: "DESC")
+    @users = @user.followings.order(id: "DESC").page(params[:page]).per(5)
   end
 
   def followers
     @user = User.find(params[:user_id])
-    @users = @user.followers.order(id: "DESC")
+    @users = @user.followers.order(id: "DESC").page(params[:page]).per(5)
   end
 end
