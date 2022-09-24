@@ -6,7 +6,7 @@ class Users::ReviewCommentsController < ApplicationController
     review_comment.review_id = review.id
     if review_comment.save
        flash[:notice] = "コメントを投稿しました。"
-       redirect_to users_review_path(review)
+       redirect_to review_path(review)
     else
        @review = review
        @user = @review.user
