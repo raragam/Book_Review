@@ -113,7 +113,7 @@
           <% if review_comment.user.is_deleted == false %>
              <%= review_comment.review_comment %>
           <% elsif review_comment.user.is_deleted == true %>
-             <%= link_to users_user_path(review_comment.user.id) do %>
+             <%= link_to user_path(review_comment.user.id) do %>
                投稿者退会のため、非表示になりました。
              <% end %>
           <% end %>
