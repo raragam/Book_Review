@@ -1,6 +1,8 @@
 <div class="mx-auto mt-4" style="width: 1000px;">
 
-  <%= render 'layouts/errors', obj: @review_comment %>
+  <div class="text-center mt-4">
+    <%= render 'layouts/errors', obj: @review_comment %>
+  </div>
 
   <h4 class="mx-auto text-center mt-4" style="width: 1000px;">
     <%= link_to user_path(@review.user.id) do %>
@@ -91,7 +93,7 @@
      </tr>
    </thead>
    <tbody>
-     <% @review.review_comments.each do |review_comment| %>
+     <% @review_comments.each do |review_comment| %>
       <tr>
         <td>
          <% if review_comment.user.is_deleted == false %>
@@ -128,6 +130,10 @@
      <% end %>
    </tbody>
   </table>
+
+  <div class="pagination justify-content-center">
+    <%= paginate(@review_comments) %>
+  </div>
 
   <% elsif @user.is_deleted == true %>
 

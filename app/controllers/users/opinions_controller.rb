@@ -15,7 +15,7 @@ class Users::OpinionsController < ApplicationController
        flash[:notice] = "投稿しました。"
        redirect_to opinions_path(@opinion.id)
     else
-       @opinions = Opinion.all
+       @opinions = Opinion.all.order(id: "DESC").page(params[:page]).per(5)
        @user = current_user
        render :index
     end
@@ -27,7 +27,7 @@ class Users::OpinionsController < ApplicationController
     @opinion_new = Opinion.new
     #@opinions = Opinion.all
     @opinion_comment = OpinionComment.new
-    #@opinion.opinion_comments = OpinionComment.all.order(id: "DESC").page(params[:page]).per(5)
+    @opinion_comments = @opinion.opinion_comments.order("created_at DESC").page(params[:page]).per(5)
   end
 
   def edit

@@ -25,7 +25,9 @@
         <td><%= user.name %></td>
         <td>
           <% if user.is_deleted == false %>
-            <%= render "users/relationships/btn", user: user %>
+          <div class="follow_buttons_<%= user.id %>">
+            <%= render partial: "users/relationships/btn", locals: { user: user }  %>
+          </div>
           <% end %>
         </td>
         <td>

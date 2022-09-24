@@ -11,6 +11,7 @@ class Users::ReviewCommentsController < ApplicationController
        @review = review
        @user = @review.user
        @review_comment = review_comment
+       @review_comments = @review.review_comments.order("created_at DESC").page(params[:page]).per(5)
        render 'users/reviews/show'
     end
   end
