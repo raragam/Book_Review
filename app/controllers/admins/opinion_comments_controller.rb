@@ -5,7 +5,7 @@ class Admins::OpinionCommentsController < ApplicationController
     if opinion_comment.destroy
       @opinion = Opinion.find(params[:opinion_id])
       @opinion_comments = @opinion.opinion_comments.order("created_at DESC")
-      flash[:notice] = "コメントを削除しました。"
+      flash.now[:notice] = "コメントを削除しました。"
       #redirect_to request.referer
       #render 'destroy.js.erb'
     end

@@ -5,7 +5,7 @@ class Admins::ReviewCommentsController < ApplicationController
     if review_comment.destroy
        @review = Review.find(params[:review_id])
        @review_comments = @review.review_comments.order("created_at DESC")
-       flash[:notice] = "コメントを削除しました。"
+       flash.now[:notice] = "コメントを削除しました。"
        #redirect_to request.referer
     end
   end

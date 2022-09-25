@@ -7,7 +7,7 @@ class Users::ReviewCommentsController < ApplicationController
     if review_comment.save
        @review = review
        @review_comments = @review.review_comments.order("created_at DESC").page(params[:page]).per(5)
-       flash[:notice] = "コメントを投稿しました。"
+       flash.now[:notice] = "コメントを投稿しました。"
        #render 'create.js.erb'
        #redirect_to review_path(review)
     else
@@ -24,7 +24,7 @@ class Users::ReviewCommentsController < ApplicationController
     if review_comment.destroy
        @review = Review.find(params[:review_id])
        @review_comments = @review.review_comments.order("created_at DESC").page(params[:page]).per(5)
-       flash[:notice] = "コメントを削除しました。"
+       flash.now[:notice] = "コメントを削除しました。"
        #render 'destroy.js.erb'
     end
   end

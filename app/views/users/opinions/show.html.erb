@@ -3,7 +3,6 @@
       <div class="col-md-3">
 
         <%= render '/users/users/user_info', user: @user %>
-
         <%= render '/users/users/opinion_post_show' %>
 
       </div>
@@ -34,7 +33,6 @@
             <td><%= link_to "編集", edit_opinion_path(@opinion.id), class: 'btn btn-sm btn-success' %></td>
             <td><%= link_to "削除", opinion_path(@opinion.id), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に消しますか？" %></td>
          <% else %>
-
          <% end %>
          </tr>
         </tbody>
@@ -70,6 +68,10 @@
             <%= render partial: '/users/opinions/opinion_comments_all', locals: { opinion_comment: @opinion_comment, opinion_comments: @opinion_comments } %>
           </div>
 
+          <div class="pagination justify-content-center">
+            <%= paginate(@opinion_comments) %>
+          </div>
+
     <div class="text-center m-5">
       <%= link_to "全ての会員の投稿一覧", opinions_path, class:"m-3" %>
       <%= link_to "この会員の投稿一覧", opinions_user_index_user_path(@user), class:"m-3" %>
@@ -87,8 +89,3 @@
       </div>
     </div>
   </div>
-
-
-
-
-

@@ -86,6 +86,10 @@
           <%= render partial: '/users/reviews/review_comments_all', locals: { review_comment: @review_comment, review_comments: @review_comments } %>
         </div>
 
+        <div class="pagination justify-content-center">
+          <%= paginate(@review_comments) %>
+        </div>
+
   <% elsif @user.is_deleted == true %>
 
   <div class="text-center m-5 h2">

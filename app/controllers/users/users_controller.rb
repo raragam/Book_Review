@@ -51,10 +51,16 @@ class Users::UsersController < ApplicationController
   end
 
   def opinion_favorites
+    #@opinion_favorites = opinion_favorites.order(id: "DESC").page(params[:page]).per(5)
+    #@favorite_opinions = Opinion.where(id: opinion_favorites.pluck(:opinion_id)).order(id: "DESC").page(params[:page]).per(5)
     @user = User.find(params[:id])
     opinion_favorites = OpinionFavorite.where(user_id: @user.id)
-    #@opinion_favorites = opinion_favorites.order(id: "DESC").page(params[:page]).per(5)
-    @favorite_opinions = Opinion.where(id: opinion_favorites.pluck(:opinion_id)).order(id: "DESC").page(params[:page]).per(5)
+    favorite_opinions = Opinion.where(id: opinion_favorites.pluck(:opinion_id)).order(id: "DESC")
+    @favorite_opinions = favorite_opinions.page(params[:page]).per(5)
+    if !@favorite_opinions.any? && params[:page].present?
+       params[:page] = params[:page].to_i - 1
+       @favorite_opinions = favorite_opinions.page(params[:page]).per(5)
+    end
     @opinions = OpinionFavorite.all
   end
 
@@ -65,7 +71,14 @@ class Users::UsersController < ApplicationController
     # @reviews = ReviewFavorite.all
     @user = User.find(params[:id])
     review_favorites = ReviewFavorite.where(user_id: @user.id)
-    @favorite_reviews = Review.where(id: review_favorites.pluck(:review_id)).order(id: "DESC").page(params[:page]).per(5)
+    favorite_reviews = Review.where(id: review_favorites.pluck(:review_id)).order(id: "DESC")
+    @favorite_reviews = favorite_reviews.page(params[:page]).per(5)
+    if !@favorite_reviews.any? && params[:page].present?
+       params[:page] = params[:page].to_i - 1
+       @favorite_reviews = favorite_reviews.page(params[:page]).per(5)
+    end
+    #@favorite_reviews = Review.where(id: review_favorites.pluck(:review_id)).order(id: "DESC").page(params[:page]).per(5)
+    #params[:page] = params[:page].to_i - 1 if @favorite_reviews.any? && params[:page].present?
     @reviews = ReviewFavorite.all
   end
 

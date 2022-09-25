@@ -10,7 +10,7 @@ class Users::OpinionCommentsController < ApplicationController
         @opinion_comment = opinion_comment
         @opinion_comments = @opinion.opinion_comments.order("created_at DESC").page(params[:page]).per(5)
         @user = @opinion.user
-        flash[:notice] = "コメントを投稿しました。"
+        flash.now[:notice] = "コメントを投稿しました。"
         #render 'create.js.erb'
     else
         @opinion = opinion
@@ -28,7 +28,7 @@ class Users::OpinionCommentsController < ApplicationController
     if opinion_comment.destroy
       @opinion = Opinion.find(params[:opinion_id])
       @opinion_comments = @opinion.opinion_comments.order("created_at DESC").page(params[:page]).per(5)
-      flash[:notice] = "コメントを削除しました。"
+      flash.now[:notice] = "コメントを削除しました。"
       #redirect_to request.referer
       #render 'destroy.js.erb'
     end
