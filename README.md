@@ -111,6 +111,10 @@ SNSサイトを基盤にしているので、つぶやくことで記事の宣�
 - サイト名：パブリックドメインQ：著作権フリー画像素材集
 - URL：https://publicdomainq.net/icon-man-user-0063744/
 - 画像ファイル名：publicdomainq-0063744wcw.jpg
+##### アカウント名：のりのり　もーど
+- サイト名：パブリックドメインQ：著作権フリー画像素材集
+- URL：https://publicdomainq.net/ear-human-body-0059403/
+- 画像ファイル名：publicdomainq-0059403uxj.jpg
 
 #### 題材作品の画像
 ##### 走れメロス（著：太宰治）
