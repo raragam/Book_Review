@@ -8,6 +8,7 @@ class Admins::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @user = @review.user
     @reviews = Review.all
+    @review_comments = @review.review_comments.order("created_at DESC")
   end
 
   def destroy

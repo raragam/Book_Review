@@ -34,33 +34,9 @@
 
       </table>
 
-      <h2>コメントは現在<%= @opinion.opinion_comments.count %>件です</h2>
-
-      <table class="table table-hover table-inverse">
-        <thead>
-          <tr>
-           <th>コメント投稿日</th>
-           <th>コメント投稿者</th>
-           <th>コメント内容</th>
-           <th></th>
-         </tr>
-        </thead>
-        <tbody>
-         <% @opinion.opinion_comments.each do |opinion_comment| %>
-          <tr>
-          <td><%= opinion_comment.created_at.strftime('%Y/%m/%d') %></td>
-          <td>
-            <%= link_to admins_user_path(opinion_comment.user.id) do %>
-              <%= image_tag opinion_comment.user.get_profile_image, width: '85px' %><br>
-              <%= opinion_comment.user.name %>
-            <% end %>
-          </td>
-          <td><%= opinion_comment.opinion_comment %></td>
-          <td><%= link_to "管理者として削除する", admins_opinion_opinion_comment_path(@opinion.id, opinion_comment.id), method: :delete %></td>
-         </tr>
-         <% end %>
-       </tbody>
-      </table>
+      <div id="opinion_comment_area">
+         <%= render partial: '/admins/opinions/opinion_comments_all', locals: { opinion_comment: @opinion_comment, opinion_comments: @opinion_comments } %>
+      </div>
 
     <div class="text-center mt-5">
       <%= link_to "全ての会員の投稿一覧", admins_opinions_path, class:"m-3" %>

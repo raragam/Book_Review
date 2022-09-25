@@ -1,0 +1,28 @@
+   <h2 class="mx-auto mt-5" style="width: 400px;">コメントは現在<%= review_comments.count %>件です。</h2>
+   <table class="table mt-5 mx-auto" style="width: 1300px;">
+    <thead>
+     <tr>
+      <th>コメント投稿者</th>
+      <th>コメント内容</th>
+      <th></th>
+      <th>コメント投稿日</th>
+     </tr>
+   </thead>
+   <tbody>
+     <% review_comments.each do |review_comment| %>
+      <tr>
+        <td>
+          <%= link_to admins_user_path(review_comment.user.id) do %>
+            <%= image_tag review_comment.user.get_profile_image, width: '85px' %><br>
+            <%= review_comment.user.name %>
+          <% end %>
+        </td>
+        <td><%= review_comment.review_comment %></td>
+        <td><%= link_to "削除", admins_review_review_comment_path(@review.id, review_comment.id), remote: true, method: :delete, data: {confirm: "本当に削除しますか？"}   %></td>
+        <td><%= review_comment.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+     <% end %>
+   </tbody>
+  </table>
+
+</div>

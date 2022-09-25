@@ -8,6 +8,7 @@ class Admins::OpinionsController < ApplicationController
     @opinion = Opinion.find(params[:id])
     @user = @opinion.user
     @opinions = Opinion.all
+    @opinion_comments = @opinion.opinion_comments.order("created_at DESC")
   end
 
   def destroy
