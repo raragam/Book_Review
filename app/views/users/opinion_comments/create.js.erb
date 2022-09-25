@@ -1,0 +1,3 @@
+$("#opinion_comment_area").html("<%= j(render 'users/opinions/opinion_comments_all', opinion: @opinion, opinion_comments: @opinion_comments) %>");
+$("textarea").val('');
+$('#flash-message').html("<%= j(render 'layouts/flash') %>");

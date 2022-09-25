@@ -5,21 +5,28 @@ class Users::ReviewCommentsController < ApplicationController
     review_comment = current_user.review_comments.new(review_comment_params)
     review_comment.review_id = review.id
     if review_comment.save
+       @review = review
+       @review_comments = @review.review_comments.order("created_at DESC").page(params[:page]).per(5)
        flash[:notice] = "コメントを投稿しました。"
-       redirect_to review_path(review)
+       #render 'create.js.erb'
+       #redirect_to review_path(review)
     else
        @review = review
        @user = @review.user
        @review_comment = review_comment
        @review_comments = @review.review_comments.order("created_at DESC").page(params[:page]).per(5)
-       render 'users/reviews/show'
+       render 'error'
     end
   end
 
   def destroy
-    ReviewComment.find_by(review_id: params[:review_id], id: params[:id]).destroy
-    flash[:notice] = "コメントを削除しました。"
-    redirect_to request.referer
+    review_comment = ReviewComment.find_by(review_id: params[:review_id], id: params[:id])
+    if review_comment.destroy
+       @review = Review.find(params[:review_id])
+       @review_comments = @review.review_comments.order("created_at DESC").page(params[:page]).per(5)
+       flash[:notice] = "コメントを削除しました。"
+       #render 'destroy.js.erb'
+    end
   end
 
   private

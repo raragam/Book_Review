@@ -1,0 +1,53 @@
+    <h4 class="mt-5">コメントは現在<%= @opinion.opinion_comments.count %>件です。</h4>
+
+      <table class="table mt-5">
+        <thead>
+          <tr>
+           <th>コメント投稿者</th>
+           <th>コメント内容</th>
+           <th></th>
+           <th>コメント投稿日</th>
+         </tr>
+        </thead>
+       <tbody>
+        <% opinion_comments.each do |opinion_comment| %>
+          <tr>
+           <td>
+            <% if opinion_comment.user.is_deleted == false %>
+              <% if user_signed_in? %>
+                <%= link_to user_path(opinion_comment.user.id) do %>
+                  <%= image_tag opinion_comment.user.get_profile_image, width: '85px' %><br>
+                  <%= opinion_comment.user.name %>
+                <% end %>
+              <% else %>
+                  <%= image_tag opinion_comment.user.get_profile_image, width: '85px' %><br>
+                  <%= opinion_comment.user.name %>
+              <% end %>
+            <% elsif opinion_comment.user.is_deleted == true %>
+                  <%= image_tag asset_path("publicdomainq-0066061vap.jpg"), width: '85px' %><br>
+                  <%= opinion_comment.user.name %>
+            <% end %>
+           </td>
+           <td>
+             <% if opinion_comment.user.is_deleted == false %>
+                <%= opinion_comment.opinion_comment %>
+             <% elsif opinion_comment.user.is_deleted == true %>
+                <%= link_to user_path(opinion_comment.user.id) do %>
+                  投稿者退会のため、非表示になりました。
+                <% end %>
+             <% end %>
+           </td>
+           <td><% if opinion_comment.user == current_user %>
+                 <%= link_to "削除", opinion_opinion_comment_path(@opinion.id, opinion_comment.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %>
+               <% else %>
+               <% end %>
+           </td>
+           <td><%= opinion_comment.created_at.strftime('%Y/%m/%d') %></td>
+         </tr>
+        <% end %>
+      </tbody>
+     </table>
+
+    <div class="pagination justify-content-center">
+      <%= paginate(opinion_comments) %>
+    </div>

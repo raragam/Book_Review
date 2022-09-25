@@ -1,0 +1,4 @@
+  <%= form_with(model:[opinion, opinion_comment], local: false, url: '/opinions/'+"#{opinion.id}"+'/opinion_comments', method: :post) do |f| %>
+    <%= f.text_area :opinion_comment, size: "96x5" %><br>
+    <%= f.submit '送信', class: "btn btn-primary btn-block mt-2" %>
+  <% end %>

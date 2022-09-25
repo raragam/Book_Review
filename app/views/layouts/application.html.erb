@@ -16,9 +16,9 @@
       <%= render '/layouts/header' %>
     </header>
       <h1 class="text-center m-5">
-        <% if flash[:notice] %>
-        <%= flash[:notice] %>
-        <% end %>
+        <div id="flash-message">
+          <%= render 'layouts/flash' %>
+        </div>
       </h1>
     <%= yield %>
     <footer>
