@@ -55,7 +55,6 @@
         </td>
         <td>
           <% if opinion.user.is_deleted == false %>
-
              <% if user_signed_in? %>
 
                 <div id="opinion_favorite_buttons_<%= opinion.id %>">
@@ -67,7 +66,6 @@
                   ♥<%= opinion.opinion_favorites.count %> いいね
 
              <% end %>
-
           <% end %>
         </td>
         <td><%= opinion.created_at.strftime('%Y/%m/%d') %></td>
