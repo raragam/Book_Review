@@ -51,7 +51,7 @@
         <th>ブックマークした投稿</th>
         <th>
           <% if @user.is_deleted == false %>
-            <%=link_to"お気に入りの投稿", opinion_favorites_user_path(user) %>
+            <%=link_to user.opinion.opinion_favorites.count, opinion_favorites_user_path(user) %>
           <% end %>
         </th>
       </tr>
@@ -64,7 +64,7 @@
         </th>
       </tr>
     </tbody>
- </table>
+  </table>
 
       <% if user == current_user %>
 
@@ -135,6 +135,6 @@
         <th></th>
       </tr>
     </tbody>
- </table>
+  </table>
 
   <% end %>
