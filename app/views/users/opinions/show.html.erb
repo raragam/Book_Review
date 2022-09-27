@@ -43,12 +43,16 @@
           <div id="opinion_favorite_buttons_<%= @opinion.id %>">
             <%= render partial: "users/opinions/opinion_favorite", locals: { opinion: @opinion } %>
           </div>
+          <div>
+            ※ いいね は、一人一個まで可能です。<br>
+            ハートに色がついている場合、あなたは既に押されています。
+          </div>
 
           <div id="opinion_comment_error">
             <%= render '/layouts/errors', obj: @opinion_comment %>
           </div>
 
-          <h4>コメント投稿</h4>
+          <h4 class="mt-3">コメント投稿</h4>
 
           <div>
             <%= render partial: '/users/opinions/opinion_comment_post', locals: { opinion: @opinion, opinion_comment: @opinion_comment } %>
@@ -59,7 +63,7 @@
             ♥<%= @opinion.opinion_favorites.count %> いいね
 
           <div class="mt-4 mr-2">
-             ※ブックマークおよびコメントは<%= link_to "ログイン", new_user_session_path %>ユーザーのみ可能となります。
+             ※ いいねを押す およびコメント投稿は<%= link_to "ログイン", new_user_session_path %>ユーザーのみ可能となります。
           </div>
 
       <% end %>

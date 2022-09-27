@@ -9,7 +9,7 @@
         <th>投稿タイトル</th>
         <th>投稿内容</th>
         <th>コメント数</th>
-        <th>ブックマーク数</th>
+        <th>いいね数</th>
         <th>投稿日</th>
       </tr>
     </thead>
@@ -31,7 +31,7 @@
        </td>
         <td><%= opinion.opinion_body %></td>
         <td><%= opinion.opinion_comments.count %></td>
-        <td><%= opinion.opinion_favorites.count %></td>
+        <td>♥<%= opinion.opinion_favorites.count %></td>
         <td><%= opinion.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
     </tbody>

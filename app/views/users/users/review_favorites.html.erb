@@ -2,13 +2,13 @@
 
       <% if @favorite_reviews.present? %>
       <div class="mx-auto" style="width: 1400px;">
-         <h2 class="text-center mb-5">あなたが、ブックマークした投稿記事です。</h2>
+         <h2 class="text-center mb-5">あなたが、いいねを押した記事です。</h2>
          <%= render '/users/users/reviews_all', reviews: @favorite_reviews %>
-         <h4 class="text-center m-5">※一覧から消したいものがあれば、自分のいいねを外して画面をリロードしてください。</h4>
+         <h4 class="text-center m-5">※一覧から消したいものがあれば、自分の いいねを外して画面をリロードしてください。</h4>
       </div>
       <% else %>
       <div class="mx-auto" style="width: 900px;">
-         <h2 class="text-center">あなたは、まだ投稿記事をブックマークしていません。</h2>
+         <h2 class="text-center">あなたはまだ、記事に対して、いいねを押していません。</h2>
       </div>
       <% end %>
 
@@ -20,12 +20,14 @@
 
       <% if @favorite_reviews.present? %>
       <div class="mx-auto" style="width: 1400px;">
-         <h2 class="text-center mb-5"><%= @user.name %> さんが、ブックマークした投稿記事です。</h2>
+         <h2 class="text-center mb-4"><%= @user.name %> さんが、</h2>
+         <h2 class="text-center mb-5">いいねを押した記事です。</h2>
          <%= render '/users/users/reviews_all', reviews: @favorite_reviews %>
       </div>
       <% else %>
       <div class="mx-auto" style="width: 900px;">
-         <h2 class="text-center"><%= @user.name %> さん は、まだ投稿記事をブックマークしていません。</h2>
+         <h2 class="text-center"><%= @user.name %> さんは、</h2>
+         <h2 class="text-center mt-4">まだ記事に対して、いいねを押していません。</h2>
       </div>
       <% end %>
 

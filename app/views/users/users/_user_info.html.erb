@@ -48,18 +48,18 @@
         </th>
       </tr>
       <tr>
-        <th>ブックマークした投稿</th>
+        <th>いいねを押した投稿</th>
         <th>
           <% if @user.is_deleted == false %>
-            <%=link_to"お気に入りの投稿", opinion_favorites_user_path(user) %>
+            <%=link_to user.opinion_favorites.count, opinion_favorites_user_path(user) %>
           <% end %>
         </th>
       </tr>
       <tr>
-        <th>ブックマークした記事</th>
+        <th>いいねを押した記事</th>
         <th>
           <% if @user.is_deleted == false %>
-            <%=link_to"お気に入りの記事", review_favorites_user_path(user) %>
+            <%=link_to user.review_favorites.count, review_favorites_user_path(user) %>
           <% end %>
         </th>
       </tr>
@@ -127,11 +127,11 @@
         <th></th>
       </tr>
       <tr>
-        <th>ブックマークした投稿</th>
+        <th>いいねを押した投稿</th>
         <th></th>
       </tr>
       <tr>
-        <th>ブックマークした記事</th>
+        <th>いいねを押した記事</th>
         <th></th>
       </tr>
     </tbody>
