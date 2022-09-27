@@ -15,6 +15,7 @@ class Admins::OpinionsController < ApplicationController
     @opinion = Opinion.find(params[:id])
     @user = @opinion.user
     @opinion.destroy
+    flash[:notice] = "投稿を削除しました。"
     redirect_to admins_user_path(@user.id)
   end
 

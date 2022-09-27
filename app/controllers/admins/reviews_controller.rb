@@ -15,6 +15,7 @@ class Admins::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @user = @review.user
     @review.destroy
+    flash[:notice] = "投稿記事を削除しました。"
     redirect_to admins_reviews_path
   end
 
