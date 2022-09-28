@@ -25,7 +25,7 @@
            <%= image_tag asset_path("はてなマークのアイコン素材 12.png"), width: '85px' %>
         <% end %>
       </td>
-      <td>
+      <td class="align-middle">
         <% if review.user.is_deleted == false %>
           <%= link_to review.review_title, review_path(review.id) %>
         <% elsif review.user.is_deleted == true %>
@@ -34,7 +34,7 @@
           <% end %>
         <% end %>
       </td>
-      <td>
+      <td class="align-middle">
         <% if review.user.is_deleted == false %>
 
             <% if user_signed_in? %>
@@ -59,12 +59,12 @@
         <% end %>
 
       </td>
-      <td class="text-center">
+      <td class="align-middle text-center">
         <% if review.user.is_deleted == false %>
            <%= review.review_comments.count %>
         <% end %>
       </td>
-      <td>
+      <td class="align-middle text-center">
         <% if review.user.is_deleted == false %>
 
           <% if user_signed_in? %>
@@ -81,7 +81,7 @@
 
         <% end %>
       </td>
-      <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
+      <td class="align-middle text-center"><%= review.created_at.strftime('%Y/%m/%d') %></td>
      </tr>
     </tbody>
 
