@@ -6,19 +6,19 @@ class Users::OpinionCommentsController < ApplicationController
     opinion_comment.opinion_id = opinion.id
     if opinion_comment.save
         @opinion = opinion
-        @opinions = Opinion.all
+        #@opinions = Opinion.all
         @opinion_comment = opinion_comment
         @opinion_comments = @opinion.opinion_comments.order("created_at DESC").page(params[:page]).per(5)
-        @user = @opinion.user
+        #@user = @opinion.user
         flash.now[:notice] = "コメントを投稿しました。"
         #render 'create.js.erb'
     else
         @opinion = opinion
-        @opinions = Opinion.all
+        #@opinions = Opinion.all
         @opinion_comment = opinion_comment
         @opinion_comments = @opinion.opinion_comments.order("created_at DESC").page(params[:page]).per(5)
-        @opinion_new = Opinion.new
-        @user = @opinion.user
+        #@opinion_new = Opinion.new
+        #@user = @opinion.user
         render 'error'
     end
   end

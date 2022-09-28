@@ -12,7 +12,7 @@ class Users::ReviewCommentsController < ApplicationController
        #redirect_to review_path(review)
     else
        @review = review
-       @user = @review.user
+       #@user = @review.user
        @review_comment = review_comment
        @review_comments = @review.review_comments.order("created_at DESC").page(params[:page]).per(5)
        render 'error'
