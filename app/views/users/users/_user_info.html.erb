@@ -32,7 +32,7 @@
         </th>
       </tr>
       <tr>
-        <th>フォロー一覧</th>
+        <th>フォローの一覧</th>
         <th class="text-center">
           <% if @user.is_deleted == false %>
             <%= link_to user.followings.count, user_followings_path(user) %>
@@ -40,7 +40,7 @@
         </th>
       </tr>
       <tr>
-        <th>フォロワー一覧</th>
+        <th>フォロワーの一覧</th>
         <th class="text-center">
           <% if @user.is_deleted == false %>
             <%= link_to user.followers.count, user_followers_path(user) %>
@@ -119,11 +119,11 @@
         <th></th>
       </tr>
       <tr>
-        <th>フォロー一覧</th>
+        <th>フォローの一覧</th>
         <th></th>
       </tr>
       <tr>
-        <th>フォロワー一覧</th>
+        <th>フォロワーの一覧</th>
         <th></th>
       </tr>
       <tr>
