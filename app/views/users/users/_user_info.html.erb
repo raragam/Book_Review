@@ -33,7 +33,7 @@
       </tr>
       <tr>
         <th>フォロー一覧</th>
-        <th>
+        <th class="text-center">
           <% if @user.is_deleted == false %>
             <%= link_to user.followings.count, user_followings_path(user) %>
           <% end %>
@@ -41,7 +41,7 @@
       </tr>
       <tr>
         <th>フォロワー一覧</th>
-        <th>
+        <th class="text-center">
           <% if @user.is_deleted == false %>
             <%= link_to user.followers.count, user_followers_path(user) %>
           <% end %>
@@ -49,7 +49,7 @@
       </tr>
       <tr>
         <th>いいねを押した投稿</th>
-        <th>
+        <th class="text-center">
           <% if @user.is_deleted == false %>
             <%=link_to user.opinion_favorites.count, opinion_favorites_user_path(user) %>
           <% end %>
@@ -57,7 +57,7 @@
       </tr>
       <tr>
         <th>いいねを押した記事</th>
-        <th>
+        <th class="text-center">
           <% if @user.is_deleted == false %>
             <%=link_to user.review_favorites.count, review_favorites_user_path(user) %>
           <% end %>

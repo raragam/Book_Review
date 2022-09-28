@@ -4,9 +4,9 @@
     <thead>
       <tr>
         <th>投稿者</th>
-        <th>投稿タイトル</th>
+        <th>タイトル</th>
         <th>投稿の内容</th>
-        <th>コメント数</th>
+        <th class="text-center">コメント数</th>
         <th></th>
         <th>投稿日</th>
       </tr>
@@ -48,7 +48,7 @@
              <%= opinion.opinion_body %>
           <% end %>
         </td>
-        <td>
+        <td class="text-center">
           <% if opinion.user.is_deleted == false %>
              <%= opinion.opinion_comments.count %>
           <% end %>

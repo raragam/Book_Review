@@ -5,9 +5,11 @@
         <th>登録画像</th>
         <th>登録名</th>
         <th>この会員に対する<br>
-            あなたのフォロー状態</th>
-        <th>フォロー数</th>
-        <th>フォロワー数</th>
+            あなたのフォロー</th>
+        <th class="text-center">フォロー<br>
+            人数</th>
+        <th class="text-center">フォロワー<br>
+            人数</th>
         <th></th>
       </tr>
     </thead>
@@ -31,18 +33,18 @@
           </div>
           <% end %>
         </td>
-        <td>
+        <td class="text-center">
           <% if user.is_deleted == false %>
             <%= user.followings.count %>
           <% end %>
         </td>
-        <td>
+        <td class="text-center">
           <% if user.is_deleted == false %>
             <%= user.followers.count %>
           <% end %>
         </td>
         <td>
-          <%= link_to "詳細ページ", user_path(user.id) %>
+          <%= link_to "詳細", user_path(user.id) %>
         </td>
       </tr>
     </tbody>

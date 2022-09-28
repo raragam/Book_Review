@@ -7,7 +7,7 @@
         <th>題材作品</th>
         <th>投稿記事</th>
         <th>投稿者</th>
-        <th>コメント数</th>
+        <th class="text-center">コメント数</th>
         <th></th>
         <th>投稿日</th>
       </tr>
@@ -59,7 +59,7 @@
         <% end %>
 
       </td>
-      <td>
+      <td class="text-center">
         <% if review.user.is_deleted == false %>
            <%= review.review_comments.count %>
         <% end %>
