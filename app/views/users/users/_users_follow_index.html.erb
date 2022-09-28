@@ -25,20 +25,20 @@
             <%= image_tag asset_path("publicdomainq-0066061vap.jpg"), width: '85px' %>
           <% end %>
         </td>
-        <td><%= user.name %></td>
-        <td>
+        <td class="align-middle"><%= user.name %></td>
+        <td class="align-middle">
           <% if user.is_deleted == false %>
           <div class="follow_buttons_<%= user.id %>">
             <%= render partial: "users/relationships/btn", locals: { user: user }  %>
           </div>
           <% end %>
         </td>
-        <td class="text-center">
+        <td class="align-middle text-center">
           <% if user.is_deleted == false %>
             <%= user.followings.count %>
           <% end %>
         </td>
-        <td class="text-center">
+        <td class="align-middle text-center">
           <% if user.is_deleted == false %>
             <%= user.followers.count %>
           <% end %>

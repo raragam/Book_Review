@@ -30,7 +30,8 @@
           <%= link_to review.review_title, review_path(review.id) %>
         <% elsif review.user.is_deleted == true %>
           <%= link_to review_path(review.id) do %>
-            投稿者退会のため、非表示になりました。
+            投稿者退会のため、<br>
+            非表示になりました。
           <% end %>
         <% end %>
       </td>
