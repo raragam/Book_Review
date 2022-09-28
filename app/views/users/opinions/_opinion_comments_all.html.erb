@@ -12,7 +12,7 @@
        <tbody>
         <% opinion_comments.each do |opinion_comment| %>
           <tr>
-           <td>
+           <td class="align-middle">
             <% if opinion_comment.user.is_deleted == false %>
               <% if user_signed_in? %>
                 <%= link_to user_path(opinion_comment.user.id) do %>
@@ -28,7 +28,7 @@
                   <%= opinion_comment.user.name %>
             <% end %>
            </td>
-           <td>
+           <td class="align-middle">
              <% if opinion_comment.user.is_deleted == false %>
                 <%= opinion_comment.opinion_comment %>
              <% elsif opinion_comment.user.is_deleted == true %>
@@ -37,12 +37,12 @@
                 <% end %>
              <% end %>
            </td>
-           <td><% if opinion_comment.user == current_user %>
+           <td class="align-middle"><% if opinion_comment.user == current_user %>
                  <%= link_to "削除", opinion_opinion_comment_path(@opinion.id, opinion_comment.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %>
                <% else %>
                <% end %>
            </td>
-           <td><%= opinion_comment.created_at.strftime('%Y/%m/%d') %></td>
+           <td class="align-middle"><%= opinion_comment.created_at.strftime('%Y/%m/%d') %></td>
          </tr>
         <% end %>
       </tbody>

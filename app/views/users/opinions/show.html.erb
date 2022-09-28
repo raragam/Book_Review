@@ -16,7 +16,7 @@
       <table class="table">
         <tbody>
           <tr>
-            <td>
+            <td class="align-middle">
               <% if user_signed_in? %>
                 <%= link_to user_path(@opinion.user.id) do %>
                     <%= image_tag @opinion.user.get_profile_image, width: '85px' %><br>
@@ -27,11 +27,11 @@
                     <%= @opinion.user.name %>
               <% end %>
            </td>
-            <td><%= @opinion.opinion_title %></td>
-            <td><%= @opinion.opinion_body %></td>
+            <td class="align-middle"><%= @opinion.opinion_title %></td>
+            <td class="align-middle"><%= @opinion.opinion_body %></td>
          <% if @user == current_user %>
-            <td><%= link_to "編集", edit_opinion_path(@opinion.id), class: 'btn btn-sm btn-success' %></td>
-            <td><%= link_to "削除", opinion_path(@opinion.id), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+            <td class="align-middle"><%= link_to "編集", edit_opinion_path(@opinion.id), class: 'btn btn-sm btn-success' %></td>
+            <td class="align-middle"><%= link_to "削除", opinion_path(@opinion.id), class: 'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に消しますか？" %></td>
          <% else %>
          <% end %>
          </tr>
