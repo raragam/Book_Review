@@ -11,7 +11,7 @@
    <tbody>
      <% review_comments.each do |review_comment| %>
       <tr>
-        <td>
+        <td class="align-middle">
          <% if review_comment.user.is_deleted == false %>
             <% if user_signed_in? %>
               <%= link_to user_path(review_comment.user.id) do %>
@@ -27,21 +27,22 @@
                <%= review_comment.user.name %>
          <% end %>
         </td>
-        <td>
+        <td class="align-middle">
           <% if review_comment.user.is_deleted == false %>
              <%= review_comment.review_comment %>
           <% elsif review_comment.user.is_deleted == true %>
              <%= link_to user_path(review_comment.user.id) do %>
-               投稿者退会のため、非表示になりました。
+               投稿者退会のため、<br>
+               非表示になりました。
              <% end %>
           <% end %>
         </td>
-        <td><% if review_comment.user == current_user %>
+        <td class="align-middle"><% if review_comment.user == current_user %>
                <%= link_to "削除", review_review_comment_path(@review.id, review_comment.id), remote: true, method: :delete, data: {confirm: "本当に削除しますか？"}  %>
             <% else %>
             <% end %>
         </td>
-        <td><%= review_comment.created_at.strftime('%Y/%m/%d') %></td>
+        <td class="align-middle"><%= review_comment.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
      <% end %>
    </tbody>

@@ -65,7 +65,7 @@
            <%= review.review_comments.count %>
         <% end %>
       </td>
-      <td class="align-middle text-center">
+      <td class="align-middle">
         <% if review.user.is_deleted == false %>
 
           <% if user_signed_in? %>
@@ -82,7 +82,7 @@
 
         <% end %>
       </td>
-      <td class="align-middle text-center"><%= review.created_at.strftime('%Y/%m/%d') %></td>
+      <td class="align-middle"><%= review.created_at.strftime('%Y/%m/%d') %></td>
      </tr>
     </tbody>
 
