@@ -41,7 +41,7 @@
           <td><%= @user.updated_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
-         <th>管理者からの通告内容</th>
+         <th>管理者のメッセージ</th>
          <td><%=safe_join(@user.message.split("\n"),tag(:br)) if @user.message %></td>
         </tr>
       </tbody>

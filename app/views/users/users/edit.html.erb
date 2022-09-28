@@ -65,7 +65,7 @@
 
       <div class="form-group">
         <div>
-          <label>管理人からの通告</label>
+          <label>管理者のメッセージ</label>
         </div>
         <div class="mt-4 mb-5">
           <%=safe_join(@user.message.split("\n"),tag(:br)) if @user.message %>
