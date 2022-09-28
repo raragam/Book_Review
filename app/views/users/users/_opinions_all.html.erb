@@ -16,7 +16,7 @@
 
    <tbody>
       <tr>
-        <td>
+        <td class="align-middle">
           <% if opinion.user.is_deleted == false %>
               <% if user_signed_in? %>
                   <%= link_to user_path(opinion.user.id) do %>
@@ -32,28 +32,29 @@
                      <%= opinion.user.name %>
           <% end %>
        </td>
-        <td>
+        <td class="align-middle">
           <% if opinion.user.is_deleted == false %>
              <%= link_to opinion_path(opinion.id) do %>
                 <%= opinion.opinion_title %>
              <% end %>
           <% elsif opinion.user.is_deleted == true %>
              <%= link_to opinion_path(opinion.id) do %>
-                投稿者退会のため、非表示になりました。
+                投稿者退会のため、<br>
+                非表示になりました。
              <% end %>
           <% end %>
        </td>
-        <td>
+        <td class="align-middle">
           <% if opinion.user.is_deleted == false %>
              <%= opinion.opinion_body %>
           <% end %>
         </td>
-        <td class="text-center">
+        <td class="align-middle text-center">
           <% if opinion.user.is_deleted == false %>
              <%= opinion.opinion_comments.count %>
           <% end %>
         </td>
-        <td>
+        <td class="align-middle text-center">
           <% if opinion.user.is_deleted == false %>
              <% if user_signed_in? %>
 
@@ -68,7 +69,7 @@
              <% end %>
           <% end %>
         </td>
-        <td><%= opinion.created_at.strftime('%Y/%m/%d') %></td>
+        <td class="align-middle text-center"><%= opinion.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
     </tbody>
 
