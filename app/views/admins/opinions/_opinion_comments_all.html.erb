@@ -12,15 +12,15 @@
     <tbody>
     <% opinion_comments.each do |opinion_comment| %>
       <tr>
-        <td><%= opinion_comment.created_at.strftime('%Y/%m/%d') %></td>
-        <td>
+        <td class="align-middle"><%= opinion_comment.created_at.strftime('%Y/%m/%d') %></td>
+        <td class="align-middle">
           <%= link_to admins_user_path(opinion_comment.user.id) do %>
             <%= image_tag opinion_comment.user.get_profile_image, width: '85px' %><br>
             <%= opinion_comment.user.name %>
           <% end %>
         </td>
-        <td><%= opinion_comment.opinion_comment %></td>
-        <td><%= link_to "管理者として削除する", admins_opinion_opinion_comment_path(@opinion.id, opinion_comment.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"}  %></td>
+        <td class="align-middle"><%= opinion_comment.opinion_comment %></td>
+        <td class="align-middle"><%= link_to "管理者として削除する", admins_opinion_opinion_comment_path(@opinion.id, opinion_comment.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"}  %></td>
       </tr>
     <% end %>
     </tbody>
