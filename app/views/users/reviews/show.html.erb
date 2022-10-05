@@ -1,8 +1,14 @@
 <div class="mx-auto mt-4" style="width: 1000px;">
 
+  <% if @user.is_deleted == false %>
+
   <h4 class="mx-auto text-center mt-4" style="width: 1000px;">
      PV数：<%= @review.impressions_count %>
   </h4>
+
+  <% elsif @user.is_deleted == true %>
+
+  <% end %>
 
   <h4 class="mx-auto text-center mt-4" style="width: 1000px;">
     <%= link_to user_path(@review.user.id) do %>
