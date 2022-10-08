@@ -19,14 +19,6 @@ class Users::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  #def create
-    #@opinion = Opinion.new(opinion_params)
-    #@opinion.user_id = current_user.id
-    #@opinion.save
-    #flash[:notice] = "投稿しました。"
-    #redirect_to opinion_path(@opinion.id)
-  #end
-
   def show
     @user = User.find(params[:id])
     @opinion_new = Opinion.new
@@ -65,10 +57,9 @@ class Users::UsersController < ApplicationController
   end
 
   def review_favorites
-    # @user = User.find(params[:id])
-    # review_favorites = ReviewFavorite.where(user_id: @user.id).order(id: "DESC").page(params[:page]).per(5).pluck(:review_id)
-    # @favorite_reviews = Review.find(review_favorites)
-    # @reviews = ReviewFavorite.all
+     #review_favorites = ReviewFavorite.where(user_id: @user.id).order(id: "DESC").page(params[:page]).per(5).pluck(:review_id)
+     #@favorite_reviews = Review.find(review_favorites)
+     #@reviews = ReviewFavorite.all
     @user = User.find(params[:id])
     review_favorites = ReviewFavorite.where(user_id: @user.id)
     favorite_reviews = Review.where(id: review_favorites.pluck(:review_id)).order(id: "DESC")
@@ -77,8 +68,8 @@ class Users::UsersController < ApplicationController
        params[:page] = params[:page].to_i - 1
        @favorite_reviews = favorite_reviews.page(params[:page]).per(5)
     end
-    #@favorite_reviews = Review.where(id: review_favorites.pluck(:review_id)).order(id: "DESC").page(params[:page]).per(5)
-    #params[:page] = params[:page].to_i - 1 if @favorite_reviews.any? && params[:page].present?
+     #@favorite_reviews = Review.where(id: review_favorites.pluck(:review_id)).order(id: "DESC").page(params[:page]).per(5)
+     #params[:page] = params[:page].to_i - 1 if @favorite_reviews.any? && params[:page].present?
     @reviews = ReviewFavorite.all
   end
 
