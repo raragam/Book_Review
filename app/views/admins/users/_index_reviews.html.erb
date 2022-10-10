@@ -10,6 +10,7 @@
         <th>題材作品</th>
         <th>コメント数</th>
         <th>いいね数</th>
+        <th>PV数</th>
         <th>投稿日</th>
       </tr>
     </thead>
@@ -31,6 +32,7 @@
        </td>
         <td class="align-middle text-center"><%= review.review_comments.count %></td>
         <td class="align-middle">♥<%= review.review_favorites.count %></td>
+        <td class="align-middle"><%= review.impressions_count %></td>
         <td class="align-middle"><%= review.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
     </tbody>

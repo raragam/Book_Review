@@ -9,7 +9,7 @@ class Admins::ReviewsController < ApplicationController
     @user = @review.user
     @reviews = Review.all
     @review_comments = @review.review_comments.order("created_at DESC")
-    impressionist(@review, nil, unique: [:session_hash])
+    #impressionist(unique: [:session_hash])
   end
 
   def destroy
