@@ -28,6 +28,7 @@ class Users::OpinionsController < ApplicationController
     #@opinions = Opinion.all
     @opinion_comment = OpinionComment.new
     @opinion_comments = @opinion.opinion_comments.order("created_at DESC").page(params[:page]).per(5)
+    impressionist(@opinion, nil, unique: [:session_hash])
   end
 
   def edit

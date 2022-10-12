@@ -29,4 +29,7 @@ class Opinion < ApplicationRecord
     end
   end
 
+  #閲覧数
+  is_impressionable counter_cache: true
+
 end
