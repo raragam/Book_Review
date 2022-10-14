@@ -8,7 +8,7 @@
         <th>投稿記事</th>
         <th>投稿者</th>
         <th class="text-center">コメント数</th>
-        <th></th>
+        <th>いいね</th>
         <th>PV数</th>
         <th>投稿日</th>
       </tr>
@@ -77,7 +77,7 @@
 
           <% else %>
 
-                ♥<%= review.review_favorites.count %> いいね
+                ♥<%= review.review_favorites.count %>
 
           <% end %>
 

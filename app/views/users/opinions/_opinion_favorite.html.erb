@@ -1,13 +1,13 @@
   <% if opinion.favorited_by?(current_user) %>
 
     <%= link_to opinion_opinion_favorites_path(opinion), method: :delete, remote: true do %>
-      ♥<%= opinion.opinion_favorites.count %> いいね
+      ♥<%= opinion.opinion_favorites.count %>
     <% end %>
 
   <% else %>
 
     <%= link_to opinion_opinion_favorites_path(opinion), method: :post, remote: true do %>
-      ♡<%= opinion.opinion_favorites.count %> いいね
+      ♡<%= opinion.opinion_favorites.count %>
     <% end %>
 
   <% end %>
